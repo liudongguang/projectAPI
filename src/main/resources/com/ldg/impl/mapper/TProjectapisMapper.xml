@@ -12,6 +12,6 @@
     <result column="level" jdbcType="INTEGER" property="level" />
   </resultMap>
     <select id="getApiTitlesDataByProjectId" resultMap="BaseResultMap">
-    select uid,parentid,apititle,projectid from t_projectapis where projectid=#{projectid}
+    select uid,parentid,apititle,projectid,level from t_projectapis where projectid=#{projectid}
   </select>
 </mapper>

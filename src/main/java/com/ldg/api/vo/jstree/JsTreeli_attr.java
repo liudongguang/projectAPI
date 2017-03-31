@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown
 		 = true)
 public class JsTreeli_attr {
-	private int level;
+	private Integer level;
 	private Integer projectid;
 	private String id;
 
@@ -25,17 +25,21 @@ public class JsTreeli_attr {
 		this.id = id;
 	}
 
-	public int getLevel() {
+	public Integer getLevel() {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(Integer level) {
 		this.level = level;
 	}
 
 	@Override
 	public String toString() {
-		return "JsTreeli_attr [level=" + level + ", id=" + id + "]";
+		return "JsTreeli_attr{" +
+				"level=" + level +
+				", projectid=" + projectid +
+				", id='" + id + '\'' +
+				'}';
 	}
-	
+
 }

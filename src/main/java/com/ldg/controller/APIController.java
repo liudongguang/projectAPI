@@ -92,12 +92,14 @@ public class APIController {
         }
         List<JsTree> treeList = new ArrayList<>();
         list.forEach((item)->{
-            JsTree jsRoot = new JsTree();
-            jsRoot.setId(String.valueOf(item.getUid()));
-            jsRoot.setParent(item.getParentid());//关联的父级id
-            jsRoot.setText(item.getApititle());
-            jsRoot.getState().setOpened(true);
-            treeList.add(jsRoot);
+            JsTree treeElement = new JsTree();
+            treeElement.setId(String.valueOf(item.getUid()));
+            treeElement.setParent(item.getParentid());//关联的父级id
+            treeElement.setText(item.getApititle());
+            treeElement.getState().setOpened(true);
+            treeElement.getLi_attr().setLevel(item.getLevel());  //节点深度
+            treeElement.getLi_attr().setProjectid(item.getProjectid()); //关联的项目id
+            treeList.add(treeElement);
         });
         msg.setData(treeList);
         return msg;

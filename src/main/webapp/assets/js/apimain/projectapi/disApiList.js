@@ -5,29 +5,7 @@ jQuery(document).ready(function () {
         layer.alert("没有选择项目！");
         return false;
     }
-   // init(projectid);
-    var ii=222;
-    $("#testBT").click(function () {
-        ii++;
-        console.log(ii)
-
-        $('#jstreeID').jstree({
-            "core": {
-                "check_callback": true,
-                'data': [
-                    'Simple root node'+ii,
-                    {
-                        'id' : 'node_2',
-                        'text' : 'Root node with options',
-                        'state' : { 'opened' : true, 'selected' : true },
-                        'children' : [ { 'text' : 'Child 1' }, 'Child 2']
-                    }
-                ]
-            },
-            "plugins": ["contextmenu"]
-        });
-        $('#jstreeID').jstree(true).refresh(true,true);
-    })
+   init(projectid);
 });
 function init(projectid) {
     var ii = layer.load(0, {
@@ -143,18 +121,20 @@ function initdata(data) {
     };
     var jq_tree=$('#jstreeID').jstree({
         "core": {
-            "check_callback": true,
-            'data': data
+            "check_callback": true
+           // 'data': data
         },
         "plugins": ["contextmenu"]
     });
-       // jQuery.jstree.reference(jq_tree).refresh();
+    $('#jstreeID').jstree(true).settings.core.data=data;//放入数据
+    $('#jstreeID').jstree(true).refresh();//刷新数据
     $('#jstreeID').on("select_node.jstree", function (event, node) {
         var rnode = node.node;
         var id = rnode.id;
         var name = rnode.text;
         var level = rnode.li_attr.level;
-        console.log(id+"     "+name+"   "+level+"    ");
+        var projectid = rnode.li_attr.projectid;
+        console.log("id:"+id+"     name:"+name+"   level:"+level+"    "+"      projectid:"+projectid);
 
     })
 }
