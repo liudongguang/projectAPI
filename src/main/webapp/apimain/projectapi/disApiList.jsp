@@ -42,8 +42,8 @@
 </div>
 <div class="row">
     <div class="col-md-3">
+        <button id="saveBT" class="btn btn-primary hidden" >保存接口</button>
         <div id="jstreeID">
-
         </div>
     </div>
     <div class="col-md-9"></div>

@@ -121,8 +121,7 @@ function init(data) {
         var id = rnode.id;
         var name = rnode.text;
         var level = rnode.li_attr.level;
-        $("#levelID").val(level);
-        $("#caidanID").val(name);
+        console.log(id+"     "+name+"   "+level);
     })
 }
 
