@@ -43,7 +43,7 @@
         </Logger>
 
         <!-- 将业务dao接口填写进去,并用控制台输出即可-->
-        <logger name="com.kangkang.impl.mapper" level="DEBUG" additivity="false">
+        <logger name="com.ldg.impl.mapper" level="DEBUG" additivity="false">
             <appender-ref ref="STDOUT"/>
         </logger>
     </Loggers>

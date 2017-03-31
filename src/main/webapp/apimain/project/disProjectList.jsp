@@ -2,8 +2,12 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<div class="clearfix"></div>
+<div class="form-group">
+    <button class="btn btn-primary btn-large" ajaxthispage  href="/apimain/project/addproject.jsp">新增</button>
+</div>
 <div class="table-responsive">
-    <table class="table table-striped table-hover table-bordered">
+    <table id="dataTable" class="table table-striped table-hover table-bordered">
         <thead>
         <tr>
             <th>项目名</th>
@@ -30,12 +34,12 @@
 <input id="pageSize" type="hidden" value="${page.pageSize}"/>
 <input id="pages" type="hidden" value="${page.pages}"/>
 <input id="total" type="hidden" value="${page.total}"/>
-<input id="loadDataURL" type="hidden" value="/sdeyfollowup/getOutHosMembers"/>
+<input id="loadDataURL" type="hidden" value="/apiHandler/getProjects"/>
 <input id="searFormID" type="hidden" value="subForm"/>
 <!--
 分页结束
 -->
 <script language="javascript" type="text/javascript" src="assets/js/jPage-1.2.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/jPageExt.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/apimain/project/disProjectList.js"></script>
 

@@ -9,6 +9,8 @@ import com.ldg.impl.mapper.TProjectsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * Created by liudo on 2017/3/31.
  */
@@ -18,7 +20,13 @@ public class ApiServiceImpl implements ApiService {
     private TProjectsMapper projectsDao;
     @Override
     public PageInfo<TProjects> getProjectsPageInfo(PageParam pageParam) {
-        PageInfo<TProjects> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> projectsDao.selectAll());
+        PageInfo<TProjects> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> projectsDao.getProjectsPageInfo());
         return pageInfo;
+    }
+
+    @Override
+    public int saveProject(TProjects project) {
+        project.setCreatetime(new Date());
+        return projectsDao.insertSelective(project);
     }
 }

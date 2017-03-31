@@ -23,6 +23,11 @@ public class APIController {
     @Autowired
     private ApiService apiSV;
 
+    /**
+     * 登陆操作
+     * @param request
+     * @return
+     */
 
     @RequestMapping(value = "/login")
     public String login(HttpServletRequest request) {
@@ -36,6 +41,18 @@ public class APIController {
     public String getProjects(HttpServletRequest request, PageParam pageParam) {
         PageInfo<TProjects> projects=apiSV.getProjectsPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR,projects);
-        return "/apimain/disProjectList.jsp";
+        return "/apimain/project/disProjectList.jsp";
+    }
+
+    /**
+     * 保存项目项
+     * @param request
+     * @param project
+     * @return
+     */
+    @RequestMapping(value = "/saveProject")
+    public String saveProject(HttpServletRequest request,TProjects project) {
+        int saveState=apiSV.saveProject(project);
+        return "/apiHandler/getProjects";
     }
 }

@@ -106,6 +106,6 @@
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/common.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/ajaxsessiontimeout.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/hypertensionMain/index.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/apimain/index.js"></script>
 </body>
 </html>

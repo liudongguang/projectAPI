@@ -14,4 +14,11 @@ public interface ApiService {
      * @return
      */
     PageInfo<TProjects> getProjectsPageInfo(PageParam pageParam);
+
+    /**
+     * 保存项目
+     * @param project
+     * @return
+     */
+    int saveProject(TProjects project);
 }
