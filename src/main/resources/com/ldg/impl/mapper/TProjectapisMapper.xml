@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldg.impl.mapper.TProjectapisMapper">
+  <resultMap id="BaseResultMap" type="com.ldg.api.po.TProjectapis">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="parentid" jdbcType="VARCHAR" property="parentid" />
+    <result column="apititle" jdbcType="VARCHAR" property="apititle" />
+    <result column="projectid" jdbcType="INTEGER" property="projectid" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+  </resultMap>
+    <select id="getApiTitlesDataByProjectId" resultMap="BaseResultMap">
+    select uid,parentid,apititle,projectid from t_projectapis where projectid=#{projectid}
+  </select>
+</mapper>

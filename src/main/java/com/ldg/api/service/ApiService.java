@@ -1,8 +1,11 @@
 package com.ldg.api.service;
 
 import com.github.pagehelper.PageInfo;
+import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.vo.PageParam;
+
+import java.util.List;
 
 /**
  * Created by liudo on 2017/3/31.
@@ -21,4 +24,17 @@ public interface ApiService {
      * @return
      */
     int saveProject(TProjects project);
+
+    /**
+     * 获取接口信息
+     * @return
+     */
+    List<TProjectapis> getApiTitlesData(Integer projectid);
+
+    /**
+     * 保存根节点
+     * @param projectid
+     * @return
+     */
+    int saveRootMenu(Integer projectid);
 }

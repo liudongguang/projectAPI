@@ -93,7 +93,7 @@
 </div>
 <footer class="templatemo-footer">
     <div class="templatemo-copyright">
-        <p>Copyright &copy; 邦尼集团</p>
+        <p>Copyright &copy; liudongguang</p>
     </div>
 </footer>
 </div>

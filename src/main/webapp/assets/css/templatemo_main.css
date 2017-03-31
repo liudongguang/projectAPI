@@ -52,6 +52,9 @@ a:hover, a:visited{ text-decoration:none}
     background-color: white;
     overflow-x: hidden;
 }
+footer{
+    position: absolute; width: 100%; bottom: 0
+}
 .templatemo-footer {
     clear: both;
     font-size: 13px;
