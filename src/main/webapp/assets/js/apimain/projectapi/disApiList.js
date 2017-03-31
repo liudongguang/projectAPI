@@ -5,6 +5,31 @@ jQuery(document).ready(function () {
         layer.alert("没有选择项目！");
         return false;
     }
+   // init(projectid);
+    var ii=222;
+    $("#testBT").click(function () {
+        ii++;
+        console.log(ii)
+
+        $('#jstreeID').jstree({
+            "core": {
+                "check_callback": true,
+                'data': [
+                    'Simple root node'+ii,
+                    {
+                        'id' : 'node_2',
+                        'text' : 'Root node with options',
+                        'state' : { 'opened' : true, 'selected' : true },
+                        'children' : [ { 'text' : 'Child 1' }, 'Child 2']
+                    }
+                ]
+            },
+            "plugins": ["contextmenu"]
+        });
+        $('#jstreeID').jstree(true).refresh(true,true);
+    })
+});
+function init(projectid) {
     var ii = layer.load(0, {
         shade: [0.8, '#fff']
         // 0.1透明度的白色背景
@@ -14,15 +39,16 @@ jQuery(document).ready(function () {
         paramdata: {projectid: projectid},
         dataType: 'json',
         callbackFun: function (data) {
-            if (data.errorCode == 1) {
+            if (data.errcode == 1) {
                 layer.close(ii);
                 layer.alert("需要初始化,请点击初始化按钮！");
                 initFirstBT();
                 return false;
             }
-            init(data.data);
+            initdata(data.data);
             layer.close(ii);
-            $("#saveBT").click(function () {
+            $("#saveBT").show();//保存按钮显示
+            $("#saveBT").unbind("click").click(function () {
                 var ii2 = layer.load(0, {
                     shade: [0.8, '#fff']
                     // 0.1透明度的白色背景
@@ -31,11 +57,14 @@ jQuery(document).ready(function () {
                 var ajaxOpt = {
                     paramurl: basePath + 'apiHandler/saveApiTitleData',
                     paramdata: JSON.stringify(sdata),
+                    rquestType:'json',
                     dataType: 'json',
                     callbackFun: function (data) {
                         layer.close(ii2);
-                        if (result.errcode == 0) {
+                        if (data.errcode == 0) {
                             layer.msg("保存成功！");
+                            //location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid="+projectid;
+                            init(projectid);
                         } else {
                             layer.msg("保存失败！");
                         }
@@ -45,9 +74,11 @@ jQuery(document).ready(function () {
             });
         }
     };
+    $("#saveBT").hide();//保存按钮隐藏
     ajaxRun(ajaxOpt_getApiTitlesData);
-});
-function init(data) {
+}
+function initdata(data) {
+    var projectid = $("#projectID").val();
     $.jstree.defaults.core.themes.variant = "large";
     $.jstree.defaults.contextmenu.items = {
         "mcreate": {
@@ -64,7 +95,8 @@ function init(data) {
                     "type": "text",
                     "text": "新建菜单",
                     "li_attr": {
-                        "level": thisLevel + 1
+                        "level": thisLevel + 1,
+                        "projectid":projectid
                     }
                 });
                 inst.open_node(obj);
@@ -109,22 +141,23 @@ function init(data) {
             }
         }
     };
-    $('#jstreeID').jstree({
+    var jq_tree=$('#jstreeID').jstree({
         "core": {
             "check_callback": true,
             'data': data
         },
         "plugins": ["contextmenu"]
     });
+       // jQuery.jstree.reference(jq_tree).refresh();
     $('#jstreeID').on("select_node.jstree", function (event, node) {
         var rnode = node.node;
         var id = rnode.id;
         var name = rnode.text;
         var level = rnode.li_attr.level;
-        console.log(id+"     "+name+"   "+level);
+        console.log(id+"     "+name+"   "+level+"    ");
+
     })
 }
-
 function initFirstBT() {
     var jq_div = $("#jstreeID");
     var createbutton = $("<button class='btn btn-primary'>初始化</button>");

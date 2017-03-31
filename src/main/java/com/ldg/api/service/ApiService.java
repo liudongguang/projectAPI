@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.vo.PageParam;
+import com.ldg.api.vo.jstree.JsTreeData;
 
 import java.util.List;
 
@@ -37,4 +38,11 @@ public interface ApiService {
      * @return
      */
     int saveRootMenu(Integer projectid);
+
+    /**
+     * 保存树数据信息
+     * @param saveData
+     * @return
+     */
+    int saveApiTitleData(List<JsTreeData> saveData);
 }

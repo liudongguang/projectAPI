@@ -6,9 +6,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 		 = true)
 public class JsTreeli_attr {
 	private int level;
+	private Integer projectid;
 	private String id;
 
-	
+	public Integer getProjectid() {
+		return projectid;
+	}
+
+	public void setProjectid(Integer projectid) {
+		this.projectid = projectid;
+	}
+
 	public String getId() {
 		return id;
 	}

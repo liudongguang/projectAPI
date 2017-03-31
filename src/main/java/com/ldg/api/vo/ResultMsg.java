@@ -1,24 +1,24 @@
 package com.ldg.api.vo;
 
 public class ResultMsg {
-	private int errorCode;
-	private String errorMsg;
+	private int errcode;
+	private String errmsg;
 	private Object data;
 
-	public int getErrorCode() {
-		return errorCode;
+	public int getErrcode() {
+		return errcode;
 	}
 
-	public void setErrorCode(int errorCode) {
-		this.errorCode = errorCode;
+	public void setErrcode(int errcode) {
+		this.errcode = errcode;
 	}
 
-	public String getErrorMsg() {
-		return errorMsg;
+	public String getErrmsg() {
+		return errmsg;
 	}
 
-	public void setErrorMsg(String errorMsg) {
-		this.errorMsg = errorMsg;
+	public void setErrmsg(String errmsg) {
+		this.errmsg = errmsg;
 	}
 
 	public Object getData() {
@@ -29,4 +29,12 @@ public class ResultMsg {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		return "ResultMsg{" +
+				"errcode=" + errcode +
+				", errmsg='" + errmsg + '\'' +
+				", data=" + data +
+				'}';
+	}
 }

@@ -17,8 +17,8 @@ function jumpPageNoAuthorityForHandler(pageUrl, jq_container, excuteFUN) {
         callbackFun: function (data) {
             var dataobj = isJson(data);
             if (dataobj) {// 是json格式
-                if (dataobj.errorCode != 0) {
-                    layer.alert(dataobj.errorMsg);
+                if (dataobj.errcode != 0) {
+                    layer.alert(dataobj.errmsg);
                     return false;
                 }
             }
@@ -41,8 +41,8 @@ function jumpPageNoAuthority(pageUrl, jq_container) {
         callbackFun: function (data) {
             var dataobj = isJson(data);
             if (dataobj) {// 是json格式
-                if (dataobj.errorCode != 0) {
-                    layer.alert(dataobj.errorMsg);
+                if (dataobj.errcode != 0) {
+                    layer.alert(dataobj.errmsg);
                     return false;
                 }
             }
@@ -64,8 +64,8 @@ function jumpPage(pageUrl, jq_container) {
         callbackFun: function (data) {
             var dataobj = isJson(data);
             if (dataobj) {// 是json格式
-                if (dataobj.errorCode != 0) {
-                    layer.alert(dataobj.errorMsg);
+                if (dataobj.errcode != 0) {
+                    layer.alert(dataobj.errmsg);
                     return false;
                 }
             }
@@ -105,8 +105,8 @@ function layerWindow(pageUrl, title, width, height, frame) {
         callbackFun: function (data) {
             var dataobj = isJson(data);
             if (dataobj) {// 是json格式
-                if (dataobj.errorCode != 0) {
-                    layer.alert(dataobj.errorMsg);
+                if (dataobj.errcode != 0) {
+                    layer.alert(dataobj.errmsg);
                     return false;
                 }
             }
@@ -146,10 +146,10 @@ function initAjaxForm(jq_form, jq_button, excuteResponse, validateState, validat
     var zzcid = null;
 
     function showResponse(data) {
-        if (data.errorCode && data.errorCode != 0) {
+        if (data.errcode && data.errcode != 0) {
             layer.close(zzcid);
             layer.close(options.zzcid);
-            layer.alert(data.errorMsg);
+            layer.alert(data.errmsg);
             return false;
         } else {
             excuteResponse(data);
@@ -367,8 +367,8 @@ function initSelect() {
             paramdata: null,
             dataType: 'json',
             callbackFun: function (data) {
-                if (data.errorCode != 0) {
-                    layer.alert(dataobj.errorMsg);
+                if (data.errcode != 0) {
+                    layer.alert(dataobj.errmsg);
                     return false;
                 }
                 var list = data.data.list;
@@ -415,13 +415,19 @@ function ajaxRun(param) {
     var paramurl = param.paramurl;
     var paramdata = param.paramdata;
     var callbackFun = param.callbackFun;
-    var serverDataType = param.serverDataType;
+    var dataTypeStr = param.dataType;//要求为String类型的参数，预期服务器返回的数据类型
+    var rquestTypeStr=param.rquestType;
+    var contentTypeStr="application/x-www-form-urlencoded; charset=utf-8"   //要求为String类型的参数，当发送信息至服务器时，内容编码类型默认为"application/x-www-form-urlencoded"
+    if(rquestTypeStr=='json'){
+        contentTypeStr="application/json; charset=utf-8"
+    }
     // /////////////////////////
     var request = $.ajax({
         url: paramurl,
         data: paramdata,
         method: "POST",
-        dataType: serverDataType,
+        dataType: dataTypeStr,
+        contentType: contentTypeStr,
         statusCode: {
             404: function () {
                 layer.alert("无此页面");

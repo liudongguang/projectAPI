@@ -77,7 +77,7 @@
 
 			<mvc:mapping path="/sdeyfollowup/**" />
 			<mvc:exclude-mapping path="/sdeyfollowup/login"/>
-			<bean class="com.sdey.interceptor.ManagerLoginInterceptor"></bean>
+			<bean class="com.ldg.interceptor.ManagerLoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

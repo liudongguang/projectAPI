@@ -5,7 +5,6 @@ import com.ldg.api.constant.CommConstant;
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
-import com.ldg.api.vo.MsgResult;
 import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.ResultMsg;
 import com.ldg.api.vo.jstree.JsTree;
@@ -87,8 +86,8 @@ public class APIController {
         ResultMsg msg=new ResultMsg();
         List<TProjectapis> list=apiSV.getApiTitlesData(projectid);
         if(list.size()==0){
-            msg.setErrorCode(1);
-            msg.setErrorMsg("需要初始化列表");
+            msg.setErrcode(1);
+            msg.setErrmsg("需要初始化列表");
             return msg;
         }
         List<JsTree> treeList = new ArrayList<>();
@@ -112,9 +111,9 @@ public class APIController {
      */
     @RequestMapping(value = "/saveApiTitleData")
     @ResponseBody
-    public MsgResult saveApiTitleData(HttpServletRequest request,@RequestBody List<JsTreeData> saveData) {
-        MsgResult msg=new MsgResult();
-        System.out.println(saveData);
+    public ResultMsg saveApiTitleData(HttpServletRequest request,@RequestBody List<JsTreeData> saveData) {
+        ResultMsg msg=new ResultMsg();
+        int i=apiSV.saveApiTitleData(saveData);
         return msg;
     }
 
@@ -125,8 +124,8 @@ public class APIController {
      */
     @RequestMapping(value = "/initApiTitleData")
     @ResponseBody
-    public MsgResult initApiTitleData(HttpServletRequest request,Integer projectid) {
-        MsgResult msg=new MsgResult();
+    public ResultMsg initApiTitleData(HttpServletRequest request,Integer projectid) {
+        ResultMsg msg=new ResultMsg();
         int i=apiSV.saveRootMenu(projectid);
         return msg;
     }

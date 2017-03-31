@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Table(name = "t_projectapis")
 public class TProjectapis {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer uid;
 
     /**
