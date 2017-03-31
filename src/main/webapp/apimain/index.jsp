@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <title>随访管理</title>
+    <title>API接口管理系统-管理</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width">
@@ -49,11 +49,11 @@
                </form>
              </li>-->
             <li class="active"><a href="javascript:;"><i class="fa fa-home"></i>首页</a></li>
-            <li class="sub open"><a href="javascript:;"><span class="glyphicon glyphicon-calendar btn-lg"></span> 业务管理
+            <li class="sub open"><a href="javascript:;"><span class="glyphicon glyphicon-calendar btn-lg"></span> 接口管理
                 <div class="pull-right tt"><span class="caret"></span></div>
                     </a>
                 <ul class="templatemo-submenu">
-                    <li><a id="cysfID" href="/appHandler/hypertensionListByUser"><span class="glyphicon glyphicon-list-alt"></span>血压记录</a>
+                    <li><a id="cysfID" href="/apiHandler/getProjects"><span class="glyphicon glyphicon-list-alt"></span>项目列表</a>
                     </li>
                 </ul>
             </li>

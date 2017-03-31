@@ -6,23 +6,17 @@
     <table class="table table-striped table-hover table-bordered">
         <thead>
         <tr>
-            <th><input type="checkbox" id="checkAllCheckBox"> </th>
-            <th>姓名</th>
-            <th>收缩压</th>
-            <th>舒张压</th>
-            <th>心率</th>
-            <th>测量时间</th>
+            <th>项目名</th>
+            <th>创建时间</th>
+            <th>项目描述</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${page.list}" var="obj">
             <tr id="${obj.uid}">
-                <td></td>
-                <td></td>
-                <td>${obj.systolicpressure}</td>
-                <td>${obj.diastolicpressure}</td>
-                <td>${obj.pulse}</td>
-                <td><fmt:formatDate value="${obj.kktime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                <td>${obj.projectname}</td>
+                <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                <td>${obj.description}</td>
             </tr>
         </c:forEach>
         </tbody>
