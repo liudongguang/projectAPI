@@ -14,4 +14,10 @@
     <select id="getApiTitlesDataByProjectId" resultMap="BaseResultMap">
     select uid,parentid,apititle,projectid,level from t_projectapis where projectid=#{projectid}
   </select>
+  <select id="getTitleNameForsaveTreeHandler" parameterType="int" resultType="string">
+      SELECT apititle from  t_projectapis where uid=#{uid}
+  </select>
+  <update id="updateTitleNameByPrimaryKey" parameterType="com.ldg.api.po.TProjectapis">
+       update t_projectapis set apititle=#{apititle} where uid=#{uid}
+  </update>
 </mapper>

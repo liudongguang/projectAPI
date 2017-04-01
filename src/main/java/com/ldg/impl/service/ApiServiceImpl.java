@@ -38,41 +38,5 @@ public class ApiServiceImpl implements ApiService {
         return projectsDao.insertSelective(project);
     }
 
-    @Override
-    public List<TProjectapis> getApiTitlesData(Integer projectid) {
-        return projectapisDao.getApiTitlesDataByProjectId(projectid);
-    }
 
-    @Override
-    public int saveRootMenu(Integer projectid) {
-        TProjectapis pp=new TProjectapis();
-        pp.setParentid("#");
-        pp.setApititle("-----项目接口-----");
-        pp.setProjectid(projectid);
-        pp.setLevel(0);
-        return projectapisDao.insertSelective(pp);
-    }
-
-    @Override
-    public int saveApiTitleData(List<JsTreeData> saveData) {
-        System.out.println(saveData);
-        JsTreeData root=saveData.get(0);
-        root.getChildren().forEach((item)->{
-            TProjectapis pp=new TProjectapis();
-            pp.setParentid(root.getId());
-            pp.setApititle(item.getText());
-            pp.setProjectid(item.getLi_attr().getProjectid());
-            pp.setLevel(item.getLi_attr().getLevel());
-            projectapisDao.insertSelective(pp);
-            item.getChildren().forEach((item2)->{
-                TProjectapis pp2=new TProjectapis();
-                pp2.setParentid(String.valueOf(pp.getUid()));
-                pp2.setApititle(item2.getText());
-                pp2.setProjectid(item.getLi_attr().getProjectid());
-                pp2.setLevel(item2.getLi_attr().getLevel());
-               projectapisDao.insertSelective(pp2);
-            });
-        });
-        return 0;
-    }
 }

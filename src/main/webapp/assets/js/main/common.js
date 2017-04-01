@@ -6,6 +6,17 @@ var noAuthorityJump = "jump/simple";
 function jumpPageNoAjax(pageUrl) {
     location.href = basePath + pageUrl;
 }
+function ajaxRequest(requestURL,paramData,callbackFun) {
+    var param = {
+        paramurl: basePath + requestURL,
+        paramdata: paramData,
+        dataType: 'json',
+        callbackFun: function (data) {
+            callbackFun(data);
+        }
+    };
+    ajaxRun(param);
+}
 function jumpPageNoAuthorityForHandler(pageUrl, jq_container, excuteFUN) {
     // /
     var param = {

@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
         layer.alert("没有选择项目！");
         return false;
     }
-    init(projectid);
+   init(projectid);
 });
 function init(projectid) {
     var ii = layer.load(0, {
@@ -13,7 +13,7 @@ function init(projectid) {
         // 0.1透明度的白色背景
     });
     var ajaxOpt_getApiTitlesData = {
-        paramurl: basePath + 'jsTree/getApiTitlesData',
+        paramurl: basePath + 'apiHandler/getApiTitlesData',
         paramdata: {projectid: projectid},
         dataType: 'json',
         callbackFun: function (data) {
@@ -25,20 +25,46 @@ function init(projectid) {
             }
             initdata(data.data);
             layer.close(ii);
+            $("#saveBT").show();//保存按钮显示
+            $("#saveBT").unbind("click").click(function () {
+                var ii2 = layer.load(0, {
+                    shade: [0.8, '#fff']
+                    // 0.1透明度的白色背景
+                });
+                var sdata = $('#jstreeID').jstree(true).get_json();
+                var ajaxOpt = {
+                    paramurl: basePath + 'jsTree/saveApiTitleData',
+                    paramdata: JSON.stringify(sdata),
+                    rquestType:'json',
+                    dataType: 'json',
+                    callbackFun: function (data) {
+                        layer.close(ii2);
+                        if (data.errcode == 0) {
+                            layer.msg("保存成功！");
+                            //location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid="+projectid;
+                            init(projectid);
+                        } else {
+                            layer.msg("保存失败！");
+                        }
+                    }
+                };
+                ajaxRun(ajaxOpt);
+            });
         }
     };
+    $("#saveBT").hide();//保存按钮隐藏
     ajaxRun(ajaxOpt_getApiTitlesData);
 }
 function initdata(data) {
+    var projectid = $("#projectID").val();
     $.jstree.defaults.core.themes.variant = "large";
     $.jstree.defaults.contextmenu.items = {
         "mcreate": {
             "label": "新建菜单",
             "action": function (data) {
-                var projectid = $("#projectID").val();
                 var inst = jQuery.jstree.reference(data.reference), obj = inst
                     .get_node(data.reference);
-                var thisLevel = obj.li_attr.level;
+                var thisLevel=obj.li_attr.level;
                 if (thisLevel == 2) {
                     layer.alert("不允许添加！");
                     return false;
@@ -48,27 +74,17 @@ function initdata(data) {
                     "text": "新建菜单",
                     "li_attr": {
                         "level": thisLevel + 1,
-                        "projectid": projectid
+                        "projectid":projectid
                     }
                 });
                 inst.open_node(obj);
                 // 生成就编辑
                 var newObj = inst.get_node(newID);
-                //////异步添加
-                var name = newObj.text;
-                var level = newObj.li_attr.level;
-                var projectid = newObj.li_attr.projectid;
-                var parentid = newObj.parent;
-                ajaxRequest("jsTree/createTreeElement", {
-                    "parentid": parentid,
-                    "apititle": name,
-                    "projectid": projectid,
-                    "level": level
-                }, function (data) {
-                    inst.set_id(newObj, data.data);
-                    inst.edit(newObj);
-                });
+                //////异步修改
+
                 //////
+                inst.set_id (newObj, '3333');
+                inst.edit(newObj);
             }
         },
         "mdelete": {
@@ -86,21 +102,15 @@ function initdata(data) {
                     title: '会删除关联子菜单'
                 }, function (index) {
                     // do something
-                    /////
-                    ajaxRequest("jsTree/deleteTreeElement", {
-                        "uid": obj.id
-                    }, function (data) {
-                        inst.delete_node(obj);
-                        layer.close(index);
-                    });
-                    /////
+                    inst.delete_node(obj);
+                    layer.close(index);
                 });
             }
         },
         "mrename": {
             "label": "重命名",
             "action": function (data) {
-                var ref = $('#jstreeID').jstree(true), sel = ref.get_selected(), obj = ref.get_node(sel);
+                var ref = $('#jstreeID').jstree(true), sel = ref.get_selected(),obj = ref.get_node(sel);
                 if (obj.parent == '#') {
                     layer.alert("不允许改名！");
                     return false;
@@ -113,14 +123,14 @@ function initdata(data) {
             }
         }
     };
-    var jq_tree = $('#jstreeID').jstree({
+    var jq_tree=$('#jstreeID').jstree({
         "core": {
             "check_callback": true
-            // 'data': data
+           // 'data': data
         },
         "plugins": ["contextmenu"]
     });
-    $('#jstreeID').jstree(true).settings.core.data = data;//放入数据
+    $('#jstreeID').jstree(true).settings.core.data=data;//放入数据
     $('#jstreeID').jstree(true).refresh();//刷新数据
     $('#jstreeID').on("select_node.jstree", function (event, node) {
         var rnode = node.node;
@@ -128,7 +138,7 @@ function initdata(data) {
         var name = rnode.text;
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
-        console.log("id:" + id + "     name:" + name + "   level:" + level + "    " + "      projectid:" + projectid);
+        console.log("id:"+id+"     name:"+name+"   level:"+level+"    "+"      projectid:"+projectid);
 
     })
     ////////修改了名称后触发
@@ -138,19 +148,11 @@ function initdata(data) {
         var name = rnode.text;
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
-        var firstIndexVal = id.indexOf('j');
-        if (firstIndexVal == -1) {//不是开头的可以跟数据库进行交互
-           // console.log("rename_node db................")
-            ajaxRequest("jsTree/updateTreeElement", {
-                "uid":id,
-                "apititle":name
-            }, function (data) {
-                if(data.errcode ==0 ){
-                    layer.msg("修改成功！");
-                }
-            });
+        var firstIndexVal=id.indexOf('j');
+        if(firstIndexVal==-1){//不是开头的可以跟数据库进行交互
+            console.log("rename_node db................")
         }
-        //console.log("rename_node id:" + id)
+        console.log("rename_node id:"+id)
     })
     //删除触发
     $('#jstreeID').on("delete_node.jstree", function (event, node) {
@@ -159,11 +161,11 @@ function initdata(data) {
         var name = rnode.text;
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
-        var firstIndexVal = id.indexOf('j');
-        if (firstIndexVal == -1) {//不是开头的可以跟数据库进行交互
-            //   console.log("delete_node db................")
+        var firstIndexVal=id.indexOf('j');
+        if(firstIndexVal==-1){//不是开头的可以跟数据库进行交互
+             console.log("delete_node db................")
         }
-       // console.log("delete_node")
+        console.log("delete_node")
     })
 }
 function initFirstBT() {
@@ -176,11 +178,11 @@ function initFirstBT() {
             return false;
         }
         var ajaxOpt = {
-            paramurl: basePath + 'jsTree/initApiTitleData',
+            paramurl: basePath + 'apiHandler/initApiTitleData',
             paramdata: {projectid: projectid},
             dataType: 'json',
             callbackFun: function (data) {
-                location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid=" + projectid;
+                location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid="+projectid;
             }
         };
         ajaxRun(ajaxOpt);

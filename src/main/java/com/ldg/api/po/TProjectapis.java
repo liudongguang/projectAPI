@@ -113,4 +113,15 @@ public class TProjectapis {
     public void setLevel(Integer level) {
         this.level = level;
     }
+
+    @Override
+    public String toString() {
+        return "TProjectapis{" +
+                "uid=" + uid +
+                ", parentid='" + parentid + '\'' +
+                ", apititle='" + apititle + '\'' +
+                ", projectid=" + projectid +
+                ", level=" + level +
+                '}';
+    }
 }

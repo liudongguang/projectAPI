@@ -42,11 +42,12 @@
 </div>
 <div class="row">
     <div class="col-md-3">
-        <button id="saveBT" class="btn btn-primary" >保存接口</button>
         <div id="jstreeID">
         </div>
     </div>
-    <div class="col-md-9"></div>
+    <div class="col-md-9" id="mainContent">
+
+    </div>
 </div>
 </div>
 <footer class="templatemo-footer">

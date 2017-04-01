@@ -22,8 +22,7 @@
                 <td>${obj.projectname}</td>
                 <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                 <td>${obj.description}</td>
-                <td> <a class="label label-warning"  searFormID="subForm" pageNumParam="${page.pageNum}"   titleParam="${param.titleParam}"
-                        href="apiHandler/getApiTitles?uid=${obj.uid}
+                <td> <a class="label label-warning"  searFormID="subForm" pageNumParam="${page.pageNum}"   titleParam="${param.titleParam}"   href="jsTree/getApiTitles?uid=${obj.uid}
 ">API接口文档</a></td>
             </tr>
         </c:forEach>

@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface TProjectapisMapper extends Mapper<TProjectapis> {
     List<TProjectapis> getApiTitlesDataByProjectId(Integer projectid);
+
+    String getTitleNameForsaveTreeHandler(Integer uid);
+
+    Integer updateTitleNameByPrimaryKey(TProjectapis pp);
 }
