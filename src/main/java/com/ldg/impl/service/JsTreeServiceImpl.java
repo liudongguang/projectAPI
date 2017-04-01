@@ -8,6 +8,7 @@ import com.ldg.impl.mapper.TProjectapisMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -77,6 +78,8 @@ public class JsTreeServiceImpl implements JsTreeService {
 
     @Override
     public Integer createTreeElement(TProjectapis ele) {
+        ele.setCreatetime(new Date());
+        ele.setFormmethod("none");
         projectapisDao.insertSelective(ele);
         return ele.getUid();
     }

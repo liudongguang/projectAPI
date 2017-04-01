@@ -52,9 +52,40 @@
 
         <div id="requestDIVID">
             <h4>请求参数</h4>
-            <c:forEach items="${paramList}" var="obj">
+            <input name="rquestParamUID" type="hidden"  value="${obj.uid}"/>
+            <c:if test="${paramListRquest==null}">
+                <%--一行三列开始--%>
+                <div class="form-inline one-group">
+                    <div class="form-group">
+                        <label>参数名</label>
+                        <input name="rquestParam" type="text" class="form-control" placeholder="请求参数名" required
+                               value="${obj.paramname}"
+                               errInfo="请求参数名不能为空！">
+                    </div>
+                    <div class="form-group">
+                        <label>参数类型</label>
+                        <select class="form-control" name="rquestParamType">
+                            <option selected>string</option>
+                            <option>number</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>备注</label>
+                        <input name="rquestParamBeizhu" type="text" class="form-control" placeholder="请求参数备注"
+                               value="${obj.parambeizhu}"
+                               required
+                               errInfo="请求参数备注不能为空！">
+                    </div>
+                        <%--添加按钮--%>
+                    <div class="form-group">
+                            <button id="addRequestBTID_" class="btn btn-success">添加</button>
+                    </div>
+                        <%--添加按钮结束--%>
+                </div>
+            </c:if>
+
+            <c:forEach items="${paramListRquest}" var="obj" varStatus="stat">
                 <c:if test="${obj.ptype==1}">
-                    <input name="rquestParamUID" type="hidden"  value="${obj.uid}"/>
                     <%--一行三列开始--%>
                     <div class="form-inline one-group">
                         <div class="form-group">
@@ -79,7 +110,13 @@
                         </div>
                             <%--添加按钮--%>
                         <div class="form-group">
-                            <button id="addRequestBTID" class="btn btn-success">添加</button>
+                            <c:if test="${stat.last}">
+                            <button id="addRequestBTID_${obj.uid}" class="btn btn-success">添加</button>
+                                </c:if>
+                            <!--不是最后一个-->
+                         <c:if test="${stat.count!=fn:length(paramListRquest)}">
+                             <button id="delRequestBTID_${obj.uid}" class="btn btn-success">删除</button>
+                          </c:if>
                         </div>
                             <%--添加按钮结束--%>
                     </div>
@@ -91,9 +128,40 @@
         <div id="responseDIVID">
             <%--一行三列结束--%>
             <h4>返回参数</h4>
-            <c:forEach items="${paramList}" var="obj">
+                <input name="responseParamUID" type="hidden"  value="${obj.uid}"/>
+<c:if test="${paramListResponse==null}">
+    <%--一行三列开始--%>
+    <div class="form-inline one-group">
+        <div class="form-group">
+            <label>参数名</label>
+            <input name="responseParam" type="text" class="form-control" placeholder="返回参数名" required
+                   value="${obj.paramname}"
+                   errInfo="返回参数名不能为空！">
+        </div>
+        <div class="form-group">
+            <label>参数类型</label>
+            <select class="form-control" name="responseParamType">
+                <option selected>string</option>
+                <option>number</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>备注</label>
+            <input name="responseParamBeizhu" type="text" class="form-control" placeholder="返回参数备注"
+                   value="${obj.parambeizhu}"
+                   required
+                   errInfo="返回参数备注不能为空！">
+        </div>
+            <%--添加按钮--%>
+        <div class="form-group">
+                <button id="addResponseBTID_" class="btn btn-success">添加</button>
+        </div>
+            <%--添加按钮结束--%>
+    </div>
+</c:if>
+            <c:forEach items="${paramListResponse}" var="obj" varStatus="stat">
                 <c:if test="${obj.ptype==2}">
-                    <input name="responseParamUID" type="hidden"  value="${obj.uid}"/>
+
                     <%--一行三列开始--%>
                     <div class="form-inline one-group">
                         <div class="form-group">
@@ -118,7 +186,12 @@
                         </div>
                             <%--添加按钮--%>
                         <div class="form-group">
-                            <button id="addResponseBTID" class="btn btn-success">添加</button>
+                        <c:if test="${stat.last}">
+                            <button id="addResponseBTID_${obj.uid}" class="btn btn-success">添加</button>
+                         </c:if>
+                            <c:if test="${stat.count!=fn:length(paramListResponse)}">
+                                <button id="delResponseBTID_${obj.uid}" class="btn btn-success">删除</button>
+                            </c:if>
                         </div>
                             <%--添加按钮结束--%>
                     </div>

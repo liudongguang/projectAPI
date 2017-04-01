@@ -15,7 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by liudo on 2017/3/10 0010.
@@ -69,7 +72,10 @@ public class APIController {
     @RequestMapping(value = "/getApiInfo")
     public String getApiInfo(HttpServletRequest request,GetApiInfo param) {
         List<TApiparams> paramlist=apiService.getApiInfo(param);
-        request.setAttribute("paramList",paramlist);
+        ////分组按照参数类型
+        Map<Integer,List<TApiparams>> typeMap=paramlist.stream().collect(Collectors.groupingBy(TApiparams::getPtype));
+        request.setAttribute("paramListRquest",typeMap.get(1));
+        request.setAttribute("paramListResponse",typeMap.get(2));
         return "/apimain/projectapi/addapi.jsp";
     }
 
