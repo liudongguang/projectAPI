@@ -2,6 +2,7 @@ package com.ldg.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.ldg.api.constant.CommConstant;
+import com.ldg.api.po.TApiparams;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
 import com.ldg.api.vo.PageParam;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by liudo on 2017/3/10 0010.
@@ -23,6 +25,7 @@ public class APIController {
     public final static Logger logger = LoggerFactory.getLogger(APIController.class);
     @Autowired
     private ApiService jsTreeService;
+
 
     /**
      * 登陆操作
@@ -64,7 +67,8 @@ public class APIController {
      */
     @RequestMapping(value = "/getApiInfo")
     public String getApiInfo(HttpServletRequest request,GetApiInfo param) {
-        System.out.println(param);
+        List<TApiparams> paramlist=jsTreeService.getApiInfo(param);
+        request.setAttribute("paramList",paramlist);
         return "/apimain/projectapi/addapi.jsp";
     }
 }

@@ -10,6 +10,9 @@
     <result column="apititle" jdbcType="VARCHAR" property="apititle" />
     <result column="projectid" jdbcType="INTEGER" property="projectid" />
     <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="interfaceurl" jdbcType="VARCHAR" property="interfaceurl" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
   </resultMap>
     <select id="getApiTitlesDataByProjectId" resultMap="BaseResultMap">
     select uid,parentid,apititle,projectid,level from t_projectapis where projectid=#{projectid}

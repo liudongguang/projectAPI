@@ -2,11 +2,12 @@ package com.ldg.impl.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.ldg.api.po.TProjectapis;
+import com.ldg.api.po.TApiparams;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
 import com.ldg.api.vo.PageParam;
-import com.ldg.api.vo.jstree.JsTreeData;
+import com.ldg.api.vo.controllerparam.GetApiInfo;
+import com.ldg.impl.mapper.TApiparamsMapper;
 import com.ldg.impl.mapper.TProjectapisMapper;
 import com.ldg.impl.mapper.TProjectsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,8 @@ public class ApiServiceImpl implements ApiService {
 
     @Autowired
     private TProjectsMapper projectsDao;
-
+    @Autowired
+    private TApiparamsMapper tApiparamsDao;
     @Override
     public PageInfo<TProjects> getProjectsPageInfo(PageParam pageParam) {
         PageInfo<TProjects> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> projectsDao.getProjectsPageInfo());
@@ -38,5 +40,8 @@ public class ApiServiceImpl implements ApiService {
         return projectsDao.insertSelective(project);
     }
 
-
+    @Override
+    public List<TApiparams> getApiInfo(GetApiInfo param) {
+        return tApiparamsDao.getApiInfo(param);
+    }
 }

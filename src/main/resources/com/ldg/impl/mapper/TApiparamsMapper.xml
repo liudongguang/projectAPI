@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldg.impl.mapper.TApiparamsMapper">
+  <resultMap id="BaseResultMap" type="com.ldg.api.po.TApiparams">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="projectid" jdbcType="INTEGER" property="projectid" />
+    <result column="apiid" jdbcType="INTEGER" property="apiid" />
+    <result column="ptype" jdbcType="INTEGER" property="ptype" />
+    <result column="paramname" jdbcType="VARCHAR" property="paramname" />
+    <result column="paramtype" jdbcType="VARCHAR" property="paramtype" />
+  </resultMap>
+  <select id="getApiInfo" resultMap="BaseResultMap" parameterType="com.ldg.api.vo.controllerparam.GetApiInfo">
+       select uid,ptype,paramname,paramtype from t_apiparams where apiid=#{apiID} and projectid=#{projectid}
+  </select>
+</mapper>

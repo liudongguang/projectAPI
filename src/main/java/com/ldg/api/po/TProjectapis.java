@@ -1,11 +1,11 @@
 package com.ldg.api.po;
 
+import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_projectapis")
 public class TProjectapis {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer uid;
 
     /**
@@ -27,6 +27,22 @@ public class TProjectapis {
      * 深度
      */
     private Integer level;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "createTime")
+    private Date createtime;
+
+    /**
+     * 接口url
+     */
+    private String interfaceurl;
+
+    /**
+     * 接口描述
+     */
+    private String description;
 
     /**
      * @return uid
@@ -114,14 +130,57 @@ public class TProjectapis {
         this.level = level;
     }
 
-    @Override
-    public String toString() {
-        return "TProjectapis{" +
-                "uid=" + uid +
-                ", parentid='" + parentid + '\'' +
-                ", apititle='" + apititle + '\'' +
-                ", projectid=" + projectid +
-                ", level=" + level +
-                '}';
+    /**
+     * 获取创建时间
+     *
+     * @return createTime - 创建时间
+     */
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    /**
+     * 设置创建时间
+     *
+     * @param createtime 创建时间
+     */
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    /**
+     * 获取接口url
+     *
+     * @return interfaceurl - 接口url
+     */
+    public String getInterfaceurl() {
+        return interfaceurl;
+    }
+
+    /**
+     * 设置接口url
+     *
+     * @param interfaceurl 接口url
+     */
+    public void setInterfaceurl(String interfaceurl) {
+        this.interfaceurl = interfaceurl;
+    }
+
+    /**
+     * 获取接口描述
+     *
+     * @return description - 接口描述
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * 设置接口描述
+     *
+     * @param description 接口描述
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
