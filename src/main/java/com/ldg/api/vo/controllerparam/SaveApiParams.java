@@ -11,13 +11,32 @@ public class SaveApiParams {
     private String formMethod;
     private String interfaceURL;
 
+    private List<Integer> rquestParamUID;
     private List<String> rquestParam;
     private List<String> rquestParamType;
     private List<String> rquestParamBeizhu;
 
+    private List<Integer> responseParamUID;
     private List<String> responseParam;
     private List<String> responseParamType;
     private List<String> responseParamBeizhu;
+
+
+    public List<Integer> getRquestParamUID() {
+        return rquestParamUID;
+    }
+
+    public void setRquestParamUID(List<Integer> rquestParamUID) {
+        this.rquestParamUID = rquestParamUID;
+    }
+
+    public List<Integer> getResponseParamUID() {
+        return responseParamUID;
+    }
+
+    public void setResponseParamUID(List<Integer> responseParamUID) {
+        this.responseParamUID = responseParamUID;
+    }
 
     public Integer getApiID() {
         return apiID;
@@ -106,9 +125,11 @@ public class SaveApiParams {
                 ", projectid=" + projectid +
                 ", formMethod='" + formMethod + '\'' +
                 ", interfaceURL='" + interfaceURL + '\'' +
+                ", rquestParamUID=" + rquestParamUID +
                 ", rquestParam=" + rquestParam +
                 ", rquestParamType=" + rquestParamType +
                 ", rquestParamBeizhu=" + rquestParamBeizhu +
+                ", responseParamUID=" + responseParamUID +
                 ", responseParam=" + responseParam +
                 ", responseParamType=" + responseParamType +
                 ", responseParamBeizhu=" + responseParamBeizhu +

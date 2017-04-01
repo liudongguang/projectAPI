@@ -55,6 +55,7 @@ public class ApiServiceImpl implements ApiService {
          List<String> rquestParam=param.getRquestParam();
          List<String> rquestParamType=param.getRquestParamType();
          List<String> rquestParamBeizhu=param.getRquestParamBeizhu();
+        List<Integer> rquestParamUID=param.getRquestParamUID();
          for(int i=0;i<rquestParam.size();i++){
              TApiparams tp=new TApiparams();
              tp.setApiid(apiID);
@@ -63,12 +64,18 @@ public class ApiServiceImpl implements ApiService {
              tp.setParamname(rquestParam.get(i));
              tp.setParamtype(rquestParamType.get(i));
              tp.setParambeizhu(rquestParamBeizhu.get(i));
-             tApiparamsDao.insertSelective(tp);
+             if(rquestParamUID.get(i)!=-1){
+                 tp.setUid(rquestParamUID.get(i));
+                 tApiparamsDao.updateByPrimaryKeySelective(tp);
+             }else {
+                 tApiparamsDao.insertSelective(tp);
+             }
          }
          /////////////返回参数
          List<String> responseParam=param.getResponseParam();
          List<String> responseParamType=param.getResponseParamType();
          List<String> responseParamBeizhu=param.getResponseParamBeizhu();
+        List<Integer> responseParamUID=param.getResponseParamUID();
         for(int i=0;i<rquestParam.size();i++){
             TApiparams tp=new TApiparams();
             tp.setApiid(apiID);
@@ -77,7 +84,12 @@ public class ApiServiceImpl implements ApiService {
             tp.setParamname(responseParam.get(i));
             tp.setParamtype(responseParamType.get(i));
             tp.setParambeizhu(responseParamBeizhu.get(i));
-            tApiparamsDao.insertSelective(tp);
+            if(responseParamUID.get(i)!=-1){
+                tp.setUid(responseParamUID.get(i));
+                tApiparamsDao.updateByPrimaryKeySelective(tp);
+            }else {
+                tApiparamsDao.insertSelective(tp);
+            }
         }
         TProjectapis objapi=new TProjectapis();
         objapi.setUid(apiID);

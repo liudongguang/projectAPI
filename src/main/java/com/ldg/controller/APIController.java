@@ -73,7 +73,12 @@ public class APIController {
         return "/apimain/projectapi/addapi.jsp";
     }
 
-
+    /**
+     * 保存参数信息
+     * @param request
+     * @param param
+     * @return
+     */
     @RequestMapping(value = "/saveApiParams")
     public String saveApiParams(HttpServletRequest request,SaveApiParams param) {
         int saveNum=apiService.saveApiParams(param);
