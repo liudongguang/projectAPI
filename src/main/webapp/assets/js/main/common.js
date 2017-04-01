@@ -262,7 +262,10 @@ function initAjaxForm(jq_form, jq_button, excuteResponse, validateState, validat
         }else{
             layer.close(jumpPageLayerNum);
         }
-        layer.alert(jqobj.attr("errInfo"));
+        layer.alert(jqobj.attr("errInfo"),function (index) {
+            layer.close(index);
+            jqobj.focus();
+        });
     }
 }
 // //////////////////////////////////显示图片

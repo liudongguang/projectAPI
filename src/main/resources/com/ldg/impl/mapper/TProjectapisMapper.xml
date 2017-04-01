@@ -13,6 +13,7 @@
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="interfaceurl" jdbcType="VARCHAR" property="interfaceurl" />
     <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="formmethod" jdbcType="VARCHAR" property="formmethod" />
   </resultMap>
     <select id="getApiTitlesDataByProjectId" resultMap="BaseResultMap">
     select uid,parentid,apititle,projectid,level from t_projectapis where projectid=#{projectid}

@@ -22,7 +22,7 @@
 <div class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
         <div class="logo">
-            <img src="assets/images/logo1.png">
+            <img src="assets/images/logo2.png">
         </div>
     </div>
     <div class="pull-right">
@@ -46,7 +46,7 @@
         <div id="jstreeID">
         </div>
     </div>
-    <div class="col-md-9" id="mainContent" style="border-left:1px solid #bbbbbb; border-left:1px solid #bbbbbb; padding:20px 15px; min-height: 500px;">
+    <div class="col-md-9" id="mainContent" style="border-left:1px solid #bbbbbb; border-left:1px solid #bbbbbb; padding:20px 15px; min-height: 500px;max-height: 800px;overflow: auto;">
 
     </div>
 </div>

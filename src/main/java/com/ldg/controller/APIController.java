@@ -7,6 +7,7 @@ import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
 import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.controllerparam.GetApiInfo;
+import com.ldg.api.vo.controllerparam.SaveApiParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import java.util.List;
 public class APIController {
     public final static Logger logger = LoggerFactory.getLogger(APIController.class);
     @Autowired
-    private ApiService jsTreeService;
+    private ApiService apiService;
 
 
     /**
@@ -43,7 +44,7 @@ public class APIController {
      */
     @RequestMapping(value = "/getProjects")
     public String getProjects(HttpServletRequest request, PageParam pageParam) {
-        PageInfo<TProjects> projects=jsTreeService.getProjectsPageInfo(pageParam);
+        PageInfo<TProjects> projects=apiService.getProjectsPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR,projects);
         return "/apimain/project/disProjectList.jsp";
     }
@@ -56,7 +57,7 @@ public class APIController {
      */
     @RequestMapping(value = "/saveProject")
     public String saveProject(HttpServletRequest request,TProjects project) {
-        int saveState=jsTreeService.saveProject(project);
+        int saveState=apiService.saveProject(project);
         return "/apiHandler/getProjects";
     }
 
@@ -67,8 +68,16 @@ public class APIController {
      */
     @RequestMapping(value = "/getApiInfo")
     public String getApiInfo(HttpServletRequest request,GetApiInfo param) {
-        List<TApiparams> paramlist=jsTreeService.getApiInfo(param);
+        List<TApiparams> paramlist=apiService.getApiInfo(param);
         request.setAttribute("paramList",paramlist);
         return "/apimain/projectapi/addapi.jsp";
     }
+
+
+    @RequestMapping(value = "/saveApiParams")
+    public String saveApiParams(HttpServletRequest request,SaveApiParams param) {
+        int saveNum=apiService.saveApiParams(param);
+        return "/apiHandler/getApiInfo";
+    }
+
 }

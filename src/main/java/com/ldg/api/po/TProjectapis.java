@@ -45,6 +45,11 @@ public class TProjectapis {
     private String description;
 
     /**
+     * 表单方法
+     */
+    private String formmethod;
+
+    /**
      * @return uid
      */
     public Integer getUid() {
@@ -182,5 +187,23 @@ public class TProjectapis {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * 获取表单方法
+     *
+     * @return formmethod - 表单方法
+     */
+    public String getFormmethod() {
+        return formmethod;
+    }
+
+    /**
+     * 设置表单方法
+     *
+     * @param formmethod 表单方法
+     */
+    public void setFormmethod(String formmethod) {
+        this.formmethod = formmethod;
     }
 }

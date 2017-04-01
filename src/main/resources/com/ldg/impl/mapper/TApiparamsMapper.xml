@@ -11,8 +11,9 @@
     <result column="ptype" jdbcType="INTEGER" property="ptype" />
     <result column="paramname" jdbcType="VARCHAR" property="paramname" />
     <result column="paramtype" jdbcType="VARCHAR" property="paramtype" />
+    <result column="parambeizhu" jdbcType="VARCHAR" property="parambeizhu" />
   </resultMap>
-  <select id="getApiInfo" resultMap="BaseResultMap" parameterType="com.ldg.api.vo.controllerparam.GetApiInfo">
+  <select id="getApiInfo" parameterType="com.ldg.api.vo.controllerparam.GetApiInfo" resultMap="BaseResultMap">
        select uid,ptype,paramname,paramtype from t_apiparams where apiid=#{apiID} and projectid=#{projectid}
   </select>
 </mapper>

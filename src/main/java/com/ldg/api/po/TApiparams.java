@@ -32,6 +32,8 @@ public class TApiparams {
      */
     private String paramtype;
 
+    private String parambeizhu;
+
     /**
      * @return uid
      */
@@ -134,5 +136,19 @@ public class TApiparams {
      */
     public void setParamtype(String paramtype) {
         this.paramtype = paramtype;
+    }
+
+    /**
+     * @return parambeizhu
+     */
+    public String getParambeizhu() {
+        return parambeizhu;
+    }
+
+    /**
+     * @param parambeizhu
+     */
+    public void setParambeizhu(String parambeizhu) {
+        this.parambeizhu = parambeizhu;
     }
 }

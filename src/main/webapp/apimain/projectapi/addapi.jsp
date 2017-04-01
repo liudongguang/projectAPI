@@ -13,113 +13,77 @@
 
 <div class="clearfix"></div>
 <div class="col-md-12">
-
     <div style="position: fixed;background: #fff; width: 100%" >
         <button class="btn btn-primary" id="subBT" type="button">保存</button>
     </div>
+    <form id="subform" class="form-group"  style="margin-top: 50px; height: 800px;" id="subForm" method="post" action="apiHandler/saveApiParams">
+       <input name="apiID" type="hidden" value="${param.apiID}"/>
+        <input name="projectid" type="hidden" value="${param.projectid}"/>
 
-    <form class="form-group"  style="margin-top: 50px; height: 800px;" id="subForm" method="post" action="apiHandler/saveProject">
         <div class="form-group top_01">
             <h3>参数名</h3>
             <div class="form-inline">
                 <label>请求类型</label>
-                <select class="form-control">
+                <select class="form-control" name="formMethod">
                     <option selected>post</option>
                     <option>get</option>
                 </select>
                 <label>接口地址</label>
-                <input type="text" class="form-control" placeholder="">
+                <input name="interfaceURL" type="text"  required errInfo="接口地址不能为空！" class="form-control" placeholder="接口地址">
             </div>
-
         </div>
+        <div id="requestDIVID">
         <h4>请求参数</h4>
-        <%--一行三列开始--%>
-        <div class="form-inline one-group">
-        <div class="form-group">
-            <label>参数名</label>
-            <input type="text" class="form-control" placeholder="">
-        </div>
-        <div class="form-group">
-            <label>参数类型</label>
-            <select class="form-control">
-                <option selected>string</option>
-                <option>number</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label >备注</label>
-            <input type="text" class="form-control"  placeholder="">
-        </div>
-        </div>
-        <%--一行三列结束--%>
         <%--一行三列开始--%>
         <div class="form-inline one-group">
             <div class="form-group">
                 <label>参数名</label>
-                <input type="text" class="form-control" placeholder="">
+                <input name="rquestParam"  type="text" class="form-control" placeholder="请求参数名"   required errInfo="请求参数名不能为空！">
             </div>
             <div class="form-group">
                 <label>参数类型</label>
-                <select class="form-control">
+                <select class="form-control" name="rquestParamType">
                     <option selected>string</option>
                     <option>number</option>
                 </select>
             </div>
             <div class="form-group">
                 <label >备注</label>
-                <input type="text" class="form-control"  placeholder="">
-
+                <input name="rquestParamBeizhu" type="text" class="form-control"  placeholder="请求参数备注" required errInfo="请求参数备注不能为空！">
             </div>
             <%--添加按钮--%>
             <div class="form-group">
-                <button class="btn btn-success">添加</button>
+                <button id="addRequestBTID" class="btn btn-success">添加</button>
             </div>
             <%--添加按钮结束--%>
         </div>
+        </div>
+        <div id="responseDIVID">
         <%--一行三列结束--%>
         <h4>返回参数</h4>
         <%--一行三列开始--%>
         <div class="form-inline one-group">
             <div class="form-group">
                 <label>参数名</label>
-                <input type="text" class="form-control" placeholder="">
+                <input name="responseParam" type="text" class="form-control" placeholder="返回参数名"  required errInfo="返回参数名不能为空！">
             </div>
             <div class="form-group">
                 <label>参数类型</label>
-                <select class="form-control">
+                <select class="form-control" name="responseParamType">
                     <option selected>string</option>
                     <option>number</option>
                 </select>
             </div>
             <div class="form-group">
                 <label >备注</label>
-                <input type="text" class="form-control"  placeholder="">
-            </div>
-        </div>
-        <%--一行三列结束--%>
-        <%--一行三列开始--%>
-        <div class="form-inline one-group">
-            <div class="form-group">
-                <label>参数名</label>
-                <input type="text" class="form-control" placeholder="">
-            </div>
-            <div class="form-group">
-                <label>参数类型</label>
-                <select class="form-control">
-                    <option selected>string</option>
-                    <option>number</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label >备注</label>
-                <input type="text" class="form-control"  placeholder="">
-
+                <input name="responseParamBeizhu" type="text" class="form-control"  placeholder="返回参数备注"  required errInfo="返回参数备注不能为空！">
             </div>
             <%--添加按钮--%>
             <div class="form-group">
-                <button class="btn btn-success">添加</button>
+                <button id="addResponseBTID" class="btn btn-success">添加</button>
             </div>
             <%--添加按钮结束--%>
+        </div>
         </div>
         <%--一行三列结束--%>
     </form>

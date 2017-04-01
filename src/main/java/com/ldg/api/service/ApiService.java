@@ -5,6 +5,7 @@ import com.ldg.api.po.TApiparams;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.controllerparam.GetApiInfo;
+import com.ldg.api.vo.controllerparam.SaveApiParams;
 
 import java.util.List;
 
@@ -32,4 +33,11 @@ public interface ApiService {
      * @return
      */
     List<TApiparams> getApiInfo(GetApiInfo param);
+
+    /**
+     * 保存参数
+     * @param param
+     * @return
+     */
+    int saveApiParams(SaveApiParams param);
 }
