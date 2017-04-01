@@ -85,7 +85,7 @@
             <li class="active" id="v2ID"></li>
          </ol>
         </div>
-        <div id="mainContent" class="templatemo-content" style="min-height:795px;">
+        <div id="mainContent" class="templatemo-content" >
 
         </div>
     </div>

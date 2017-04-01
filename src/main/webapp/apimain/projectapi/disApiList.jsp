@@ -15,9 +15,10 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/jstreecss/style.css">
 </head>
-<body>
+<body style="background: #fff">
 <input type="hidden" id="basePath" value="${pageContext.request.contextPath }/"/>
 <input id="projectID" type="hidden" value="${param.uid}"/>
+<input id="projectnameID" type="hidden" value="${param.projectname}"/>
 <div class="navbar navbar-inverse" role="navigation">
     <div class="navbar-header">
         <div class="logo">
@@ -40,12 +41,12 @@
     <!--btn-group结束-->
 
 </div>
-<div class="row">
-    <div class="col-md-3">
+<div class="">
+    <div class="col-md-3" style=" padding:20px;">
         <div id="jstreeID">
         </div>
     </div>
-    <div class="col-md-9" id="mainContent">
+    <div class="col-md-9" id="mainContent" style="border-left:1px solid #bbbbbb; border-left:1px solid #bbbbbb; padding:20px 15px; min-height: 500px;">
 
     </div>
 </div>

@@ -6,6 +6,9 @@
 
 <div class="clearfix"></div>
 <div class="col-md-6">
+    <div class="form-group col-md-offset-4" style="margin-top: 30px">
+        <button class="btn btn-primary" id="subBT" type="button">保存</button>
+    </div>
     <form class="form-horizontal" id="subForm" method="post" action="apiHandler/saveProject">
         <div class="form-group">
             <label class="col-md-2 control-label">项目名</label>
@@ -23,10 +26,7 @@
             <input name="${item.key}" value="${item.value[0]}" type="hidden"/>
         </c:forEach>
     </form>
-    <div class="form-group col-md-offset-4" style="margin-top: 30px">
-        <button class="btn btn-primary" id="subBT" type="button">保存</button>
-        <button id="backBTID" href="/apiHandler/getProjects" class="btn btn-default" type="button">返回</button>
-    </div>
+
 </div>
 <script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/apimain/project/addproject.js"></script>

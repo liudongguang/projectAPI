@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
         layer.alert("没有选择项目！");
         return false;
     }
-   init(projectid);
+    init(projectid);
 });
 function init(projectid) {
     var ii = layer.load(0, {
@@ -35,7 +35,7 @@ function init(projectid) {
                 var ajaxOpt = {
                     paramurl: basePath + 'jsTree/saveApiTitleData',
                     paramdata: JSON.stringify(sdata),
-                    rquestType:'json',
+                    rquestType: 'json',
                     dataType: 'json',
                     callbackFun: function (data) {
                         layer.close(ii2);
@@ -64,7 +64,7 @@ function initdata(data) {
             "action": function (data) {
                 var inst = jQuery.jstree.reference(data.reference), obj = inst
                     .get_node(data.reference);
-                var thisLevel=obj.li_attr.level;
+                var thisLevel = obj.li_attr.level;
                 if (thisLevel == 2) {
                     layer.alert("不允许添加！");
                     return false;
@@ -74,7 +74,7 @@ function initdata(data) {
                     "text": "新建菜单",
                     "li_attr": {
                         "level": thisLevel + 1,
-                        "projectid":projectid
+                        "projectid": projectid
                     }
                 });
                 inst.open_node(obj);
@@ -83,7 +83,7 @@ function initdata(data) {
                 //////异步修改
 
                 //////
-                inst.set_id (newObj, '3333');
+                inst.set_id(newObj, '3333');
                 inst.edit(newObj);
             }
         },
@@ -110,7 +110,7 @@ function initdata(data) {
         "mrename": {
             "label": "重命名",
             "action": function (data) {
-                var ref = $('#jstreeID').jstree(true), sel = ref.get_selected(),obj = ref.get_node(sel);
+                var ref = $('#jstreeID').jstree(true), sel = ref.get_selected(), obj = ref.get_node(sel);
                 if (obj.parent == '#') {
                     layer.alert("不允许改名！");
                     return false;
@@ -123,14 +123,14 @@ function initdata(data) {
             }
         }
     };
-    var jq_tree=$('#jstreeID').jstree({
+    var jq_tree = $('#jstreeID').jstree({
         "core": {
             "check_callback": true
-           // 'data': data
+            // 'data': data
         },
         "plugins": ["contextmenu"]
     });
-    $('#jstreeID').jstree(true).settings.core.data=data;//放入数据
+    $('#jstreeID').jstree(true).settings.core.data = data;//放入数据
     $('#jstreeID').jstree(true).refresh();//刷新数据
     $('#jstreeID').on("select_node.jstree", function (event, node) {
         var rnode = node.node;
@@ -138,8 +138,9 @@ function initdata(data) {
         var name = rnode.text;
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
-        console.log("id:"+id+"     name:"+name+"   level:"+level+"    "+"      projectid:"+projectid);
-
+        console.log("id:" + id + "     name:" + name + "   level:" + level + "    " + "      projectid:" + projectid);
+        //////打开添加页面
+        jumpPageNoAuthority();
     })
     ////////修改了名称后触发
     $('#jstreeID').on("rename_node.jstree", function (event, node) {
@@ -148,11 +149,11 @@ function initdata(data) {
         var name = rnode.text;
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
-        var firstIndexVal=id.indexOf('j');
-        if(firstIndexVal==-1){//不是开头的可以跟数据库进行交互
+        var firstIndexVal = id.indexOf('j');
+        if (firstIndexVal == -1) {//不是开头的可以跟数据库进行交互
             console.log("rename_node db................")
         }
-        console.log("rename_node id:"+id)
+        console.log("rename_node id:" + id)
     })
     //删除触发
     $('#jstreeID').on("delete_node.jstree", function (event, node) {
@@ -161,9 +162,9 @@ function initdata(data) {
         var name = rnode.text;
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
-        var firstIndexVal=id.indexOf('j');
-        if(firstIndexVal==-1){//不是开头的可以跟数据库进行交互
-             console.log("delete_node db................")
+        var firstIndexVal = id.indexOf('j');
+        if (firstIndexVal == -1) {//不是开头的可以跟数据库进行交互
+            console.log("delete_node db................")
         }
         console.log("delete_node")
     })
@@ -173,16 +174,18 @@ function initFirstBT() {
     var createbutton = $("<button class='btn btn-primary'>初始化</button>");
     createbutton.click(function () {
         var projectid = $("#projectID").val();
+        var projectname = $("#projectnameID").val();
+       alert(projectname)
         if (!projectid) {
             layer.alert("没有选择项目！");
             return false;
         }
         var ajaxOpt = {
-            paramurl: basePath + 'apiHandler/initApiTitleData',
-            paramdata: {projectid: projectid},
+            paramurl: basePath + 'jsTree/initApiTitleData',
+            paramdata: {projectid: projectid, projectname: projectname},
             dataType: 'json',
             callbackFun: function (data) {
-                location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid="+projectid;
+                location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid=" + projectid + "&projectname=" + projectname;
             }
         };
         ajaxRun(ajaxOpt);

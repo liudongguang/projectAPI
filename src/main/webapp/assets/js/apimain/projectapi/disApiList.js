@@ -129,7 +129,10 @@ function initdata(data) {
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
         console.log("id:" + id + "     name:" + name + "   level:" + level + "    " + "      projectid:" + projectid);
-
+        if(level==2){
+            ///打开接口详情
+            jumpPageNoAuthority("/apiHandler/getApiInfo?apiID="+id+"&projectid="+projectid,$("#mainContent"));
+        }
     })
     ////////修改了名称后触发
     $('#jstreeID').on("rename_node.jstree", function (event, node) {
@@ -171,16 +174,17 @@ function initFirstBT() {
     var createbutton = $("<button class='btn btn-primary'>初始化</button>");
     createbutton.click(function () {
         var projectid = $("#projectID").val();
+        var projectname = $("#projectnameID").val();
         if (!projectid) {
             layer.alert("没有选择项目！");
             return false;
         }
         var ajaxOpt = {
             paramurl: basePath + 'jsTree/initApiTitleData',
-            paramdata: {projectid: projectid},
+            paramdata: {projectid: projectid, projectname: projectname},
             dataType: 'json',
             callbackFun: function (data) {
-                location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid=" + projectid;
+                location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid=" + projectid + "&projectname=" + projectname;
             }
         };
         ajaxRun(ajaxOpt);

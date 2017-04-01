@@ -1,6 +1,7 @@
 package com.ldg.api.service;
 
 import com.ldg.api.po.TProjectapis;
+import com.ldg.api.vo.controllerparam.InitApiTitleData;
 import com.ldg.api.vo.jstree.JsTreeData;
 
 import java.util.List;
@@ -17,10 +18,10 @@ public interface JsTreeService {
 
     /**
      * 保存根节点
-     * @param projectid
+
      * @return
      */
-    int saveRootMenu(Integer projectid);
+    int saveRootMenu(InitApiTitleData param);
 
     /**
      * 保存树数据信息

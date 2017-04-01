@@ -5,6 +5,7 @@ import com.ldg.api.constant.CommConstant;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
 import com.ldg.api.vo.PageParam;
+import com.ldg.api.vo.controllerparam.GetApiInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,16 @@ public class APIController {
     public String saveProject(HttpServletRequest request,TProjects project) {
         int saveState=jsTreeService.saveProject(project);
         return "/apiHandler/getProjects";
+    }
+
+    /**
+     * 获取api的详细信息
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/getApiInfo")
+    public String getApiInfo(HttpServletRequest request,GetApiInfo param) {
+        System.out.println(param);
+        return "/apimain/projectapi/addapi.jsp";
     }
 }

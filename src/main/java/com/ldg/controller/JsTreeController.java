@@ -3,6 +3,7 @@ package com.ldg.controller;
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.service.JsTreeService;
 import com.ldg.api.vo.ResultMsg;
+import com.ldg.api.vo.controllerparam.InitApiTitleData;
 import com.ldg.api.vo.jstree.JsTree;
 import com.ldg.api.vo.jstree.JsTreeData;
 import org.slf4j.Logger;
@@ -89,9 +90,9 @@ public class JsTreeController {
      */
     @RequestMapping(value = "/initApiTitleData")
     @ResponseBody
-    public ResultMsg initApiTitleData(HttpServletRequest request,Integer projectid) {
+    public ResultMsg initApiTitleData(HttpServletRequest request,InitApiTitleData param) {
         ResultMsg msg=new ResultMsg();
-        int i=jsTreeService.saveRootMenu(projectid);
+        int i=jsTreeService.saveRootMenu(param);
         return msg;
     }
 

@@ -2,6 +2,7 @@ package com.ldg.impl.service;
 
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.service.JsTreeService;
+import com.ldg.api.vo.controllerparam.InitApiTitleData;
 import com.ldg.api.vo.jstree.JsTreeData;
 import com.ldg.impl.mapper.TProjectapisMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,13 @@ public class JsTreeServiceImpl implements JsTreeService {
     }
 
     @Override
-    public int saveRootMenu(Integer projectid) {
+    public int saveRootMenu(InitApiTitleData param) {
         TProjectapis pp=new TProjectapis();
         pp.setParentid("#");
-        pp.setApititle("-----项目接口-----");
-        pp.setProjectid(projectid);
+        StringBuilder appTitle=new StringBuilder();
+        appTitle.append("-----[").append(param.getProjectname()).append("]项目接口-----");
+        pp.setApititle(appTitle.toString());
+        pp.setProjectid(param.getProjectid());
         pp.setLevel(0);
         return projectapisDao.insertSelective(pp);
     }
