@@ -10,18 +10,38 @@ public class SaveApiParams {
     private Integer projectid;
     private String formMethod;
     private String interfaceURL;
+    private String description;//接口描述
 
     private List<Integer> rquestParamUID;//参数id   新增的参数id为-1
     private List<String> rquestParam;//请求参数名
     private List<String> rquestParamType;//请求参数类型
+    private List<String> rquestParamrequired;//1.必填  2.不必填
     private List<String> rquestParamBeizhu;//请求参数备注
     private List<Integer> rquestDelParamUID;//删除的参数id
 
     private List<Integer> responseParamUID;//参数id   新增的参数id为-1
     private List<String> responseParam;//返回参数名
     private List<String> responseParamType;//返回参数类型
+    private List<String> responseParamrequired;//1.必填  2.不必填
     private List<String> responseParamBeizhu;//返回参数备注
     private List<Integer> responseDelParamUID;//删除的参数id
+
+
+    public List<String> getRquestParamrequired() {
+        return rquestParamrequired;
+    }
+
+    public void setRquestParamrequired(List<String> rquestParamrequired) {
+        this.rquestParamrequired = rquestParamrequired;
+    }
+
+    public List<String> getResponseParamrequired() {
+        return responseParamrequired;
+    }
+
+    public void setResponseParamrequired(List<String> responseParamrequired) {
+        this.responseParamrequired = responseParamrequired;
+    }
 
     public List<Integer> getRquestDelParamUID() {
         return rquestDelParamUID;
@@ -33,6 +53,14 @@ public class SaveApiParams {
 
     public List<Integer> getResponseDelParamUID() {
         return responseDelParamUID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setResponseDelParamUID(List<Integer> responseDelParamUID) {

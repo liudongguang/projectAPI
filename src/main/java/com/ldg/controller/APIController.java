@@ -78,7 +78,6 @@ public class APIController {
         request.setAttribute("paramListResponse",typeMap.get(2));
         /////////
         TProjectapis objapi=apiService.getApiInfo(param);
-        System.out.println(objapi);
         request.setAttribute("apiobj",objapi);
         return "/apimain/projectapi/addapi.jsp";
     }

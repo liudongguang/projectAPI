@@ -54,6 +54,7 @@ public class ApiServiceImpl implements ApiService {
          String interfaceURL=param.getInterfaceURL();
          List<String> rquestParam=param.getRquestParam();
          List<String> rquestParamType=param.getRquestParamType();
+         List<String> rquestParamrequired=param.getRquestParamrequired();
          List<String> rquestParamBeizhu=param.getRquestParamBeizhu();
          List<Integer> rquestParamUID=param.getRquestParamUID();
          List<Integer> rquestDelParamUID=param.getRquestDelParamUID();
@@ -66,6 +67,7 @@ public class ApiServiceImpl implements ApiService {
              tp.setParamname(rquestParam.get(i));
              tp.setParamtype(rquestParamType.get(i));
              tp.setParambeizhu(rquestParamBeizhu.get(i));
+             tp.setParamrequired(rquestParamrequired.get(i));
              if(rquestParamUID.get(i)!=-1){
                  tp.setUid(rquestParamUID.get(i));
                  tApiparamsDao.updateByPrimaryKeySelective(tp);
@@ -83,6 +85,7 @@ public class ApiServiceImpl implements ApiService {
          /////////////返回参数
          List<String> responseParam=param.getResponseParam();
          List<String> responseParamType=param.getResponseParamType();
+        List<String> responseParamrequired=param.getResponseParamrequired();
          List<String> responseParamBeizhu=param.getResponseParamBeizhu();
         List<Integer> responseParamUID=param.getResponseParamUID();
         List<Integer> responseDelParamUID=param.getResponseDelParamUID();
@@ -93,6 +96,7 @@ public class ApiServiceImpl implements ApiService {
             tp.setPtype(2);
             tp.setParamname(responseParam.get(i));
             tp.setParamtype(responseParamType.get(i));
+            tp.setParamrequired(responseParamrequired.get(i));
             tp.setParambeizhu(responseParamBeizhu.get(i));
             if(responseParamUID.get(i)!=-1){
                 tp.setUid(responseParamUID.get(i));
@@ -110,7 +114,7 @@ public class ApiServiceImpl implements ApiService {
         TProjectapis objapi=new TProjectapis();
         objapi.setUid(apiID);
         objapi.setProjectid(projectid);
-        objapi.setDescription("");
+        objapi.setDescription(param.getDescription());
         objapi.setInterfaceurl(interfaceURL);
         objapi.setFormmethod(formMethod);
         return projectapisDao.updateByPrimaryKeySelective(objapi);

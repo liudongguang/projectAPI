@@ -523,6 +523,26 @@ function initSetData() {
         }
     });
 }
+//////多行，同名默认选中
+function initSetDataForMulti() {
+    var vals = $("[setVal]");
+    vals.each(function () {
+        var jq_this = $(this);
+        var value=jq_this.attr("setVal");
+        if (value) {
+            if (jq_this.is("select")) {
+                jq_this.val(value);
+            } else if (jq_this.attr("type") == 'radio') {
+                var setRadio = $("[name=" + id + "][value=" + value + "]");
+                if (setRadio.length != 0) {
+                    setRadio.prop('checked', true);
+                }
+            } else {
+                layer.alert('未知类型')
+            }
+        }
+    });
+}
 //获取带有参数的连接
 function getURLByParams(href, jqObj) {
     var paramStr = "";

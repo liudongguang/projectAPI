@@ -32,7 +32,15 @@ public class TApiparams {
      */
     private String paramtype;
 
+    /**
+     * 参数备注
+     */
     private String parambeizhu;
+
+    /**
+     * 必填状态  1.必填   2 不必填
+     */
+    private String paramrequired;
 
     /**
      * @return uid
@@ -139,16 +147,52 @@ public class TApiparams {
     }
 
     /**
-     * @return parambeizhu
+     * 获取参数备注
+     *
+     * @return parambeizhu - 参数备注
      */
     public String getParambeizhu() {
         return parambeizhu;
     }
 
     /**
-     * @param parambeizhu
+     * 设置参数备注
+     *
+     * @param parambeizhu 参数备注
      */
     public void setParambeizhu(String parambeizhu) {
         this.parambeizhu = parambeizhu;
+    }
+
+    /**
+     * 获取必填状态  1.必填   2 不必填
+     *
+     * @return paramrequired - 必填状态  1.必填   2 不必填
+     */
+    public String getParamrequired() {
+        return paramrequired;
+    }
+
+    /**
+     * 设置必填状态  1.必填   2 不必填
+     *
+     * @param paramrequired 必填状态  1.必填   2 不必填
+     */
+    public void setParamrequired(String paramrequired) {
+        this.paramrequired = paramrequired;
+    }
+
+    @Override
+    public String toString() {
+        return "TApiparams{" +
+                "uid=" + uid +
+                ", projectid=" + projectid +
+                ", apiid=" + apiid +
+                ", ptype=" + ptype +
+                ", paramname='" + paramname + '\'' +
+                ", paramtype='" + paramtype + '\'' +
+                ", parambeizhu='" + parambeizhu + '\'' +
+                ", paramrequired='" + paramrequired + '\'' +
+                '}';
     }
 }

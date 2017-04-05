@@ -42,7 +42,7 @@
             <div class="form-inline">
                 <label>请求类型</label>
                 <input type="hidden" value="${apiobj.formmethod}"/>
-                <select class="form-control" name="formMethod">
+                <select class="form-control" name="formMethod" setVal="${apiobj.formmethod}">
                     <option selected>post</option>
                     <option>get</option>
                 </select>
@@ -53,7 +53,7 @@
         </div>
         <div class="form-inline">
             <label>接口描述</label>
-            <textarea class="form-control tta" rows="3" cols="100"></textarea>
+            <textarea class="form-control tta" rows="3" cols="100" name="description">${apiobj.description}</textarea>
 
         </div>
 
@@ -105,9 +105,16 @@
                         </div>
                         <div class="form-group">
                             <label>参数类型</label>
-                            <select class="form-control" name="rquestParamType">
+                            <select class="form-control" name="rquestParamType" setVal="${obj.paramtype}">
                                 <option selected>string</option>
                                 <option>number</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>是否必填</label>
+                            <select class="form-control" name="rquestParamrequired" setVal="${obj.paramrequired}">
+                                <option  value="是">是</option>
+                                <option value="否" selected>否</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -183,9 +190,16 @@
                         </div>
                         <div class="form-group">
                             <label>参数类型</label>
-                            <select class="form-control" name="responseParamType">
+                            <select class="form-control" name="responseParamType" setVal="${obj.paramtype}">
                                 <option selected>string</option>
                                 <option>number</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>是否必填</label>
+                            <select class="form-control" name="responseParamrequired" setVal="${obj.paramrequired}">
+                                <option  value="是">是</option>
+                                <option value="否" selected>否</option>
                             </select>
                         </div>
                         <div class="form-group">
