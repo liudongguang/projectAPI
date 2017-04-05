@@ -14,6 +14,12 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="col-md-2 control-label">服务地址</label>
+            <div class="col-md-8">
+                <input name="serverurl" type="text" required errInfo="服务地址不能为空" class="form-control" placeholder="服务地址">
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-md-2 control-label">项目描述</label>
             <div class="col-md-8">
                 <textarea name="description" required errInfo="项目描述不能为空" cols="80" rows="8"></textarea>

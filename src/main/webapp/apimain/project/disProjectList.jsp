@@ -13,6 +13,7 @@
             <th>项目名</th>
             <th>创建时间</th>
             <th>项目描述</th>
+            <th>服务地址</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -22,6 +23,7 @@
                 <td>${obj.projectname}</td>
                 <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                 <td>${obj.description}</td>
+                <td>${obj.serverurl}</td>
                 <td> <a class="label label-warning"  searFormID="subForm" pageNumParam="${page.pageNum}"   titleParam="${param.titleParam}"   href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
 ">API接口文档</a></td>
             </tr>

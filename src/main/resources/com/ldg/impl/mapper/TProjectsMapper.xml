@@ -9,6 +9,7 @@
     <result column="projectname" jdbcType="VARCHAR" property="projectname" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="serverurl" jdbcType="VARCHAR" property="serverurl" />
   </resultMap>
   <select id="getProjectsPageInfo" resultMap="BaseResultMap">
       select * from t_projects order by uid desc

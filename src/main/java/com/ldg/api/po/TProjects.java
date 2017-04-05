@@ -1,7 +1,8 @@
 package com.ldg.api.po;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
-import javax.persistence.*;
 
 @Table(name = "t_projects")
 public class TProjects {
@@ -19,6 +20,11 @@ public class TProjects {
     private String description;
 
     private Date createtime;
+
+    /**
+     * 服务地址
+     */
+    private String serverurl;
 
     /**
      * @return uid
@@ -82,5 +88,23 @@ public class TProjects {
      */
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    /**
+     * 获取服务地址
+     *
+     * @return serverurl - 服务地址
+     */
+    public String getServerurl() {
+        return serverurl;
+    }
+
+    /**
+     * 设置服务地址
+     *
+     * @param serverurl 服务地址
+     */
+    public void setServerurl(String serverurl) {
+        this.serverurl = serverurl;
     }
 }
