@@ -74,9 +74,9 @@
 
 	<mvc:interceptors>
 		<mvc:interceptor>
-
-			<mvc:mapping path="/sdeyfollowup/**" />
-			<mvc:exclude-mapping path="/sdeyfollowup/login"/>
+			<mvc:mapping path="/apiHandler/**" />
+			<mvc:mapping path="/jsTree/**" />
+			<mvc:exclude-mapping path="/apiHandler/login"/>
 			<bean class="com.ldg.interceptor.ManagerLoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
