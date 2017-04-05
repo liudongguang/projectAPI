@@ -28,10 +28,10 @@
             <label>你好，</label>
             <div class="btn-group">
                 <button type="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">${sessionScope.user.name} <span class="caret"></span></button>
+                        aria-expanded="false">${sessionScope.user.uname} <span class="caret"></span></button>
                 <ul class="dropdown-menu" style=" min-width:100px;">
                     <li><a ajaxhref href="/followupDisplay/updatePass.jsp">修改密码</a></li>
-                    <li><a href="sdeyfollowup/loginOut">退出</a></li>
+                    <li><a href="apiHandler/loginOut">退出</a></li>
                 </ul>
             </div>
         </div>
@@ -57,22 +57,6 @@
                     </li>
                 </ul>
             </li>
-            <c:if test="${sessionScope.user.name=='超级管理'}">
-                <li class="sub"><a href="javascript:;"><span class="glyphicon glyphicon-th-list btn-lg"></span> 数据管理
-                    <div class="pull-right tt"><span class="caret"></span></div>
-                </a>
-                    <ul class="templatemo-submenu">
-                        <li><a href="/sdeyfollowup/enterOneMonthHisChuYuanPatient"><span
-                                class="glyphicon glyphicon-indent-left"></span>数据获取</a></li>
-                        <li><a href="/sdeyfollowup/getManagerList"><span class="glyphicon glyphicon-user"></span>管理员</a>
-                        </li>
-                        <li><a href="/sdeyfollowup/getNoPageManagerList"><span
-                                class="glyphicon glyphicon-th"></span>工作分配</a></li>
-                        <li><a href="/sdeyfollowup/msgModelList"><span
-                                class="glyphicon glyphicon-th"></span>短信模版</a></li>
-                    </ul>
-                </li>
-            </c:if>
         </ul>
     </div>
     <!--/.navbar-collapse -->

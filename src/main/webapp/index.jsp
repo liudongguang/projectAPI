@@ -76,12 +76,12 @@
                               class="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label> <input
-                                    type="text" name="name" placeholder="用户名..." value="1"
+                                    type="text" name="username" placeholder="用户名..." value=""
                                     class="form-username form-control" id="form-username">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-password">Password</label> <input
-                                    type="password" name="pass" placeholder="密码..."  value="1"
+                                    type="password" name="password" placeholder="密码..."  value=""
                                     class="form-password form-control" id="form-password">
                             </div>
                             <button type="submit" class="btn">登陆</button>

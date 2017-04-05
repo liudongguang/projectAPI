@@ -3,6 +3,7 @@ package com.ldg.controller;
 import com.github.pagehelper.PageInfo;
 import com.ldg.api.constant.CommConstant;
 import com.ldg.api.po.TApiparams;
+import com.ldg.api.po.TManagers;
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
@@ -33,64 +34,87 @@ public class APIController {
 
     /**
      * 登陆操作
+     *
      * @param request
      * @return
      */
 
     @RequestMapping(value = "/login")
-    public String login(HttpServletRequest request) {
-        return "/apimain/index.jsp";
+    public String login(HttpServletRequest request, TManagers manager) {
+        TManagers selectManager = apiService.login(manager);
+        if (selectManager != null) {
+            request.getSession().setAttribute("user", selectManager);
+            return "redirect:/apimain/index.jsp";
+        } else {
+            request.setAttribute("message", "用户名或密码错误！");
+            return "redirect:/index.jsp";
+        }
     }
+
+    @RequestMapping(value = "/loginOut")
+    public String loginOut(HttpServletRequest request, TManagers manager) {
+        request.getSession().invalidate();
+        return "redirect:/index.jsp";
+    }
+
     /**
      * 获取项目列表
+     *
      * @return
      */
     @RequestMapping(value = "/getProjects")
     public String getProjects(HttpServletRequest request, PageParam pageParam) {
-        PageInfo<TProjects> projects=apiService.getProjectsPageInfo(pageParam);
-        request.setAttribute(CommConstant.PAGE_REQUEST_ATTR,projects);
+        PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
+        request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
         return "/apimain/project/disProjectList.jsp";
     }
 
     /**
      * 保存项目项
+     *
      * @param request
      * @param project
      * @return
      */
     @RequestMapping(value = "/saveProject")
-    public String saveProject(HttpServletRequest request,TProjects project) {
-        int saveState=apiService.saveProject(project);
+    public String saveProject(HttpServletRequest request, TProjects project) {
+        int saveState = apiService.saveProject(project);
         return "/apiHandler/getProjects";
     }
 
     /**
      * 获取api的详细信息
+     *
      * @param request
      * @return
      */
     @RequestMapping(value = "/getApiInfo")
-    public String getApiInfo(HttpServletRequest request,GetApiInfo param) {
-        List<TApiparams> paramlist=apiService.getApiParamInfo(param);
+    public String getApiInfo(HttpServletRequest request, GetApiInfo param) {
+        List<TApiparams> paramlist = apiService.getApiParamInfo(param);
         ////分组按照参数类型
-        Map<Integer,List<TApiparams>> typeMap=paramlist.stream().collect(Collectors.groupingBy(TApiparams::getPtype));
-        request.setAttribute("paramListRquest",typeMap.get(1));
-        request.setAttribute("paramListResponse",typeMap.get(2));
+        Map<Integer, List<TApiparams>> typeMap = paramlist.stream().collect(Collectors.groupingBy(TApiparams::getPtype));
+        request.setAttribute("paramListRquest", typeMap.get(1));
+        request.setAttribute("paramListResponse", typeMap.get(2));
         /////////
-        TProjectapis objapi=apiService.getApiInfo(param);
-        request.setAttribute("apiobj",objapi);
+        TProjectapis objapi = apiService.getApiInfo(param);
+        request.setAttribute("apiobj", objapi);
+        TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
+        if(sessionManager.getAuthority()==2){
+            return "/apimain/projectapilock/apidetails.jsp";
+        }
         return "/apimain/projectapi/addapi.jsp";
     }
 
     /**
      * 保存参数信息
+     *
      * @param request
      * @param param
      * @return
      */
     @RequestMapping(value = "/saveApiParams")
-    public String saveApiParams(HttpServletRequest request,SaveApiParams param) {
-        int saveNum=apiService.saveApiParams(param);
+    public String saveApiParams(HttpServletRequest request, SaveApiParams param) {
+        int saveNum = apiService.saveApiParams(param);
         return "/apiHandler/getApiInfo";
     }
 

@@ -67,7 +67,7 @@
 <script language="javascript" type="text/javascript" src="assets/js/main/common.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/ajaxsessiontimeout.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/jstree3.3.3.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/apimain/projectapi/disApiList.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/apimain/projectapilock/disApiList.js"></script>
 </body>
 </html>
 

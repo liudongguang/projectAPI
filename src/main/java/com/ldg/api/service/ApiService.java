@@ -2,6 +2,7 @@ package com.ldg.api.service;
 
 import com.github.pagehelper.PageInfo;
 import com.ldg.api.po.TApiparams;
+import com.ldg.api.po.TManagers;
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.vo.PageParam;
@@ -48,4 +49,11 @@ public interface ApiService {
      * @return
      */
     TProjectapis getApiInfo(GetApiInfo param);
+
+    /**
+     * 管理员登陆
+     * @param manager
+     * @return
+     */
+    TManagers login(TManagers manager);
 }

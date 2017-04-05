@@ -3,6 +3,7 @@ package com.ldg.impl.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ldg.api.po.TApiparams;
+import com.ldg.api.po.TManagers;
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
@@ -10,6 +11,7 @@ import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.controllerparam.GetApiInfo;
 import com.ldg.api.vo.controllerparam.SaveApiParams;
 import com.ldg.impl.mapper.TApiparamsMapper;
+import com.ldg.impl.mapper.TManagersMapper;
 import com.ldg.impl.mapper.TProjectapisMapper;
 import com.ldg.impl.mapper.TProjectsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,14 @@ public class ApiServiceImpl implements ApiService {
     private TProjectapisMapper projectapisDao;
     @Autowired
     private TApiparamsMapper tApiparamsDao;
+    @Autowired
+    private TManagersMapper managersMapper;
+
+    @Override
+    public TManagers login(TManagers manager) {
+        return managersMapper.selectManagerForlogin(manager);
+    }
+
     @Override
     public PageInfo<TProjects> getProjectsPageInfo(PageParam pageParam) {
         PageInfo<TProjects> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> projectsDao.getProjectsPageInfo());

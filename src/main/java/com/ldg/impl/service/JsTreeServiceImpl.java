@@ -33,6 +33,7 @@ public class JsTreeServiceImpl implements JsTreeService {
         pp.setApititle(appTitle.toString());
         pp.setProjectid(param.getProjectid());
         pp.setLevel(0);
+        pp.setCreatetime(new Date());
         return projectapisDao.insertSelective(pp);
     }
 
@@ -79,7 +80,7 @@ public class JsTreeServiceImpl implements JsTreeService {
     @Override
     public Integer createTreeElement(TProjectapis ele) {
         ele.setCreatetime(new Date());
-        ele.setFormmethod("none");
+        //ele.setFormmethod("none");
         projectapisDao.insertSelective(ele);
         return ele.getUid();
     }

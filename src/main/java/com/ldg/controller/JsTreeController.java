@@ -1,5 +1,6 @@
 package com.ldg.controller;
 
+import com.ldg.api.po.TManagers;
 import com.ldg.api.po.TProjectapis;
 import com.ldg.api.service.JsTreeService;
 import com.ldg.api.vo.ResultMsg;
@@ -36,6 +37,10 @@ public class JsTreeController {
      */
     @RequestMapping(value = "/getApiTitles")
     public String getApiTitles(HttpServletRequest request) {
+        TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
+        if(2==sessionManager.getAuthority()){
+            return "/apimain/projectapilock/disApiList.jsp";
+        }
         return "/apimain/projectapi/disApiList.jsp";
     }
 

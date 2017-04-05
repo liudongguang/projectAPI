@@ -24,7 +24,10 @@
     .form-control {
         width: 167px !important;
     }
-    .tta{ width: 423px !important;}
+
+    .tta {
+        width: 423px !important;
+    }
 
 </style>
 
@@ -43,11 +46,12 @@
                 <label>请求类型</label>
                 <input type="hidden" value="${apiobj.formmethod}"/>
                 <select class="form-control" name="formMethod" setVal="${apiobj.formmethod}">
-                    <option selected>post</option>
-                    <option>get</option>
+                    <option selected value="post">post</option>
+                    <option value="get">get</option>
                 </select>
                 <label>接口地址</label>
-                <input name="interfaceURL" type="text" required errInfo="接口地址不能为空！" class="form-control" value="${apiobj.interfaceurl}"
+                <input name="interfaceURL" type="text" required errInfo="接口地址不能为空！" class="form-control"
+                       value="${apiobj.interfaceurl}"
                        placeholder="接口地址">
             </div>
         </div>
@@ -63,7 +67,7 @@
             <c:if test="${paramListRquest==null}">
                 <%--一行三列开始--%>
                 <div class="form-inline one-group">
-                    <input name="rquestParamUID" type="hidden"  value="-1"/>
+                    <input name="rquestParamUID" type="hidden" value="-1"/>
                     <div class="form-group">
                         <label>参数名</label>
                         <input name="rquestParam" type="text" class="form-control" placeholder="请求参数名" required
@@ -78,6 +82,13 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>是否必填</label>
+                        <select class="form-control" name="rquestParamrequired" setVal="${obj.paramrequired}">
+                            <option value="是">是</option>
+                            <option value="否" selected>否</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label>备注</label>
                         <input name="rquestParamBeizhu" type="text" class="form-control" placeholder="请求参数备注"
                                value="${obj.parambeizhu}"
@@ -86,57 +97,56 @@
                     </div>
                         <%--添加按钮--%>
                     <div class="form-group">
-                            <button id="addRequestBTID_" class="btn btn-success">添加</button>
+                        <button id="addRequestBTID_" class="btn btn-success">添加</button>
                     </div>
                         <%--添加按钮结束--%>
                 </div>
             </c:if>
 
             <c:forEach items="${paramListRquest}" var="obj" varStatus="stat">
-                <c:if test="${obj.ptype==1}">
-                    <%--一行三列开始--%>
-                    <div class="form-inline one-group">
-                        <input name="rquestParamUID" type="hidden"  value="${obj.uid}"/>
-                        <div class="form-group">
-                            <label>参数名</label>
-                            <input name="rquestParam" type="text" class="form-control" placeholder="请求参数名" required
-                                   value="${obj.paramname}"
-                                   errInfo="请求参数名不能为空！">
-                        </div>
-                        <div class="form-group">
-                            <label>参数类型</label>
-                            <select class="form-control" name="rquestParamType" setVal="${obj.paramtype}">
-                                <option selected>string</option>
-                                <option>number</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>是否必填</label>
-                            <select class="form-control" name="rquestParamrequired" setVal="${obj.paramrequired}">
-                                <option  value="是">是</option>
-                                <option value="否" selected>否</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>备注</label>
-                            <input name="rquestParamBeizhu" type="text" class="form-control" placeholder="请求参数备注"
-                                   value="${obj.parambeizhu}"
-                                   required
-                                   errInfo="请求参数备注不能为空！">
-                        </div>
-                            <%--添加按钮--%>
-                        <div class="form-group">
-                            <c:if test="${stat.last}">
-                            <button id="addRequestBTID_${obj.uid}" class="btn btn-success">添加</button>
-                                </c:if>
-                            <!--不是最后一个-->
-                         <c:if test="${stat.count!=fn:length(paramListRquest)}">
-                             <button id="delRequestBTID_${obj.uid}" class="btn btn-success">删除</button>
-                          </c:if>
-                        </div>
-                            <%--添加按钮结束--%>
+                <%--一行三列开始--%>
+                <div class="form-inline one-group">
+                    <input name="rquestParamUID" type="hidden" value="${obj.uid}"/>
+                    <div class="form-group">
+                        <label>参数名</label>
+                        <input name="rquestParam" type="text" class="form-control" placeholder="请求参数名" required
+                               value="${obj.paramname}"
+                               errInfo="请求参数名不能为空！">
                     </div>
-                </c:if>
+                    <div class="form-group">
+                        <label>参数类型</label>
+                        <select class="form-control" name="rquestParamType" setVal="${obj.paramtype}">
+                            <option selected>string</option>
+                            <option>number</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>是否必填</label>
+                        <select class="form-control" name="rquestParamrequired" setVal="${obj.paramrequired}">
+                            <option value="是">是</option>
+                            <option value="否" selected>否</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>备注</label>
+                        <input name="rquestParamBeizhu" type="text" class="form-control" placeholder="请求参数备注"
+                               value="${obj.parambeizhu}"
+                               required
+                               errInfo="请求参数备注不能为空！">
+                    </div>
+                        <%--添加按钮--%>
+                    <div class="form-group">
+                        <c:if test="${stat.last}">
+                            <button id="addRequestBTID_${obj.uid}" class="btn btn-success">添加</button>
+                        </c:if>
+                        <!--不是最后一个-->
+                        <c:if test="${stat.count!=fn:length(paramListRquest)}">
+                            <button id="delRequestBTID_${obj.uid}" class="btn btn-success">删除</button>
+                        </c:if>
+                    </div>
+                        <%--添加按钮结束--%>
+                </div>
+
             </c:forEach>
         </div>
 
@@ -145,82 +155,89 @@
             <%--一行三列结束--%>
             <h4>返回参数</h4>
 
-<c:if test="${paramListResponse==null}">
-    <%--一行三列开始--%>
-    <div class="form-inline one-group">
-        <input name="responseParamUID" type="hidden"  value="-1"/>
-        <div class="form-group">
-            <label>参数名</label>
-            <input name="responseParam" type="text" class="form-control" placeholder="返回参数名" required
-                   value="${obj.paramname}"
-                   errInfo="返回参数名不能为空！">
-        </div>
-        <div class="form-group">
-            <label>参数类型</label>
-            <select class="form-control" name="responseParamType">
-                <option selected>string</option>
-                <option>number</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>备注</label>
-            <input name="responseParamBeizhu" type="text" class="form-control" placeholder="返回参数备注"
-                   value="${obj.parambeizhu}"
-                   required
-                   errInfo="返回参数备注不能为空！">
-        </div>
-            <%--添加按钮--%>
-        <div class="form-group">
-                <button id="addResponseBTID_" class="btn btn-success">添加</button>
-        </div>
-            <%--添加按钮结束--%>
-    </div>
-</c:if>
+            <c:if test="${paramListResponse==null}">
+                <%--一行三列开始--%>
+                <div class="form-inline one-group">
+                    <input name="responseParamUID" type="hidden" value="-1"/>
+                    <div class="form-group">
+                        <label>参数名</label>
+                        <input name="responseParam" type="text" class="form-control" placeholder="返回参数名" required
+                               value="${obj.paramname}"
+                               errInfo="返回参数名不能为空！">
+                    </div>
+                    <div class="form-group">
+                        <label>参数类型</label>
+                        <select class="form-control" name="responseParamType">
+                            <option selected>string</option>
+                            <option>number</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>是否必填</label>
+                        <select class="form-control" name="responseParamrequired" setVal="${obj.paramrequired}">
+                            <option value="是">是</option>
+                            <option value="否" selected>否</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>备注</label>
+                        <input name="responseParamBeizhu" type="text" class="form-control" placeholder="返回参数备注"
+                               value="${obj.parambeizhu}"
+                               required
+                               errInfo="返回参数备注不能为空！">
+                    </div>
+                        <%--添加按钮--%>
+                    <div class="form-group">
+                        <button id="addResponseBTID_" class="btn btn-success">添加</button>
+                    </div>
+                        <%--添加按钮结束--%>
+                </div>
+            </c:if>
             <c:forEach items="${paramListResponse}" var="obj" varStatus="stat">
-                <c:if test="${obj.ptype==2}">
 
-                    <%--一行三列开始--%>
-                    <div class="form-inline one-group">
-                        <input name="responseParamUID" type="hidden"  value="${obj.uid}"/>
-                        <div class="form-group">
-                            <label>参数名</label>
-                            <input name="responseParam" type="text" class="form-control" placeholder="返回参数名" required
-                                   value="${obj.paramname}"
-                                   errInfo="返回参数名不能为空！">
-                        </div>
-                        <div class="form-group">
-                            <label>参数类型</label>
-                            <select class="form-control" name="responseParamType" setVal="${obj.paramtype}">
-                                <option selected>string</option>
-                                <option>number</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>是否必填</label>
-                            <select class="form-control" name="responseParamrequired" setVal="${obj.paramrequired}">
-                                <option  value="是">是</option>
-                                <option value="否" selected>否</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>备注</label>
-                            <input name="responseParamBeizhu" type="text" class="form-control" placeholder="返回参数备注"
-                                   value="${obj.parambeizhu}"
-                                   required
-                                   errInfo="返回参数备注不能为空！">
-                        </div>
-                            <%--添加按钮--%>
-                        <div class="form-group">
+
+                <%--一行三列开始--%>
+                <div class="form-inline one-group">
+                    <input name="responseParamUID" type="hidden" value="${obj.uid}"/>
+                    <div class="form-group">
+                        <label>参数名</label>
+                        <input name="responseParam" type="text" class="form-control" placeholder="返回参数名" required
+                               value="${obj.paramname}"
+                               errInfo="返回参数名不能为空！">
+                    </div>
+                    <div class="form-group">
+                        <label>参数类型</label>
+                        <select class="form-control" name="responseParamType" setVal="${obj.paramtype}">
+                            <option selected>string</option>
+                            <option>number</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>是否必填</label>
+                        <select class="form-control" name="responseParamrequired" setVal="${obj.paramrequired}">
+                            <option value="是">是</option>
+                            <option value="否" selected>否</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>备注</label>
+                        <input name="responseParamBeizhu" type="text" class="form-control" placeholder="返回参数备注"
+                               value="${obj.parambeizhu}"
+                               required
+                               errInfo="返回参数备注不能为空！">
+                    </div>
+                        <%--添加按钮--%>
+                    <div class="form-group">
                         <c:if test="${stat.last}">
                             <button id="addResponseBTID_${obj.uid}" class="btn btn-success">添加</button>
-                         </c:if>
-                            <c:if test="${stat.count!=fn:length(paramListResponse)}">
-                                <button id="delResponseBTID_${obj.uid}" class="btn btn-success">删除</button>
-                            </c:if>
-                        </div>
-                            <%--添加按钮结束--%>
+                        </c:if>
+                        <c:if test="${stat.count!=fn:length(paramListResponse)}">
+                            <button id="delResponseBTID_${obj.uid}" class="btn btn-success">删除</button>
+                        </c:if>
                     </div>
-                </c:if>
+                        <%--添加按钮结束--%>
+                </div>
+
             </c:forEach>
         </div>
         <%--一行三列结束--%>
