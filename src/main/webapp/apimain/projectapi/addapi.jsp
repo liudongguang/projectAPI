@@ -24,38 +24,46 @@
     .form-control {
         width: 167px !important;
     }
+    .tta{ width: 423px !important;}
+
 </style>
 
 <div class="clearfix"></div>
-<div class="col-md-12">
-    <div style="position: fixed;background: #fff; width: 100%">
+<div class="col-md-12" style="max-height: 700px; margin-top: -20px;">
+    <div class="col-md-12" style="position: fixed;background: #fff; padding: 15px;">
         <button class="btn btn-primary" id="subBT" type="button">保存</button>
     </div>
-    <form id="subform" class="form-group" style="margin-top: 50px; height: 800px;" id="subForm" method="post"
+    <form id="subform" class="form-group" style="margin-top: 65px; padding-bottom: 40px" id="subForm" method="post"
           action="apiHandler/saveApiParams">
         <input name="apiID" type="hidden" value="${param.apiID}"/>
         <input name="projectid" type="hidden" value="${param.projectid}"/>
-
         <div class="form-group top_01">
             <h3>参数名</h3>
             <div class="form-inline">
                 <label>请求类型</label>
+                <input type="hidden" value="${apiobj.formmethod}"/>
                 <select class="form-control" name="formMethod">
                     <option selected>post</option>
                     <option>get</option>
                 </select>
                 <label>接口地址</label>
-                <input name="interfaceURL" type="text" required errInfo="接口地址不能为空！" class="form-control"
+                <input name="interfaceURL" type="text" required errInfo="接口地址不能为空！" class="form-control" value="${apiobj.interfaceurl}"
                        placeholder="接口地址">
             </div>
+        </div>
+        <div class="form-inline">
+            <label>接口描述</label>
+            <textarea class="form-control tta" rows="3" cols="100"></textarea>
+
         </div>
 
         <div id="requestDIVID">
             <h4>请求参数</h4>
-            <input name="rquestParamUID" type="hidden"  value="${obj.uid}"/>
+
             <c:if test="${paramListRquest==null}">
                 <%--一行三列开始--%>
                 <div class="form-inline one-group">
+                    <input name="rquestParamUID" type="hidden"  value="-1"/>
                     <div class="form-group">
                         <label>参数名</label>
                         <input name="rquestParam" type="text" class="form-control" placeholder="请求参数名" required
@@ -88,6 +96,7 @@
                 <c:if test="${obj.ptype==1}">
                     <%--一行三列开始--%>
                     <div class="form-inline one-group">
+                        <input name="rquestParamUID" type="hidden"  value="${obj.uid}"/>
                         <div class="form-group">
                             <label>参数名</label>
                             <input name="rquestParam" type="text" class="form-control" placeholder="请求参数名" required
@@ -128,10 +137,11 @@
         <div id="responseDIVID">
             <%--一行三列结束--%>
             <h4>返回参数</h4>
-                <input name="responseParamUID" type="hidden"  value="${obj.uid}"/>
+
 <c:if test="${paramListResponse==null}">
     <%--一行三列开始--%>
     <div class="form-inline one-group">
+        <input name="responseParamUID" type="hidden"  value="-1"/>
         <div class="form-group">
             <label>参数名</label>
             <input name="responseParam" type="text" class="form-control" placeholder="返回参数名" required
@@ -164,6 +174,7 @@
 
                     <%--一行三列开始--%>
                     <div class="form-inline one-group">
+                        <input name="responseParamUID" type="hidden"  value="${obj.uid}"/>
                         <div class="form-group">
                             <label>参数名</label>
                             <input name="responseParam" type="text" class="form-control" placeholder="返回参数名" required

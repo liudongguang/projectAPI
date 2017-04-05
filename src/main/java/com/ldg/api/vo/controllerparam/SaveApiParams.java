@@ -11,16 +11,33 @@ public class SaveApiParams {
     private String formMethod;
     private String interfaceURL;
 
-    private List<Integer> rquestParamUID;
-    private List<String> rquestParam;
-    private List<String> rquestParamType;
-    private List<String> rquestParamBeizhu;
+    private List<Integer> rquestParamUID;//参数id   新增的参数id为-1
+    private List<String> rquestParam;//请求参数名
+    private List<String> rquestParamType;//请求参数类型
+    private List<String> rquestParamBeizhu;//请求参数备注
+    private List<Integer> rquestDelParamUID;//删除的参数id
 
-    private List<Integer> responseParamUID;
-    private List<String> responseParam;
-    private List<String> responseParamType;
-    private List<String> responseParamBeizhu;
+    private List<Integer> responseParamUID;//参数id   新增的参数id为-1
+    private List<String> responseParam;//返回参数名
+    private List<String> responseParamType;//返回参数类型
+    private List<String> responseParamBeizhu;//返回参数备注
+    private List<Integer> responseDelParamUID;//删除的参数id
 
+    public List<Integer> getRquestDelParamUID() {
+        return rquestDelParamUID;
+    }
+
+    public void setRquestDelParamUID(List<Integer> rquestDelParamUID) {
+        this.rquestDelParamUID = rquestDelParamUID;
+    }
+
+    public List<Integer> getResponseDelParamUID() {
+        return responseDelParamUID;
+    }
+
+    public void setResponseDelParamUID(List<Integer> responseDelParamUID) {
+        this.responseDelParamUID = responseDelParamUID;
+    }
 
     public List<Integer> getRquestParamUID() {
         return rquestParamUID;
@@ -129,10 +146,12 @@ public class SaveApiParams {
                 ", rquestParam=" + rquestParam +
                 ", rquestParamType=" + rquestParamType +
                 ", rquestParamBeizhu=" + rquestParamBeizhu +
+                ", rquestDelParamUID=" + rquestDelParamUID +
                 ", responseParamUID=" + responseParamUID +
                 ", responseParam=" + responseParam +
                 ", responseParamType=" + responseParamType +
                 ", responseParamBeizhu=" + responseParamBeizhu +
+                ", responseDelParamUID=" + responseDelParamUID +
                 '}';
     }
 }

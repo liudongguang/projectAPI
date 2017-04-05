@@ -2,6 +2,7 @@ package com.ldg.api.service;
 
 import com.github.pagehelper.PageInfo;
 import com.ldg.api.po.TApiparams;
+import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.controllerparam.GetApiInfo;
@@ -32,7 +33,7 @@ public interface ApiService {
      * @param param
      * @return
      */
-    List<TApiparams> getApiInfo(GetApiInfo param);
+    List<TApiparams> getApiParamInfo(GetApiInfo param);
 
     /**
      * 保存参数
@@ -40,4 +41,11 @@ public interface ApiService {
      * @return
      */
     int saveApiParams(SaveApiParams param);
+
+    /**
+     * 获取接口信息
+     * @param param
+     * @return
+     */
+    TProjectapis getApiInfo(GetApiInfo param);
 }

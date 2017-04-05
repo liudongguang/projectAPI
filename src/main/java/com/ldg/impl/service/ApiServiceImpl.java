@@ -42,7 +42,7 @@ public class ApiServiceImpl implements ApiService {
     }
 
     @Override
-    public List<TApiparams> getApiInfo(GetApiInfo param) {
+    public List<TApiparams> getApiParamInfo(GetApiInfo param) {
         return tApiparamsDao.getApiInfo(param);
     }
 
@@ -55,7 +55,9 @@ public class ApiServiceImpl implements ApiService {
          List<String> rquestParam=param.getRquestParam();
          List<String> rquestParamType=param.getRquestParamType();
          List<String> rquestParamBeizhu=param.getRquestParamBeizhu();
-        List<Integer> rquestParamUID=param.getRquestParamUID();
+         List<Integer> rquestParamUID=param.getRquestParamUID();
+         List<Integer> rquestDelParamUID=param.getRquestDelParamUID();
+
          for(int i=0;i<rquestParam.size();i++){
              TApiparams tp=new TApiparams();
              tp.setApiid(apiID);
@@ -71,12 +73,20 @@ public class ApiServiceImpl implements ApiService {
                  tApiparamsDao.insertSelective(tp);
              }
          }
+         //根据参数id删除
+        if(rquestDelParamUID!=null){
+            rquestDelParamUID.forEach((item)->{
+                tApiparamsDao.deleteByPrimaryKey(item);
+            });
+        }
+
          /////////////返回参数
          List<String> responseParam=param.getResponseParam();
          List<String> responseParamType=param.getResponseParamType();
          List<String> responseParamBeizhu=param.getResponseParamBeizhu();
         List<Integer> responseParamUID=param.getResponseParamUID();
-        for(int i=0;i<rquestParam.size();i++){
+        List<Integer> responseDelParamUID=param.getResponseDelParamUID();
+        for(int i=0;i<responseParam.size();i++){
             TApiparams tp=new TApiparams();
             tp.setApiid(apiID);
             tp.setProjectid(projectid);
@@ -91,6 +101,12 @@ public class ApiServiceImpl implements ApiService {
                 tApiparamsDao.insertSelective(tp);
             }
         }
+        //根据参数id删除
+        if(responseDelParamUID!=null) {
+            responseDelParamUID.forEach((item) -> {
+                tApiparamsDao.deleteByPrimaryKey(item);
+            });
+        }
         TProjectapis objapi=new TProjectapis();
         objapi.setUid(apiID);
         objapi.setProjectid(projectid);
@@ -98,5 +114,10 @@ public class ApiServiceImpl implements ApiService {
         objapi.setInterfaceurl(interfaceURL);
         objapi.setFormmethod(formMethod);
         return projectapisDao.updateByPrimaryKeySelective(objapi);
+    }
+
+    @Override
+    public TProjectapis getApiInfo(GetApiInfo param) {
+        return projectapisDao.selectByPrimaryKey(param.getApiID());
     }
 }

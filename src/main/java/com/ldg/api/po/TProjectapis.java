@@ -1,11 +1,12 @@
 package com.ldg.api.po;
 
-import java.util.Date;
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "t_projectapis")
 public class TProjectapis {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer uid;
 
     /**
@@ -205,5 +206,20 @@ public class TProjectapis {
      */
     public void setFormmethod(String formmethod) {
         this.formmethod = formmethod;
+    }
+
+    @Override
+    public String toString() {
+        return "TProjectapis{" +
+                "uid=" + uid +
+                ", parentid='" + parentid + '\'' +
+                ", apititle='" + apititle + '\'' +
+                ", projectid=" + projectid +
+                ", level=" + level +
+                ", createtime=" + createtime +
+                ", interfaceurl='" + interfaceurl + '\'' +
+                ", description='" + description + '\'' +
+                ", formmethod='" + formmethod + '\'' +
+                '}';
     }
 }
