@@ -59,7 +59,7 @@
                         <label>参数类型:</label><span>${obj.paramtype}</span>
                     </div>
                     <div class="one-line">
-                        <label>是否必填:</label><span>${obj.paramrequired}</span>
+                        <label>是否必填:</label><span <c:if test="${obj.paramrequired=='是'}">style="color: red" </c:if> >${obj.paramrequired}</span>
                     </div>
                     <div class="one-line">
                         <label>备注:</label><span>${obj.parambeizhu}</span>
@@ -99,7 +99,8 @@
                             <label>参数类型:</label><span>${obj.paramtype}</span>
                         </div>
                         <div class="one-line">
-                            <label>是否必填:</label><span>${obj.paramrequired}</span>
+
+                            <label>是否必填:</label><span  <c:if test="${obj.paramrequired=='是'}">style="color: red" </c:if> >${obj.paramrequired}</span>
                         </div>
                         <div class="one-line">
                             <label>备注:</label><span>${obj.parambeizhu}</span>
