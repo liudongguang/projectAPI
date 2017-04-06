@@ -147,7 +147,7 @@ task shutdownServer(dependsOn:war) {
         ssh.run {
             session(remotes.depServer) {
                 println 'startServer run.....'
-                execute '/opt/apache-tomcat-9.0.0.M18/bin/shutdown.sh'
+                execute '/opt/apache-tomcat-8.0.43/bin/shutdown.sh'
             }
         }
     }
@@ -158,8 +158,8 @@ task delWAR (dependsOn:shutdownServer){
             session(remotes.depServer) {
                 println 'delWAR run.....'
                 execute '''#!/bin/sh  
-                        rm -rf /opt/apache-tomcat-9.0.0.M18/webapps/projectAPI  
-                        rm -f /opt/apache-tomcat-9.0.0.M18/webapps/projectAPI.war  
+                        rm -rf /opt/apache-tomcat-8.0.43/webapps/projectAPI  
+                        rm -f /opt/apache-tomcat-8.0.43/webapps/projectAPI.war  
                     '''
             }
         }
@@ -170,7 +170,7 @@ task copyWAR(dependsOn:delWAR) {
         ssh.run {
             session(remotes.depServer) {
                 println 'copyWAR run.....'+buildDir.toString()
-                put from: buildDir.toString() + '/libs/projectAPI.war', into: '/opt/apache-tomcat-9.0.0.M18/webapps'
+                put from: buildDir.toString() + '/libs/projectAPI.war', into: '/opt/apache-tomcat-8.0.43/webapps'
             }
         }
     }
@@ -181,7 +181,7 @@ task startServerProjectAPI(dependsOn:copyWAR) {
         ssh.run {
             session(remotes.depServer) {
                 println 'startServer run.....'
-                execute '/opt/apache-tomcat-9.0.0.M18/bin/startup.sh'
+                execute '/opt/apache-tomcat-8.0.43/bin/startup.sh'
             }
         }
     }
