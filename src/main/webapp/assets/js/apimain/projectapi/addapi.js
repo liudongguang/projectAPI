@@ -1,6 +1,7 @@
 jQuery(document).ready(function(){
     initAjaxForm($("#subform"), $("#subBT"), function (data) {
         $("#mainContent").empty().html(data);
+        layer.msg("保存完成！");
     }, true);
     initSetDataForMulti();
     $("button[id^='addRequestBTID']").click(function () {

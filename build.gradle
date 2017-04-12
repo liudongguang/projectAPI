@@ -136,10 +136,11 @@ ssh.settings {
 
 remotes {
     depServer {
-        host = '124.128.194.115'
+        host = '124.128.194.113'
         port = 22
         user = 'root'
-        password = 'jkyl2016SDEY@)!^'
+        // password = 'jkyl2016SDEY@)!^'
+        password = 'BNJK^www@)!&^_^'
     }
 }
 task shutdownServer(dependsOn:war) {
@@ -147,7 +148,7 @@ task shutdownServer(dependsOn:war) {
         ssh.run {
             session(remotes.depServer) {
                 println 'startServer run.....'
-                execute '/opt/apache-tomcat-8.0.43/bin/shutdown.sh'
+                execute '/opt/javaproject/apache-tomcat-9.0.0.M19/bin/shutdown.sh'
             }
         }
     }
@@ -158,8 +159,8 @@ task delWAR (dependsOn:shutdownServer){
             session(remotes.depServer) {
                 println 'delWAR run.....'
                 execute '''#!/bin/sh  
-                        rm -rf /opt/apache-tomcat-8.0.43/webapps/projectAPI  
-                        rm -f /opt/apache-tomcat-8.0.43/webapps/projectAPI.war  
+                        rm -rf /opt/javaproject/apache-tomcat-9.0.0.M19/webapps/projectAPI  
+                        rm -f /opt/javaproject/apache-tomcat-9.0.0.M19/webapps/projectAPI.war  
                     '''
             }
         }
@@ -170,7 +171,7 @@ task copyWAR(dependsOn:delWAR) {
         ssh.run {
             session(remotes.depServer) {
                 println 'copyWAR run.....'+buildDir.toString()
-                put from: buildDir.toString() + '/libs/projectAPI.war', into: '/opt/apache-tomcat-8.0.43/webapps'
+                put from: buildDir.toString() + '/libs/projectAPI.war', into: '/opt/javaproject/apache-tomcat-9.0.0.M19/webapps'
             }
         }
     }
@@ -181,7 +182,7 @@ task startServerProjectAPI(dependsOn:copyWAR) {
         ssh.run {
             session(remotes.depServer) {
                 println 'startServer run.....'
-                execute '/opt/apache-tomcat-8.0.43/bin/startup.sh'
+                execute '/opt/javaproject/apache-tomcat-9.0.0.M19/bin/startup.sh'
             }
         }
     }
