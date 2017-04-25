@@ -48,7 +48,7 @@
 
 </div>
 <div class="">
-    <div class="col-md-3" style=" padding:20px;">
+    <div class="col-md-3" style=" padding:20px;margin-bottom: 50px;">
         <div id="jstreeID">
         </div>
     </div>

@@ -158,10 +158,7 @@ task delWAR (dependsOn:shutdownServer){
         ssh.run {
             session(remotes.depServer) {
                 println 'delWAR run.....'
-                execute '''#!/bin/sh  
-                        rm -rf /opt/javaproject/apache-tomcat-9.0.0.M19/webapps/projectAPI  
-                        rm -f /opt/javaproject/apache-tomcat-9.0.0.M19/webapps/projectAPI.war  
-                    '''
+
             }
         }
     }

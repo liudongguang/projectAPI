@@ -84,8 +84,8 @@
                     <div class="form-group">
                         <label>是否必填</label>
                         <select class="form-control" name="rquestParamrequired" setVal="${obj.paramrequired}">
-                            <option value="是">是</option>
-                            <option value="否" selected>否</option>
+                            <option value="是" selected>是</option>
+                            <option value="否">否</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -123,8 +123,8 @@
                     <div class="form-group">
                         <label>是否必填</label>
                         <select class="form-control" name="rquestParamrequired" setVal="${obj.paramrequired}">
-                            <option value="是">是</option>
-                            <option value="否" selected>否</option>
+                            <option value="是" selected>是</option>
+                            <option value="否" >否</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -175,8 +175,8 @@
                     <div class="form-group">
                         <label>是否必填</label>
                         <select class="form-control" name="responseParamrequired" setVal="${obj.paramrequired}">
-                            <option value="是">是</option>
-                            <option value="否" selected>否</option>
+                            <option value="是" selected>是</option>
+                            <option value="否" >否</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -215,8 +215,8 @@
                     <div class="form-group">
                         <label>是否必填</label>
                         <select class="form-control" name="responseParamrequired" setVal="${obj.paramrequired}">
-                            <option value="是">是</option>
-                            <option value="否" selected>否</option>
+                            <option value="是" selected>是</option>
+                            <option value="否" >否</option>
                         </select>
                     </div>
                     <div class="form-group">
