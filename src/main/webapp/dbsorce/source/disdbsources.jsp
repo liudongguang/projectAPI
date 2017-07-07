@@ -4,29 +4,35 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="clearfix"></div>
 <div class="form-group">
-    <button class="btn btn-primary btn-large" ajaxthispage href="/apimain/project/addproject.jsp">新增</button>
+    <button class="btn btn-primary btn-large" ajaxthispage href="/dbsorce/source/addsource.jsp">新增</button>
 </div>
 <div class="table-responsive">
     <table id="dataTable" class="table table-striped table-hover table-bordered">
         <thead>
         <tr>
-            <th>项目名</th>
+            <th>数据源名</th>
+            <th>连接地址</th>
+            <th>登录名</th>
+            <th>登陆密码</th>
+            <th>驱动</th>
             <th>创建时间</th>
-            <th>项目描述</th>
-            <th>服务地址</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${page.list}" var="obj">
             <tr id="${obj.uid}">
-                <td>${obj.projectname}</td>
+                <td>${obj.dbsourcename}</td>
+                <td>${obj.dbsourcelinkurl}</td>
+                <td>${obj.dbsourceusername}</td>
+                <td>${obj.dbsourcepassword}</td>
+                <td>${obj.dbsourcedriver}</td>
                 <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-                <td>${obj.description}</td>
-                <td>${obj.serverurl}</td>
-                <td><a class="label label-warning" searFormID="subForm" pageNumParam="${page.pageNum}"
-                       href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
-">API接口文档</a></td>
+                <td><a class="label label-success" searFormID="subForm" pageNumParam="${page.pageNum}" ajaxthispage
+                       href="/dbsourceHandler/handlerDBSource?uid=${obj.uid}">数据源</a>
+                    <a class="label label-warning" searFormID="subForm" pageNumParam="${page.pageNum}" ajaxthispage
+                       href="/dbsourceHandler/editDBSource?uid=${obj.uid}">修改</a>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -47,5 +53,5 @@
 -->
 <script language="javascript" type="text/javascript" src="assets/js/jPage-1.2.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/jPageExt.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/apimain/project/disProjectList.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/dbsorce/source/disdbsources.js"></script>
 

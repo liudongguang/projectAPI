@@ -61,6 +61,8 @@
                 <ul class="templatemo-submenu">
                     <li><a id="cysfID" href="/apiHandler/getProjects"><span class="glyphicon glyphicon-list-alt"></span>项目列表</a>
                     </li>
+                    <li><a id="dbsourceID" href="/dbsourceHandler/getDbsourceList"><span class="glyphicon glyphicon-list-alt"></span>数据源</a>
+                    </li>
                 </ul>
             </li>
         </ul>
