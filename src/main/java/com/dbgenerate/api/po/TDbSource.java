@@ -45,6 +45,11 @@ public class TDbSource {
     private Date createtime;
 
     /**
+     * 数据库类型  1 mysql  2 oracle
+     */
+    private Integer dbtype;
+
+    /**
      * @return uid
      */
     public Integer getUid() {
@@ -164,5 +169,37 @@ public class TDbSource {
      */
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    /**
+     * 获取数据库类型  1 mysql  2 oracle
+     *
+     * @return dbtype - 数据库类型  1 mysql  2 oracle
+     */
+    public Integer getDbtype() {
+        return dbtype;
+    }
+
+    /**
+     * 设置数据库类型  1 mysql  2 oracle
+     *
+     * @param dbtype 数据库类型  1 mysql  2 oracle
+     */
+    public void setDbtype(Integer dbtype) {
+        this.dbtype = dbtype;
+    }
+
+    @Override
+    public String toString() {
+        return "TDbSource{" +
+                "uid=" + uid +
+                ", dbsourcename='" + dbsourcename + '\'' +
+                ", dbsourcelinkurl='" + dbsourcelinkurl + '\'' +
+                ", dbsourceusername='" + dbsourceusername + '\'' +
+                ", dbsourcepassword='" + dbsourcepassword + '\'' +
+                ", dbsourcedriver='" + dbsourcedriver + '\'' +
+                ", createtime=" + createtime +
+                ", dbtype=" + dbtype +
+                '}';
     }
 }

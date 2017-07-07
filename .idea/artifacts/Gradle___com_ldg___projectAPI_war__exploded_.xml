@@ -74,6 +74,7 @@
           <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.6" />
           <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
           <element id="library" level="project" name="Gradle: org.apache.ant:ant-launcher:1.9.4" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/ojdbc8.jar" />
         </element>
       </element>
     </root>

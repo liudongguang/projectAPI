@@ -1,5 +1,7 @@
 package com.dbgenerate.controller;
 
+import com.dbgenerate.api.bo.LdgTable;
+import com.dbgenerate.api.bo.LdgTableInfo;
 import com.dbgenerate.api.service.DBSourceService;
 import com.dbgenerate.api.po.TDbSource;
 import com.github.pagehelper.PageInfo;
@@ -31,6 +33,7 @@ public class DBSourceController {
 
     /**
      * 数据源列表
+     *
      * @param request
      * @param pageParam
      * @return
@@ -44,31 +47,46 @@ public class DBSourceController {
 
     /**
      * 保存数据源
+     *
      * @param request
      * @param param
      * @return
      */
     @RequestMapping(value = "/saveSource")
     public String saveSource(HttpServletRequest request, TDbSource param) {
-        int i=dbSourceService.saveSource(param);
+        int i = dbSourceService.saveSource(param);
         return "/dbsourceHandler/getDbsourceList";
     }
 
     /**
      * 处理数据源信息
+     *
      * @param request
      * @param param
      * @return
      */
     @RequestMapping(value = "/handlerDBSource")
     public String handlerDBSource(HttpServletRequest request, TDbSource param) throws Exception {
-        dbSourceService.handlerDBSource(param);
-        //request.setAttribute(CommConstant.OBJ_REQUEST_ATTR, dbSource);
+        List<LdgTable> tables = dbSourceService.getTables(param);
+        request.setAttribute(CommConstant.LIST_REQUEST_ATTR, tables);
         return "/dbsorce/source/handlersource.jsp";
     }
-
+    /**
+     * 处理数据源信息
+     *
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/getTableInfoByTableName")
+    public String getTableInfoByTableName(HttpServletRequest request, TDbSource param,String tableName) throws Exception {
+        List<LdgTableInfo> tableInfo = dbSourceService.getTableInfo(param,tableName);
+        request.setAttribute(CommConstant.LIST_REQUEST_ATTR, tableInfo);
+        return "/dbsorce/source/handlersource_tableinfo.jsp";
+    }
     /**
      * 检查数据源名与数据连接是否重复
+     *
      * @param request
      * @param param
      * @return
@@ -76,9 +94,9 @@ public class DBSourceController {
     @RequestMapping(value = "/checkSourceNameAndlink")
     @ResponseBody
     public ResultMsg checkSourceNameAndlink(HttpServletRequest request, TDbSource param) {
-        ResultMsg msg=new ResultMsg();
-        String err=dbSourceService.checkSourceNameAndlink(param);
-        if(err!=null){
+        ResultMsg msg = new ResultMsg();
+        String err = dbSourceService.checkSourceNameAndlink(param);
+        if (err != null) {
             msg.setErrcode(1);
             msg.setErrmsg(err);
         }
@@ -87,15 +105,30 @@ public class DBSourceController {
 
     /**
      * 修改数据源
+     *
      * @param request
      * @param param
      * @return
      */
     @RequestMapping(value = "/editDBSource")
     public String editDBSource(HttpServletRequest request, TDbSource param) {
-        TDbSource dbSource=dbSourceService.selectSourceByID(param);
+        TDbSource dbSource = dbSourceService.selectSourceByID(param);
         request.setAttribute(CommConstant.OBJ_REQUEST_ATTR, dbSource);
         return "/dbsorce/source/addsource.jsp";
     }
+
+    /**
+     * 删除数据源
+     *
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/delDBSource")
+    public String delDBSource(HttpServletRequest request, TDbSource param) {
+        int delnum = dbSourceService.deleteDBSourceByID(param);
+        return "/dbsourceHandler/getDbsourceList";
+    }
+
 
 }

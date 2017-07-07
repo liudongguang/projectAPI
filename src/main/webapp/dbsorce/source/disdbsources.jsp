@@ -32,6 +32,8 @@
                        href="/dbsourceHandler/handlerDBSource?dbsourcelinkurl=${obj.dbsourcelinkurl}&dbsourceusername=${obj.dbsourceusername}&dbsourcepassword=${obj.dbsourcepassword}&dbsourcedriver=${obj.dbsourcedriver}">数据源</a>
                     <a class="label label-warning" searFormID="subForm" pageNumParam="${page.pageNum}" ajaxthispage
                        href="/dbsourceHandler/editDBSource?uid=${obj.uid}">修改</a>
+                    <a class="label label-danger" searFormID="subForm" pageNumParam="${page.pageNum}" ajaxdel
+                       href="/dbsourceHandler/delDBSource?uid=${obj.uid}">删除</a>
                 </td>
             </tr>
         </c:forEach>

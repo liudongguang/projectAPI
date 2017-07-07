@@ -12,7 +12,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/../../build/classes/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/main">
@@ -21,6 +21,15 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../libs/ojdbc8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Gradle: org.springframework:spring-aop:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-orm:4.3.7.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-jdbc:4.3.7.RELEASE" level="project" />
