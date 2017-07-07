@@ -12,7 +12,9 @@ public interface DBSourceService {
 
     int saveSource(TDbSource param);
 
-    TDbSource handlerDBSource(TDbSource param);
+    TDbSource handlerDBSource(TDbSource param) throws Exception;
 
     String checkSourceNameAndlink(TDbSource param);
+
+    TDbSource selectSourceByID(TDbSource param);
 }

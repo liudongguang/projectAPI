@@ -7,6 +7,9 @@
 <div class="col-md-6">
     数据源名:${obj.dbsourcename}<br/>
     连接地址:${obj.dbsourcelinkurl}<br/>
+    登录名:${obj.dbsourceusername}<br/>
+    登陆密码:${obj.dbsourcepassword}<br/>
+    驱动:${obj.dbsourcedriver}<br/>
 
 </div>
 <script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>

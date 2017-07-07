@@ -29,7 +29,7 @@
                 <td>${obj.dbsourcedriver}</td>
                 <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                 <td><a class="label label-success" searFormID="subForm" pageNumParam="${page.pageNum}" ajaxthispage
-                       href="/dbsourceHandler/handlerDBSource?uid=${obj.uid}">数据源</a>
+                       href="/dbsourceHandler/handlerDBSource?dbsourcelinkurl=${obj.dbsourcelinkurl}&dbsourceusername=${obj.dbsourceusername}&dbsourcepassword=${obj.dbsourcepassword}&dbsourcedriver=${obj.dbsourcedriver}">数据源</a>
                     <a class="label label-warning" searFormID="subForm" pageNumParam="${page.pageNum}" ajaxthispage
                        href="/dbsourceHandler/editDBSource?uid=${obj.uid}">修改</a>
                 </td>

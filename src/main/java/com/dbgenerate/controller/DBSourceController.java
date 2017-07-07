@@ -55,15 +55,15 @@ public class DBSourceController {
     }
 
     /**
-     *
+     * 处理数据源信息
      * @param request
      * @param param
      * @return
      */
     @RequestMapping(value = "/handlerDBSource")
-    public String handlerDBSource(HttpServletRequest request, TDbSource param) {
-        TDbSource dbSource=dbSourceService.handlerDBSource(param);
-        request.setAttribute(CommConstant.OBJ_REQUEST_ATTR, dbSource);
+    public String handlerDBSource(HttpServletRequest request, TDbSource param) throws Exception {
+        dbSourceService.handlerDBSource(param);
+        //request.setAttribute(CommConstant.OBJ_REQUEST_ATTR, dbSource);
         return "/dbsorce/source/handlersource.jsp";
     }
 
@@ -93,7 +93,7 @@ public class DBSourceController {
      */
     @RequestMapping(value = "/editDBSource")
     public String editDBSource(HttpServletRequest request, TDbSource param) {
-        TDbSource dbSource=dbSourceService.handlerDBSource(param);
+        TDbSource dbSource=dbSourceService.selectSourceByID(param);
         request.setAttribute(CommConstant.OBJ_REQUEST_ATTR, dbSource);
         return "/dbsorce/source/addsource.jsp";
     }
