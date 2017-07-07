@@ -65,11 +65,11 @@ public class DBSourceController {
      * @param param
      * @return
      */
-    @RequestMapping(value = "/handlerDBSource")
-    public String handlerDBSource(HttpServletRequest request, TDbSource param) throws Exception {
+    @RequestMapping(value = "/getTables")
+    public String getTables(HttpServletRequest request, TDbSource param) throws Exception {
         List<LdgTable> tables = dbSourceService.getTables(param);
         request.setAttribute(CommConstant.LIST_REQUEST_ATTR, tables);
-        return "/dbsorce/source/handlersource.jsp";
+        return "/dbsorce/source/tableList.jsp";
     }
     /**
      * 处理数据源信息
@@ -82,7 +82,7 @@ public class DBSourceController {
     public String getTableInfoByTableName(HttpServletRequest request, TDbSource param,String tableName) throws Exception {
         List<LdgTableInfo> tableInfo = dbSourceService.getTableInfo(param,tableName);
         request.setAttribute(CommConstant.LIST_REQUEST_ATTR, tableInfo);
-        return "/dbsorce/source/handlersource_tableinfo.jsp";
+        return "/dbsorce/source/tableinfo.jsp";
     }
     /**
      * 检查数据源名与数据连接是否重复

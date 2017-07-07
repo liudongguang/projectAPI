@@ -21,7 +21,6 @@ public class DbInfoUtil {
             dbmd = conn.getMetaData();
             ResultSet rs = dbmd.getTables(conn.getCatalog(), param.getDbsourceusername().toUpperCase(), null, new String[]{"TABLE"});
             while (rs.next()) {
-                System.out.println(rs);
                 LdgTable table = new LdgTable();
                 table.setTABLE_NAME(rs.getString("TABLE_NAME"));
                 table.setREMARKS(rs.getString("REMARKS"));
@@ -74,7 +73,8 @@ public class DbInfoUtil {
                         }
                         tableinfo.setREMARKS(remarks);
                         String dbType = rs.getString("TYPE_NAME");
-                        tableinfo.setTYPE_NAME(changeDbType(dbType));
+                        tableinfo.setTYPE_NAME(dbType);
+                        result.add(tableinfo);
                     }
                 }
             }

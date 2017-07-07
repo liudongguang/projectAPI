@@ -25,7 +25,7 @@
                 <td>${obj.TABLE_CAT}</td>
                 <td>${obj.TABLE_TYPE}</td>
                 <td><a class="label label-success" searFormID="subForm" pageNumParam="${page.pageNum}" ajaxthispage
-                       href="/dbsourceHandler/getTableInfoByTableName?tableName=${obj.TABLE_NAME}&dbsourcelinkurl=${obj.dbsourcelinkurl}&dbsourceusername=${obj.dbsourceusername}&dbsourcepassword=${obj.dbsourcepassword}&dbsourcedriver=${obj.dbsourcedriver}">表信息</a>
+                       href="/dbsourceHandler/getTableInfoByTableName?tableName=${obj.TABLE_NAME}&dbsourcelinkurl=${param.dbsourcelinkurl}&dbsourceusername=${param.dbsourceusername}&dbsourcepassword=${param.dbsourcepassword}&dbsourcedriver=${param.dbsourcedriver}">表信息</a>
                 </td>
             </tr>
         </c:forEach>
@@ -33,5 +33,5 @@
     </table>
 </div>
 <script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/dbsorce/source/handlersource.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/dbsorce/source/tableList.js"></script>
 
