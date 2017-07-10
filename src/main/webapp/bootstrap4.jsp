@@ -19,6 +19,6 @@
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script language="javascript" type="text/javascript" src="assets/js/jquery-3.2.0.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/tether.min.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/bootstrap4.0.0.js"></script>
+<script language="javascript" type="text/javascript" src="assets/bootstrap4alpha6/js/bootstrap.js"></script>
 </body>
 </html>

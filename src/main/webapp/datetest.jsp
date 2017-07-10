@@ -31,7 +31,6 @@
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/common.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/ajaxsessiontimeout.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/followupDisplay/index.js"></script>
 <script>
     jQuery(document).ready(function () {
         $('#startTimeID').datetimepicker({
