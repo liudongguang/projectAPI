@@ -28,7 +28,7 @@ public class DBSourceServiceImpl implements DBSourceService {
 
     @Override
     public PageInfo<TDbSource> getDbsourceList(PageParam pageParam) {
-        PageInfo<TDbSource> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> tDbSourceMapper.selectAll());
+        PageInfo<TDbSource> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> tDbSourceMapper.selectAllForTimeOrder());
         return pageInfo;
     }
 

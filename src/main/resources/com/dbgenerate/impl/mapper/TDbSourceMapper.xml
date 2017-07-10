@@ -24,4 +24,7 @@
         FROM t_db_source
         WHERE dbsourcelinkurl = #{dbsourcelinkurl,jdbcType=VARCHAR}
     </select>
+    <select id="selectAllForTimeOrder" resultMap="BaseResultMap">
+        SELECT * from t_db_source order by createTime desc
+    </select>
 </mapper>
