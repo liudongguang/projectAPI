@@ -6,7 +6,6 @@
             + path + "/";
 %>
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <base href="${pageContext.request.contextPath }/"/>
     <meta charset="utf-8">
