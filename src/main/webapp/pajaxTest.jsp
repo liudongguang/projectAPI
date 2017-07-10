@@ -18,15 +18,14 @@
 </head>
 
 <body>
-<a href="datetest.jsp" data-pjax >datetest</a>
-<a href="datetest.jsp" data-pjax >datetest</a>
-
+<a href="pajaxA.jsp" data-pjax >pajaxA.jsp</a>
+<a href="pajaxB.jsp" data-pjax >pajaxB.jsp</a>
+<a href="bootstrap4.jsp" data-pjax >bootstrap4.jsp</a>
 <div id="pjax-container"></div>
 </body>
 <script type="text/javascript" language="javascript" src="assets/js/jquery-3.2.0.js"></script>
 <script type="text/javascript" language="javascript" src="assets/tether-1.3.3/js/tether.js"></script>
 <script language="javascript" type="text/javascript" src="assets/bootstrap4alpha6/js/bootstrap.js"></script>
-
 <script language="javascript" type="text/javascript" src="assets/js/pajax.js"></script>
 
 <script language="javascript" type="text/javascript">
