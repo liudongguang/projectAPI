@@ -68,6 +68,12 @@ public class APIController {
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
         return "/apimain/project/disProjectList.jsp";
     }
+    @RequestMapping(value = "/getProjects2")
+    public String getProjects2(HttpServletRequest request, PageParam pageParam) {
+        PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
+        request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
+        return "/apimain/project/disProjectList2.jsp";
+    }
 
     /**
      * 保存项目项

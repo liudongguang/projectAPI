@@ -40,7 +40,7 @@
                         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                             <div class="card-block">
                                 <div class="list-group">
-                                    <a href="${pageContext.request.contextPath }/apiHandler/getProjects" class="list-group-item list-group-item-action" data-pjax>项目列表</a>
+                                    <a href="${pageContext.request.contextPath }/apiHandler/getProjects2" class="list-group-item list-group-item-action" data-pjax>项目列表</a>
                                     <a href="${pageContext.request.contextPath }/dbsourceHandler/getDbsourceList" class="list-group-item list-group-item-action" data-pjax>数据源</a>
                                 </div>
                             </div>
@@ -121,6 +121,7 @@
 </div>
 </body>
 <script language="javascript" type="text/javascript" src="assets/js/jquery-3.2.0.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/jPage2.js"></script>
 <script type="text/javascript" language="javascript" src="assets/tether-1.3.3/js/tether.js"></script>
 <script language="javascript" type="text/javascript" src="assets/bootstrap4alpha6/js/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/pajax.js"></script>
@@ -130,4 +131,5 @@
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/ajaxsessiontimeout.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/newMainIndex.js"></script>
+
 </html>
