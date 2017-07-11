@@ -44,7 +44,12 @@ public class DBSourceController {
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
         return "/dbsorce/source/disdbsources.jsp";
     }
-
+    @RequestMapping(value = "/getDbsourceList2")
+    public String getDbsourceList2(HttpServletRequest request, PageParam pageParam) {
+        PageInfo<TDbSource> projects = dbSourceService.getDbsourceList(pageParam);
+        request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
+        return "/dbsorce/source/disdbsources2.jsp";
+    }
     /**
      * 保存数据源
      *

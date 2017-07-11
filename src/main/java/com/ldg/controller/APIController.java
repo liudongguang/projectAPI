@@ -69,7 +69,7 @@ public class APIController {
         return "/apimain/project/disProjectList.jsp";
     }
     @RequestMapping(value = "/getProjects2")
-    public String getProjects2(HttpServletRequest request, PageParam pageParam) {
+    public String getProjects2(HttpServletRequest request, PageParam pageParam) throws InterruptedException {
         PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
         return "/apimain/project/disProjectList2.jsp";

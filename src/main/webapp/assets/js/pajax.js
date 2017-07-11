@@ -54,6 +54,7 @@
 //
 // Returns nothing.
     function handleClick(event, container, options) {
+
         options = optionsFor(container, options)
 
         var link = event.currentTarget
@@ -88,7 +89,6 @@
         var opts = $.extend({}, defaults, options)
         var clickEvent = $.Event('pjax:click')
         $link.trigger(clickEvent, [opts])
-
         if (!clickEvent.isDefaultPrevented()) {
             pjax(opts)
             event.preventDefault()
@@ -201,6 +201,18 @@
         }
 
         var timeoutTimer
+        ///打开遮罩层
+        var zzcid ="";
+        function openZZC() {
+            zzcid = layer.load(0, {
+                shade: [0.8, '#fff']
+                // 0.1透明度的白色背景
+            });
+        }
+        //关闭遮罩层
+        function closeZZC() {
+            layer.close(zzcid);
+        }
 
         options.beforeSend = function (xhr, settings) {
             // No timeout for non-GET requests
@@ -228,15 +240,16 @@
             var url = parseURL(settings.url)
             if (hash) url.hash = hash
             options.requestUrl = stripInternalParams(url)
+            openZZC();
+            //console.log("beforeSend..............");
         }
 
         options.complete = function (xhr, textStatus) {
             if (timeoutTimer)
                 clearTimeout(timeoutTimer)
-
             fire('pjax:complete', [xhr, textStatus, options])
-
             fire('pjax:end', [xhr, options])
+            closeZZC();
         }
 
         options.error = function (xhr, textStatus, errorThrown) {
@@ -246,9 +259,16 @@
             if (options.type == 'GET' && textStatus !== 'abort' && allowed) {
                 locationReplace(container.url)
             }
+            //console.log("error..............");
+            openWindow("出错信息",xhr.responseText);
         }
 
         options.success = function (data, status, xhr) {
+            //console.log("success..............");
+            if(IsJsonString(data)){
+                openWindow("出现异常，JSON对象信息",data);
+                return false;
+            }
             var previousState = pjax.state
 
             // If $.pjax.defaults.version is a function, invoke it first.

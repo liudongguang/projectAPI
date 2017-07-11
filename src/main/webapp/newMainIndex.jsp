@@ -41,7 +41,7 @@
                             <div class="card-block">
                                 <div class="list-group">
                                     <a href="${pageContext.request.contextPath }/apiHandler/getProjects2" class="list-group-item list-group-item-action" data-pjax>项目列表</a>
-                                    <a href="${pageContext.request.contextPath }/dbsourceHandler/getDbsourceList" class="list-group-item list-group-item-action" data-pjax>数据源</a>
+                                    <a href="${pageContext.request.contextPath }/dbsourceHandler/getDbsourceList2" class="list-group-item list-group-item-action" data-pjax>数据源</a>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,6 @@
 <script language="javascript" type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/main/ajaxsessiontimeout.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/newMainIndex.js"></script>
 
 </html>
