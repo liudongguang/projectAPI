@@ -9,7 +9,8 @@ jQuery(document).ready(function () {
     var containerIDVal=$("#containerID").val();
     $("#pagesDIV").page({count: total, pageNo: pageNum, pageSize: pageSize, skipPart: true});
     //分页按钮点击事件
-    $("#pagesDIV .pagination li").click(function () {
+    $("#pagesDIV > ul > li ").click(function () {
+        console.log( $(this))
         var num = $(this).attr("num");
         if ($(this).attr("class").indexOf("disabled")!=-1) {
             return false;
@@ -25,9 +26,7 @@ jQuery(document).ready(function () {
             if (noAjaxPageVal == 1) {
                 location.href = basePath + subURL;
             } else {
-                jumpPageNoAuthorityForHandler(subURL, $("#"+containerIDVal), function () {
-                    $("#pagesDIV").page({count: total, pageNo: num, pageSize: pageSize, skipPart: true});
-                });
+                $.pjax({url: basePath + subURL, container: '#'+containerIDVal});
             }
         }
     });
@@ -54,9 +53,7 @@ jQuery(document).ready(function () {
         if (noAjaxPageVal == 1) {
             location.href = basePath + subURL;
         } else {
-            jumpPageNoAuthorityForHandler(subURL, $("#mainContent"), function () {
-                $("#pagesDIV").page({count: total, pageNo: num, pageSize: pageSize, skipPart: true});
-            });
+            $.pjax({url: basePath + subURL, container: '#'+containerIDVal});
         }
     });
 });

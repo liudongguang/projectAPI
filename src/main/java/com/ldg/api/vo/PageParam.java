@@ -1,7 +1,7 @@
 package com.ldg.api.vo;
 public class PageParam {
 	private Integer pageNum = 1;
-	private Integer pageSize = 10;
+	private Integer pageSize = 2;
 
 	public int getPageNum() {
 		return pageNum;
