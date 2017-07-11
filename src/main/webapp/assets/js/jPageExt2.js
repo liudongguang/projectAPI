@@ -1,4 +1,5 @@
 jQuery(document).ready(function () {
+    alert("aaa")
     var pageNum = $("#pageNum").val();  //当前页数
     var pageSize = $("#pageSize").val();//一页上的条数
     var total = $("#total").val();//总条数
@@ -6,11 +7,12 @@ jQuery(document).ready(function () {
     var loadDataURL = $("#loadDataURL").val();//获取数据连接
     var searFormID = $("#searFormID").val();//有提交的表单
     var noAjaxPageVal = $("#noAjaxPage").val();
+    var containerIDVal=$("#containerID").val();
     $("#pagesDIV").page({count: total, pageNo: pageNum, pageSize: pageSize, skipPart: true});
     //分页按钮点击事件
     $("#pagesDIV .pagination li").click(function () {
         var num = $(this).attr("num");
-        if ($(this).attr("class") == "disabled") {
+        if ($(this).attr("class").indexOf("disabled")!=-1) {
             return false;
         }
         if (num == 0 || num == (total + 1)) {
@@ -24,7 +26,7 @@ jQuery(document).ready(function () {
             if (noAjaxPageVal == 1) {
                 location.href = basePath + subURL;
             } else {
-                jumpPageNoAuthorityForHandler(subURL, $("#mainContent"), function () {
+                jumpPageNoAuthorityForHandler(subURL, $("#"+containerIDVal), function () {
                     $("#pagesDIV").page({count: total, pageNo: num, pageSize: pageSize, skipPart: true});
                 });
             }

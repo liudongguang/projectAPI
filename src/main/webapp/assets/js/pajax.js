@@ -321,7 +321,7 @@
                 autofocusEl.focus()
             }
 
-            executeScriptTags(container.scripts)
+           // executeScriptTags(container.scripts)
 
             var scrollTo = options.scrollTo
 
@@ -716,8 +716,8 @@
             obj.contents.find('title').remove()
 
             // Gather all script[src] elements
-            obj.scripts = findAll(obj.contents, 'script[src]').remove()
-            obj.contents = obj.contents.not(obj.scripts)
+            //obj.scripts = findAll(obj.contents, 'script[src]').remove()
+            //obj.contents = obj.contents.not(obj.scripts)
         }
 
         // Trim any whitespace off the title

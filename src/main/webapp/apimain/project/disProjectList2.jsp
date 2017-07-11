@@ -31,6 +31,7 @@
         </c:forEach>
         </tbody>
     </table>
+
 </div>
 <!--
 分页开始
@@ -42,8 +43,8 @@
 <input id="total" type="hidden" value="${page.total}"/>
 <input id="loadDataURL" type="hidden" value="/apiHandler/getProjects"/>
 <input id="searFormID" type="hidden" value="subForm"/>
+<input id="containerID" type="hidden" value="mainContent"/>
 <!--
 分页结束
 -->
 <script language="javascript" type="text/javascript" src="assets/js/jPageExt2.js"></script>
-
