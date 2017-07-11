@@ -72,6 +72,7 @@ public class APIController {
     public String getProjects2(HttpServletRequest request, PageParam pageParam) throws InterruptedException {
         PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
+        //if(request!=null){throw new RuntimeException("2334");}
         return "/apimain/project/disProjectList2.jsp";
     }
 

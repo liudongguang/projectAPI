@@ -26,7 +26,9 @@ jQuery(document).ready(function () {
             if (noAjaxPageVal == 1) {
                 location.href = basePath + subURL;
             } else {
-                $.pjax({url: basePath + subURL, container: '#'+containerIDVal});
+                $.pjax({url: basePath + subURL, container: '#'+containerIDVal,successCallbackFun:function () {
+                    console.log("llllllll3333")
+                }});
             }
         }
     });

@@ -272,8 +272,11 @@
 
         options.success = function (data, status, xhr) {
             //console.log("success..............");
-            if(options.successCallbackFun&&!options.successCallbackFun(data)){ //处理有问题返回false，不向下执行
-                return false;
+            if(options.successCallbackFun){ //处理有问题返回false，不向下执行
+                var bolVal=options.successCallbackFun(data);
+                if(!bolVal){
+                    return bolVal;
+                }
             }
             var previousState = pjax.state
 
