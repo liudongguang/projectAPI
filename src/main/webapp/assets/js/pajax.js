@@ -202,13 +202,15 @@
 
         var timeoutTimer
         ///打开遮罩层
-        var zzcid ="";
+        var zzcid = "";
+
         function openZZC() {
             zzcid = layer.load(0, {
                 shade: [0.8, '#fff']
                 // 0.1透明度的白色背景
             });
         }
+
         //关闭遮罩层
         function closeZZC() {
             layer.close(zzcid);
@@ -249,24 +251,28 @@
                 clearTimeout(timeoutTimer)
             fire('pjax:complete', [xhr, textStatus, options])
             fire('pjax:end', [xhr, options])
+            if (options.completeCallbackFun) {
+                options.completeCallbackFun(xhr);
+            }
             closeZZC();
         }
 
         options.error = function (xhr, textStatus, errorThrown) {
             var container = extractContainer("", xhr, options)
-
             var allowed = fire('pjax:error', [xhr, textStatus, errorThrown, options])
             if (options.type == 'GET' && textStatus !== 'abort' && allowed) {
                 locationReplace(container.url)
             }
             //console.log("error..............");
-            openWindow("出错信息",xhr.responseText);
+            if (options.errorCallbackFun) {
+                options.errorCallbackFun(xhr);
+            }
+
         }
 
         options.success = function (data, status, xhr) {
             //console.log("success..............");
-            if(IsJsonString(data)){
-                openWindow("出现异常，JSON对象信息",data);
+            if(options.successCallbackFun&&!options.successCallbackFun(data)){ //处理有问题返回false，不向下执行
                 return false;
             }
             var previousState = pjax.state
@@ -341,7 +347,7 @@
                 autofocusEl.focus()
             }
 
-           // executeScriptTags(container.scripts)
+            // executeScriptTags(container.scripts)
 
             var scrollTo = options.scrollTo
 
