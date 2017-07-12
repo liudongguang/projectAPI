@@ -274,7 +274,8 @@
             //console.log("success..............");
             if(options.successCallbackFun){ //处理有问题返回false，不向下执行
                 var bolVal=options.successCallbackFun(data);
-                if(!bolVal){
+                if(bolVal&&!bolVal){
+                    console.log("successCallbackFun返回值为false不会向下执行！");
                     return bolVal;
                 }
             }

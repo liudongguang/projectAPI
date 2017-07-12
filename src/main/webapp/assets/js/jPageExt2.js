@@ -6,13 +6,13 @@ jQuery(document).ready(function () {
     var loadDataURL = $("#loadDataURL").val();//获取数据连接
     var searFormID = $("#searFormID").val();//有提交的表单
     var noAjaxPageVal = $("#noAjaxPage").val();
-    var containerIDVal=$("#containerID").val();
+    var containerIDVal = $("#containerID").val();
     $("#pagesDIV").page({count: total, pageNo: pageNum, pageSize: pageSize, skipPart: true});
     //分页按钮点击事件
     $("#pagesDIV > ul > li ").click(function () {
-        console.log( $(this))
+        console.log($(this))
         var num = $(this).attr("num");
-        if ($(this).attr("class").indexOf("disabled")!=-1) {
+        if ($(this).attr("class").indexOf("disabled") != -1) {
             return false;
         }
         if (num == 0 || num == (total + 1)) {
@@ -26,9 +26,10 @@ jQuery(document).ready(function () {
             if (noAjaxPageVal == 1) {
                 location.href = basePath + subURL;
             } else {
-                $.pjax({url: basePath + subURL, container: '#'+containerIDVal,successCallbackFun:function () {
-                    console.log("llllllll3333")
-                }});
+                $.pjax({
+                    url: basePath + subURL, container: '#' + containerIDVal, successCallbackFun: function () {
+                    }
+                });
             }
         }
     });
@@ -43,7 +44,7 @@ jQuery(document).ready(function () {
     /////跳转页面
     $("#pageRealBTID").click(function () {
         var num = $("#toPageNumID").val();
-        if(!num){
+        if (!num) {
             layer.alert("请填写页码！");
             return false;
         }
@@ -55,7 +56,7 @@ jQuery(document).ready(function () {
         if (noAjaxPageVal == 1) {
             location.href = basePath + subURL;
         } else {
-            $.pjax({url: basePath + subURL, container: '#'+containerIDVal});
+            $.pjax({url: basePath + subURL, container: '#' + containerIDVal});
         }
     });
 });
