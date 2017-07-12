@@ -55,8 +55,8 @@ function initAjaxRequest(container_ID) {
     });
 }
 //7.初始化ajax form表单
-function initAjaxForm(container_ID) {
-    $(document).on('submit', 'form[data-pjax]', function(event) {
+function initAjaxForm(form_ID,container_ID) {
+    $("#"+form_ID).submit(function (event) {
         $.pjax.submit(event, '#'+container_ID)
     })
 }

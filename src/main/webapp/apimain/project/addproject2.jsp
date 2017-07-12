@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div class="clearfix"></div>
 <div class="col-md-6">
-    <form class="form-horizontal" id="subForm" method="post" data-pjax action="apiHandler/saveProject2">
+    <form class="form-horizontal" id="subForm" method="post"  action="apiHandler/saveProject2">
         <div class="form-group">
             <label class="col-md-2 control-label">项目名</label>
             <div class="col-md-8">
@@ -34,7 +34,6 @@
     </form>
 
 </div>
-
 <script language="javascript" type="text/javascript">
     jQuery(document).ready(function () {
         $.getScript("assets/js/apimain/project/addproject2.js");

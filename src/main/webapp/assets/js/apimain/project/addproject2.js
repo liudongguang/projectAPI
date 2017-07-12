@@ -1,4 +1,4 @@
 jQuery(document).ready(function () {
-    initAjaxForm("mainContent");
+    initAjaxForm("subForm","mainContent");
     initBackUpBT("backBTID");
 });

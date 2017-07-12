@@ -130,5 +130,4 @@
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/newMainIndex.js"></script>
-
 </html>
