@@ -205,7 +205,7 @@
         var zzcid = "";
 
         function openZZC() {
-            if (layer) {
+            if (typeof layer) {
                 zzcid = layer.load(0, {
                     shade: [0.8, '#fff']
                     // 0.1透明度的白色背景
@@ -215,7 +215,7 @@
 
         //关闭遮罩层
         function closeZZC() {
-            if (layer) {
+            if (typeof layer) {
                 layer.close(zzcid);
             }
         }
@@ -246,9 +246,7 @@
             var url = parseURL(settings.url)
             if (hash) url.hash = hash
             options.requestUrl = stripInternalParams(url)
-            if (layer) {
-                openZZC();
-            }
+            openZZC();
             //console.log("beforeSend..............");
         }
 
@@ -260,9 +258,7 @@
             if (options.completeCallbackFun) {
                 options.completeCallbackFun(xhr);
             }
-            if (layer) {
-                closeZZC();
-            }
+            closeZZC();
         }
 
         options.error = function (xhr, textStatus, errorThrown) {
