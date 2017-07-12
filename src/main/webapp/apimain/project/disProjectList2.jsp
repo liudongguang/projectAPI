@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="clearfix"></div>
 <div class="form-group">
-    <button class="btn btn-primary btn-large" data-pjax href="apimain/project/addproject2.jsp">新增</button>
+    <button class="btn btn-primary btn-default-outline" data-pjax href="apimain/project/addproject2.jsp">新增</button>
 </div>
 <div class="table-responsive">
     <table id="dataTable" class="table table-striped table-hover table-bordered">
@@ -24,9 +24,9 @@
                 <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                 <td>${obj.description}</td>
                 <td>${obj.serverurl}</td>
-                <td><a class="label label-warning" searFormID="subForm" pageNumParam="${page.pageNum}"
+                <td><button class="btn"  pageNumParam="${page.pageNum}"
                        href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
-">API接口文档</a></td>
+">API接口文档</button></td>
             </tr>
         </c:forEach>
         </tbody>
