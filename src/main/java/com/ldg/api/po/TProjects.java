@@ -107,4 +107,15 @@ public class TProjects {
     public void setServerurl(String serverurl) {
         this.serverurl = serverurl;
     }
+
+    @Override
+    public String toString() {
+        return "TProjects{" +
+                "uid=" + uid +
+                ", projectname='" + projectname + '\'' +
+                ", description='" + description + '\'' +
+                ", createtime=" + createtime +
+                ", serverurl='" + serverurl + '\'' +
+                '}';
+    }
 }

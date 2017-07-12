@@ -88,6 +88,12 @@ public class APIController {
         int saveState = apiService.saveProject(project);
         return "/apiHandler/getProjects";
     }
+    @RequestMapping(value = "/saveProject2")
+    public String saveProject2(HttpServletRequest request, TProjects project) {
+        //int saveState = apiService.saveProject(project);
+        System.out.println(project);
+        return "/apiHandler/getProjects2";
+    }
 
     /**
      * 获取api的详细信息

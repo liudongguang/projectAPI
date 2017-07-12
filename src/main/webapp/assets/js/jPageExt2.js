@@ -1,4 +1,5 @@
 jQuery(document).ready(function () {
+    console.log("333333333333")
     var pageNum = $("#pageNum").val();  //当前页数
     var pageSize = $("#pageSize").val();//一页上的条数
     var total = $("#total").val();//总条数
@@ -10,7 +11,6 @@ jQuery(document).ready(function () {
     $("#pagesDIV").page({count: total, pageNo: pageNum, pageSize: pageSize, skipPart: true});
     //分页按钮点击事件
     $("#pagesDIV > ul > li ").click(function () {
-        console.log($(this))
         var num = $(this).attr("num");
         if ($(this).attr("class").indexOf("disabled") != -1) {
             return false;

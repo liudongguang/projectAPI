@@ -16,4 +16,7 @@
     222222222222
 </div>
 </body>
+<script>
+    console.log("BBBB");
+</script>
 </html>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="clearfix"></div>
 <div class="form-group">
-    <button class="btn btn-primary btn-large" ajaxthispage href="/apimain/project/addproject.jsp">新增</button>
+    <button class="btn btn-primary btn-large" data-pjax href="apimain/project/addproject2.jsp">新增</button>
 </div>
 <div class="table-responsive">
     <table id="dataTable" class="table table-striped table-hover table-bordered">
@@ -48,3 +48,4 @@
 分页结束
 -->
 <script language="javascript" type="text/javascript" src="assets/js/jPageExt2.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/apimain/project/disProjectList2.js"></script>

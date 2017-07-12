@@ -205,15 +205,19 @@
         var zzcid = "";
 
         function openZZC() {
-            zzcid = layer.load(0, {
-                shade: [0.8, '#fff']
-                // 0.1透明度的白色背景
-            });
+            if (layer) {
+                zzcid = layer.load(0, {
+                    shade: [0.8, '#fff']
+                    // 0.1透明度的白色背景
+                });
+            }
         }
 
         //关闭遮罩层
         function closeZZC() {
-            layer.close(zzcid);
+            if (layer) {
+                layer.close(zzcid);
+            }
         }
 
         options.beforeSend = function (xhr, settings) {
@@ -242,7 +246,9 @@
             var url = parseURL(settings.url)
             if (hash) url.hash = hash
             options.requestUrl = stripInternalParams(url)
-            openZZC();
+            if (layer) {
+                openZZC();
+            }
             //console.log("beforeSend..............");
         }
 
@@ -254,7 +260,9 @@
             if (options.completeCallbackFun) {
                 options.completeCallbackFun(xhr);
             }
-            closeZZC();
+            if (layer) {
+                closeZZC();
+            }
         }
 
         options.error = function (xhr, textStatus, errorThrown) {
@@ -272,9 +280,9 @@
 
         options.success = function (data, status, xhr) {
             //console.log("success..............");
-            if(options.successCallbackFun){ //处理有问题返回false，不向下执行
-                var bolVal=options.successCallbackFun(data);
-                if(bolVal&&!bolVal){
+            if (options.successCallbackFun) { //处理有问题返回false，不向下执行
+                var bolVal = options.successCallbackFun(data);
+                if (bolVal && !bolVal) {
                     console.log("successCallbackFun返回值为false不会向下执行！");
                     return bolVal;
                 }

@@ -1,5 +1,5 @@
 var basePath = $("#basePath").val();
-//普通弹出内容框
+//1.普通弹出内容框
 function openWindow(title, content) {
     layer.open({
         type: 1,
@@ -8,7 +8,7 @@ function openWindow(title, content) {
     });
 }
 
-//判断是否为json对象
+//2.判断是否为json对象
 function IsJsonString(str) {
     try {
         JSON.parse(str);
@@ -17,7 +17,7 @@ function IsJsonString(str) {
     }
     return true;
 }
-//判断登陆
+//3.判断登陆
 function checkLogin(xhr) {
     var sessionstatus = xhr.getResponseHeader("sessionstatus");
     if (sessionstatus == "timeout") {
@@ -28,19 +28,41 @@ function checkLogin(xhr) {
             shadeClose: true
         }, function (index) {
             layer.close(index);
-            window.location.href = $("#basePath").val() + "/index.jsp";
+            window.location.href = basePath + "/index.jsp";
         });
     }
 }
-//pajax错误情况处理
+//4.pajax错误情况处理
 function errhandler(xhr) {
     openWindow("出错信息", xhr.responseText);
 }
-//成功处理回调函数
+//5.成功处理回调函数
 function successHandler(data) {
     if (IsJsonString(data)) {
         openWindow("出现异常，JSON对象信息", data);
         return false;
     }
     return true;
+}
+//6.初始化ajax请求的元素
+function initAjaxRequest(container_ID) {
+    $("#"+container_ID).find("[data-pjax]").click(function () {
+        var subURL=$(this).attr("href");
+        $.pjax({
+            url: basePath + subURL,
+            container: '#' + container_ID
+        });
+    });
+}
+//7.初始化ajax form表单
+function initAjaxForm(container_ID) {
+    $(document).on('submit', 'form[data-pjax]', function(event) {
+        $.pjax.submit(event, '#'+container_ID)
+    })
+}
+//8.返回按钮
+function initBackUpBT(backBT_ID) {
+   $("#"+backBT_ID).click(function () {
+       history.back(-1);
+   });
 }
