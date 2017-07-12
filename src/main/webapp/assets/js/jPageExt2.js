@@ -1,5 +1,4 @@
 jQuery(document).ready(function () {
-    console.log("333333333333")
     var pageNum = $("#pageNum").val();  //当前页数
     var pageSize = $("#pageSize").val();//一页上的条数
     var total = $("#total").val();//总条数

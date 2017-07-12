@@ -7,16 +7,15 @@
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
     <title>随访管理</title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <div class="input-group">
     111111111111111
 </div>
 </body>
+
 <script>
     console.log("AAAAA");
+    $.getScript("assets/js/pajaxA.js");
 </script>
 </html>
