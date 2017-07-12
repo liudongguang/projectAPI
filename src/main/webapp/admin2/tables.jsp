@@ -53,7 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.jsp">SB Admin v2.0</a>
+                <a class="navbar-brand" href="admin2/index.jsp">SB Admin v2.0</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -258,7 +258,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="admin2/login.jsp"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -282,46 +282,46 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="admin2/index.jsp"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.jsp">Flot Charts</a>
+                                    <a href="admin2/flot.jsp">Flot Charts</a>
                                 </li>
                                 <li>
-                                    <a href="morris.jsp">Morris.js Charts</a>
+                                    <a href="admin2/morris.jsp">Morris.js Charts</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.jsp"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="admin2/tables.jsp"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
                         <li>
-                            <a href="forms.jsp"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a href="admin2/forms.jsp"><i class="fa fa-edit fa-fw"></i> Forms</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.jsp">Panels and Wells</a>
+                                    <a href="admin2/panels-wells.jsp">Panels and Wells</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.jsp">Buttons</a>
+                                    <a href="admin2/buttons.jsp">Buttons</a>
                                 </li>
                                 <li>
                                     <a href="notifications.jsp">Notifications</a>
                                 </li>
                                 <li>
-                                    <a href="typography.jsp">Typography</a>
+                                    <a href="admin2/typography.jsp">Typography</a>
                                 </li>
                                 <li>
-                                    <a href="icons.jsp"> Icons</a>
+                                    <a href="admin2/icons.jsp"> Icons</a>
                                 </li>
                                 <li>
-                                    <a href="grid.jsp">Grid</a>
+                                    <a href="admin2/grid.jsp">Grid</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -360,10 +360,10 @@
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.jsp">Blank Page</a>
+                                    <a href="admin2/blank.jsp">Blank Page</a>
                                 </li>
                                 <li>
-                                    <a href="login.jsp">Login Page</a>
+                                    <a href="admin2/login.jsp">Login Page</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
