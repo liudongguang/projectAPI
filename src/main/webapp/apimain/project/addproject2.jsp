@@ -34,5 +34,10 @@
     </form>
 
 </div>
-<script language="javascript" type="text/javascript" src="assets/js/apimain/project/addproject2.js"></script>
+
+<script language="javascript" type="text/javascript">
+    jQuery(document).ready(function () {
+        $.getScript("assets/js/apimain/project/addproject2.js");
+    });
+</script>
 
