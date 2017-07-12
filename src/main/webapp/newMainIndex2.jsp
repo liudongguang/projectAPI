@@ -55,7 +55,7 @@
 
 
         <nav class="navbar navbar-custom">
-            <ul class="nav navbar-nav">
+            <ul class="nav justify-content-start">
                 <li class="nav-item">
                     <button class="button-menu-mobile open-left waves-light waves-effect">
                         <i class="zmdi zmdi-menu"></i>
@@ -69,7 +69,7 @@
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav pull-right">
+            <ul class="nav  justify-content-end">
                 <li class="nav-item dropdown notification-list">
                     <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown"
                        href="#" role="button"
