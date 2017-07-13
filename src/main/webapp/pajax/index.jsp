@@ -15,19 +15,15 @@
     <!-- App title -->
     <title>Uplon - Responsive Admin Dashboard Template</title>
 
-    <!--Morris Chart CSS -->
-    <link rel="stylesheet" href="assets/uplon/plugins/morris/morris.css">
 
     <!-- Switchery css -->
     <link href="assets/uplon/plugins/switchery/switchery.min.css" rel="stylesheet"/>
 
     <!-- App CSS -->
-
+    <link rel="stylesheet" href="assets/uplon/style.css"/>
     <link rel="stylesheet" href="assets/tether-1.3.3/css/tether.css"/>
     <link rel="stylesheet" href="assets/bootstrap4alpha6/css/bootstrap.css"/>
     <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.css">
-    <link rel="stylesheet" href="assets/uplon/style.css"/>
-
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -431,7 +427,7 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="mainContainer">
+                        <div id="mainContainer">
 
                         </div>
                     </div>

@@ -55,6 +55,7 @@
 // Returns nothing.
     function handleClick(event, container, options) {
 
+
         options = optionsFor(container, options)
 
         var link = event.currentTarget
