@@ -5151,15 +5151,15 @@ body.fixed-left .side-menu.left {
     vertical-align: middle;
     color: rgba(255, 255, 255, 0.8); }
   .notification-list .noti-icon-badge {
-    height: 10px;
-    width: 10px;
+    height: 6px;
+    width: 6px;
     background-color: #ff5d48;
     display: inline-block;
     position: absolute;
-    top: 23px;
-    right: 12px;
+    top: 7px;
+    right: 26px;
     border-radius: 50%;
-    border: 2px solid #2b3d51; }
+    /*border: 2px solid #2b3d51;*/ }
   .notification-list .notify-item {
     padding: 10px 20px; }
     .notification-list .notify-item .notify-icon {
