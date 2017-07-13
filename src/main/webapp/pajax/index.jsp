@@ -428,7 +428,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="mainContainer">
-
+                            <div id="pajaxDIV"></div>
                         </div>
                     </div>
                 </div>

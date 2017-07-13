@@ -5,8 +5,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -98,5 +97,28 @@ public class RequestFileUtil {
         StringBuilder f = new StringBuilder();
         f.append(UUID.randomUUID().toString()).append(".jpg");
         return f.toString();
+    }
+
+    public final static String getContentByFileName(HttpServletRequest request, String filePath) {
+        String indexpath=request.getServletContext().getRealPath(filePath);
+        StringBuffer txtContent = new StringBuffer();
+        BufferedReader in =null;
+        try {
+             in = new BufferedReader( new InputStreamReader( new FileInputStream(indexpath), "UTF-8") );
+             String temp;
+            while((temp = in.readLine())!=null){
+                txtContent.append(temp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return txtContent.toString();
     }
 }
