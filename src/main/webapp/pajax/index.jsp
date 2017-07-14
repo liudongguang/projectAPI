@@ -267,8 +267,8 @@
                         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-format-underlined"></i>
                             <span> User Interface </span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a data-pjax href="pajaxA.jsp">pajaxA.jsp</a></li>
-                            <li><a data-pjax href="pajaxB.jsp">pajaxB.jsp</a></li>
+                            <li><a data-pjax href="pajax/pajaxA.jsp">pajaxA.jsp</a></li>
+                            <li><a data-pjax href="pajax/pajaxB.jsp">pajaxB.jsp</a></li>
                             <li><a href="ui-dropdowns.html">Dropdowns</a></li>
                             <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
                             <li><a href="ui-navs.html">Navs</a></li>

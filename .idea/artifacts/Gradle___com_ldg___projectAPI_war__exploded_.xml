@@ -17,22 +17,23 @@
           <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-orm:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-instrument-tomcat:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-instrument:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-context-support:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-aspects:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-test:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-tx:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-web:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:4.3.7.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc-portlet:4.3.7.RELEASE" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/ojdbc8.jar" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-orm:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-instrument-tomcat:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-instrument:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context-support:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aspects:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-test:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-tx:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-web:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-webmvc-portlet:4.3.9.RELEASE" />
           <element id="library" level="project" name="Gradle: cglib:cglib:3.2.1" />
           <element id="library" level="project" name="Gradle: asm:asm:3.3.1" />
           <element id="library" level="project" name="Gradle: org.aspectj:aspectjrt:1.8.9" />
@@ -74,7 +75,6 @@
           <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.6" />
           <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
           <element id="library" level="project" name="Gradle: org.apache.ant:ant-launcher:1.9.4" />
-          <element id="file-copy" path="$PROJECT_DIR$/libs/ojdbc8.jar" />
         </element>
       </element>
     </root>

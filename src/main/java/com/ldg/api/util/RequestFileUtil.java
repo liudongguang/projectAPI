@@ -1,5 +1,6 @@
 package com.ldg.api.util;
 
+import com.ldg.loading.Cache_Pajax;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -120,5 +121,20 @@ public class RequestFileUtil {
         }
 
         return txtContent.toString();
+    }
+
+    public static String getContentByFileNameByHttpClient(HttpServletRequest request, String s) {
+        String content= Cache_Pajax.getContentByPage(s);
+        if(content!=null){
+            return content;
+        }else{
+            //获取内容放到缓存中
+            HttpClientUtil htc=HttpClientUtil.getInstance();
+            StringBuilder url=new StringBuilder();
+            url.append(request.getScheme()).append("://").append(request.getServerName()).append(":").append(request.getServerPort()).append(request.getContextPath()).append("/").append(s);
+            String rsStr=htc.sendHttpsGet(url.toString());
+            Cache_Pajax.setContentByPage(s,rsStr);
+            return rsStr;
+        }
     }
 }

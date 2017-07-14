@@ -7,6 +7,8 @@ import com.dbgenerate.api.po.TDbSource;
 import com.github.pagehelper.PageInfo;
 import com.ldg.api.constant.CommConstant;
 import com.ldg.api.po.TProjectapis;
+import com.ldg.api.util.HttpClientUtil;
+import com.ldg.api.util.LdgRequestUtil;
 import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.ResultMsg;
 import com.ldg.api.vo.jstree.JsTree;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by liudo on 2017/3/10 0010.
@@ -31,6 +34,13 @@ public class DBSourceController {
     @Autowired
     private DBSourceService dbSourceService;
 
+    @RequestMapping(value = "/test")
+    public String test(HttpServletRequest request) {
+        HttpClientUtil htc=HttpClientUtil.getInstance();
+       // htc.sendHttpsGet(request.get);
+        return "/dbsorce/source/disdbsources.jsp";
+    }
+
     /**
      * 数据源列表
      *
@@ -40,7 +50,6 @@ public class DBSourceController {
      */
     @RequestMapping(value = "/getDbsourceList")
     public String getDbsourceList(HttpServletRequest request, PageParam pageParam) {
-        System.out.println("---------------------");
         PageInfo<TDbSource> projects = dbSourceService.getDbsourceList(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
         return "/dbsorce/source/disdbsources.jsp";

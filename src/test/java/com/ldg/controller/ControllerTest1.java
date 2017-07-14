@@ -55,4 +55,12 @@ public class ControllerTest1 extends TestBase{
         System.out.println("=====客户端获得反馈数据request attr :" + mvcResult.getRequest().getAttribute("page"));
 
     }
+    @Test
+    public void test1() throws Exception {
+        ResultActions resultActions = this.mockMvc2.perform(MockMvcRequestBuilders.post("/dbsourceHandler/test"));
+        MvcResult mvcResult = resultActions.andReturn();
+        String result = mvcResult.getResponse().getContentAsString();
+        System.out.println("=====客户端获得反馈数据:" + result);
+    }
+
 }

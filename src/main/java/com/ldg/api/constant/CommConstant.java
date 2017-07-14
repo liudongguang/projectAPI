@@ -7,4 +7,5 @@ public interface CommConstant {
     String PAGE_REQUEST_ATTR="page";
     String OBJ_REQUEST_ATTR="obj";
     String LIST_REQUEST_ATTR="list";
+    String Webapp="webapp\\";
 }
