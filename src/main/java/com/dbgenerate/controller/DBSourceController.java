@@ -40,6 +40,7 @@ public class DBSourceController {
      */
     @RequestMapping(value = "/getDbsourceList")
     public String getDbsourceList(HttpServletRequest request, PageParam pageParam) {
+        System.out.println("---------------------");
         PageInfo<TDbSource> projects = dbSourceService.getDbsourceList(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
         return "/dbsorce/source/disdbsources.jsp";
