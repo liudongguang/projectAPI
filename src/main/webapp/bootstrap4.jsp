@@ -10,7 +10,7 @@
 	<!-- Bootstrap CSS
 	<link rel="stylesheet" href="assets/css/templatemo_main.css"/>
 	-->
-	<link rel="stylesheet" href="assets/css/bootstrap4.0.0.css"/>
+	<link rel="stylesheet" href="assets/bootstrap4alpha6/css/bootstrap.css"/>
 </head>
 <body>
 <h1>Hello, world!</h1>

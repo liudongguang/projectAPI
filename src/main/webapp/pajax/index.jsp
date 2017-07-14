@@ -269,7 +269,7 @@
                         <ul class="list-unstyled">
                             <li><a data-pjax href="pajax/pajaxA.jsp">pajaxA.jsp</a></li>
                             <li><a data-pjax href="pajax/pajaxB.jsp">pajaxB.jsp</a></li>
-                            <li><a href="ui-dropdowns.html">Dropdowns</a></li>
+                            <li><a data-pjax href="pajaxHandler/test">pajaxHandler/test</a></li>
                             <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
                             <li><a href="ui-navs.html">Navs</a></li>
                             <li><a href="ui-progress.html">Progress</a></li>
