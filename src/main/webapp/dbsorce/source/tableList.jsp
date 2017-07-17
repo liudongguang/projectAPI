@@ -8,6 +8,7 @@
     <table id="dataTable" class="table table-striped table-hover table-bordered">
         <thead>
         <tr>
+            <th></th>
             <th>表名称</th>
             <th>表注释</th>
             <th>表模式</th>
@@ -17,8 +18,9 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${list}" var="obj">
+        <c:forEach items="${list}" var="obj" varStatus="sta">
             <tr>
+                <td>${sta.index+1}</td>
                 <td>${obj.TABLE_NAME}</td>
                 <td>${obj.REMARKS}</td>
                 <td>${obj.TABLE_SCHEM}</td>
