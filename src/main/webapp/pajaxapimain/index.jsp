@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
     <!-- App title -->
-    <title>Uplon - Responsive Admin Dashboard Template</title>
+    <title>API管理系统后台主页面</title>
 
 
     <!-- Switchery css -->
@@ -27,8 +27,8 @@
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
     <![endif]-->
     <!-- Modernizr js -->
     <script src="assets/uplon/js/modernizr.min.js"></script>
@@ -45,7 +45,7 @@
 
 
 <body class="fixed-left">
-
+<input type="hidden" id="basePath" value="${pageContext.request.contextPath }/"/>
 <!-- Begin page -->
 <div id="wrapper">
 
@@ -240,7 +240,6 @@
 
                         </div>
                     </li>
-
                 </ul>
             </div>
         </nav>
@@ -255,30 +254,19 @@
             <!--- Sidemenu -->
             <div id="sidebar-menu">
                 <ul>
-                    <li class="text-muted menu-title">Navigation</li>
+                    <li class="text-muted menu-title">导航栏</li>
 
                     <li class="has_sub">
-                        <a href="pajaxapimain/index.jsp" class="waves-effect active"><span
-                                class="label label-pill label-primary pull-xs-right">1</span><i
+                        <a href="pajaxapimain/index.jsp" class="waves-effect"><i
                                 class="zmdi zmdi-view-dashboard"></i><span>首页 </span> </a>
                     </li>
 
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-format-underlined"></i>
-                            <span> User Interface </span> <span class="menu-arrow"></span></a>
+                            <span>功能列表</span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a data-pjax href="pajax/pajaxA.jsp">pajaxA.jsp</a></li>
-                            <li><a data-pjax href="pajax/pajaxB.jsp">pajaxB.jsp</a></li>
-                            <li><a data-pjax href="pajaxHandler/test">pajaxHandler/test</a></li>
-                            <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
-                            <li><a href="ui-navs.html">Navs</a></li>
-                            <li><a href="ui-progress.html">Progress</a></li>
-                            <li><a href="ui-modals.html">Modals</a></li>
-                            <li><a href="ui-notification.html">Notification</a></li>
-                            <li><a href="ui-alerts.html">Alerts</a></li>
-                            <li><a href="ui-carousel.html">Carousel</a></li>
-                            <li><a href="ui-bootstrap.html">Bootstrap UI</a></li>
-                            <li><a href="ui-typography.html">Typography</a></li>
+                            <li><a data-pjax href="apiHandler2/getProjects">项目列表</a></li>
+                            <li><a data-pjax href="dbsourceHandler2/getDbsourceList">数据源</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -498,6 +486,6 @@
 <script language="javascript" type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/pajax/index.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/index.js"></script>
 </body>
 </html>

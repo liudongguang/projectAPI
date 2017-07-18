@@ -24,8 +24,8 @@
                 <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                 <td>${obj.description}</td>
                 <td>${obj.serverurl}</td>
-                <td><a class="label label-warning" searFormID="subForm" pageNumParam="${page.pageNum}"
-                       href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
+                <td><a class="label label-warning" data-pjax
+                       href="jsTree2/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
 ">API接口文档</a></td>
             </tr>
         </c:forEach>
@@ -40,12 +40,18 @@
 <input id="pageSize" type="hidden" value="${page.pageSize}"/>
 <input id="pages" type="hidden" value="${page.pages}"/>
 <input id="total" type="hidden" value="${page.total}"/>
-<input id="loadDataURL" type="hidden" value="/apiHandler/getProjects"/>
+<input id="loadDataURL" type="hidden" value="/apiHandler2/getProjects"/>
 <input id="searFormID" type="hidden" value="subForm"/>
+<input id="containerID" type="hidden" value="mainContainer"/>
+
 <!--
 分页结束
 -->
-<script language="javascript" type="text/javascript" src="assets/js/jPage-1.2.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/jPageExt.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/apimain/project/disProjectList.js"></script>
+<script language="javascript" type="text/javascript">
+    jQuery(document).ready(function () {
+        $.getScript("assets/js/jPageExt2.js");
+        $.getScript("assets/js/pajaxapimain/project/disProjectList.js");
+    });
+</script>
+
 

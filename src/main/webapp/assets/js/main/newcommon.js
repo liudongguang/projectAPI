@@ -50,7 +50,8 @@ function initAjaxRequest(container_ID) {
         var subURL=$(this).attr("href");
         $.pjax({
             url: basePath + subURL,
-            container: '#' + container_ID
+            container: '#' + container_ID,
+            errorCallbackFun: errhandler
         });
     });
 }
@@ -65,4 +66,49 @@ function initBackUpBT(backBT_ID) {
    $("#"+backBT_ID).click(function () {
        history.back(-1);
    });
+}
+//9.普通ajax请求
+function  ajaxRequest(param) {
+    var dataType="html";// from server
+    if(param.dataType){
+        dataType=param.dataType;
+    }
+    var data=null;
+    if(param.data){
+        data=param.data;
+    }
+    ///打开遮罩层
+    var zzcid = "";
+    function openZZC() {
+        if (typeof layer != "undefined") {
+            zzcid = layer.load(0, {
+                shade: [0.8, '#fff']
+                // 0.1透明度的白色背景
+            });
+        }
+    }
+    //关闭遮罩层
+    function closeZZC() {
+        if (typeof layer != "undefined") {
+            layer.close(zzcid);
+        }
+    }
+    $.ajax({
+        url: basePath + param.paramurl,
+        container: '#' + param.container,
+        dataType:dataType,
+        data:data,
+        beforeSend:function (XMLHttpRequest) {
+            openZZC();
+        },
+        complete:function (XMLHttpRequest, textStatus) {
+            closeZZC();
+        },
+        success:function(data, textStatus){
+            param.successHandler(data)
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            errhandler(XMLHttpRequest);
+        }
+    });
 }
