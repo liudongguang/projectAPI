@@ -2161,7 +2161,7 @@ fieldset[disabled] a.btn {
   color: #1bb99a;
   background-image: none;
   background-color: transparent;
-  border-color: #1bb99a; }
+  border-color: #1bb99a !important; }
   .btn-success-outline:focus, .btn-success-outline.focus, .btn-success-outline:active, .btn-success-outline.active, .open > .btn-success-outline.dropdown-toggle {
     color: #fff;
     background-color: #1bb99a;

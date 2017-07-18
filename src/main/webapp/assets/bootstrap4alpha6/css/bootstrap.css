@@ -2646,7 +2646,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border: 1px solid transparent;
+  border: 1px solid;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 0.25rem;
