@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<link rel="stylesheet" href="assets/jstreecss/style.css">
 <input id="projectID" type="hidden" value="${param.uid}"/>
 <input id="projectnameID" type="hidden" value="${param.projectname}"/>
-<div class="">
-    <div class="col-md-3" style=" padding:20px;margin-bottom: 50px;">
+<div class="row">
+      <div class="col-md-3">
         <div id="jstreeID">
         </div>
     </div>
-    <div class="col-md-9" id="mainContent" style="border-left:1px solid #bbbbbb; border-left:1px solid #bbbbbb; padding:20px 15px; min-height: 500px;max-height: 800px;overflow: auto;">
+    <div class="col-md-9" id="treemainContent">
 
     </div>
 </div>

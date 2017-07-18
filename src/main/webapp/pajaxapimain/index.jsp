@@ -290,7 +290,7 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="col-md-12">
                         <div id="mainContainer">
                             <div id="pajaxDIV"></div>
                         </div>
@@ -485,6 +485,7 @@
 <script language="javascript" type="text/javascript" src="assets/js/moment.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/index.js"></script>
 </body>

@@ -3,35 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<style>
-
-    #requestDIVID {
-        margin-top: 20px;
-    }
-
-    .form-inline {
-        padding: 5px 0;
-    }
-
-    .one-line {
-        display: inline;
-        margin-right: 15px;
-    }
-
-    .form-inline label {
-        padding-right: 10px;
-        color: #0099b9
-    }
-
-</style>
-
-<div class="clearfix"></div>
-<div class="col-md-12" style="max-height: 700px; margin-top: -20px;">
-    <div class="form-group top_01">
+<div class="col-md-12">
+    <div class="form-group">
         <h3>参数名</h3>
         <div class="form-inline">
             <div class="one-line">
-                <label>请求类型:</label><span class="btn btn-success" style="border-radius: 4px">${apiobj.formmethod}</span>
+                <label>请求类型:</label><span class="btn btn-success" >${apiobj.formmethod}</span>
             </div>
             <div class="one-line">
                 <label>接口地址:</label><span class="from-control">${apiobj.interfaceurl}</span>
@@ -43,8 +20,6 @@
                                       style="width: 630px !important; display: block">${apiobj.description}</span>
         </div>
     </div>
-
-
     <div id="requestDIVID">
         <h4>请求参数</h4>
         <c:forEach items="${paramListRquest}" var="obj" varStatus="stat">
@@ -87,8 +62,6 @@
         <div id="responseDIVID">
             <%--一行三列结束--%>
             <h4>返回参数</h4>
-
-
             <c:forEach items="${paramListResponse}" var="obj" varStatus="stat">
                 <ul>
                     <li>
@@ -125,9 +98,7 @@
             </c:forEach>
         </div>
         <%--一行三列结束--%>
-
         </form>
     </div>
-    <script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
     <script language="javascript" type="text/javascript" src="assets/js/apimain/projectapilock/apidetails.js"></script>
-
+</div>

@@ -9,17 +9,14 @@ jQuery(document).ready(function () {
 });
 function init(projectid) {
     var ajaxOpt_getApiTitlesData = {
-        container:'mainContainer',
         paramurl: 'jsTree2/getApiTitlesData',
         data: {projectid: projectid},
         dataType: 'json',
         successHandler: function (data) {
-            console.log(data)
             initdata(data.data);
-
         }
     };
-    ajaxRequest(ajaxOpt_getApiTitlesData);
+    newajaxRequest(ajaxOpt_getApiTitlesData);
 }
 function initdata(data) {
     $.jstree.defaults.core.themes.variant = "large";
@@ -120,10 +117,17 @@ function initdata(data) {
         var name = rnode.text;
         var level = rnode.li_attr.level;
         var projectid = rnode.li_attr.projectid;
-        console.log("id:" + id + "     name:" + name + "   level:" + level + "    " + "      projectid:" + projectid);
+        //console.log("id:" + id + "     name:" + name + "   level:" + level + "    " + "      projectid:" + projectid);
         if(level==2){
             ///打开接口详情
-            jumpPageNoAuthority("/apiHandler/getApiInfo?apiID="+id+"&projectid="+projectid,$("#mainContent"));
+            var ajaxOpt_getApiTitlesData = {
+                paramurl: "apiHandler2/getApiInfo",
+                data: {apiID: id,projectid:projectid},
+                successHandler: function (data) {
+                   $("#treemainContent").empty().append(data);
+                }
+            };
+            newajaxRequest(ajaxOpt_getApiTitlesData);
         }
     })
     ////////修改了名称后触发

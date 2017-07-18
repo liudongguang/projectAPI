@@ -3,41 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<style>
-    .m_r {
-        margin-right: 15px;
-    }
-
-    .one-group {
-        margin-top: 20px !important;
-    }
-
-    .one-group .from-group {
-        margin-right: 15px;
-    }
-
-    label {
-        width: 80px;
-        text-align: right
-    }
-
-    .form-control {
-        width: 167px !important;
-    }
-
-    .tta {
-        width: 423px !important;
-    }
-
-</style>
 
 <div class="clearfix"></div>
 <div class="col-md-12" style="max-height: 700px; margin-top: -20px;">
-    <div class="col-md-12" style="position: fixed;background: #fff; padding: 15px;">
-        <button class="btn btn-primary" id="subBT" type="button">保存</button>
-    </div>
     <form id="subform" class="form-group" style="margin-top: 65px; padding-bottom: 40px" id="subForm" method="post"
-          action="apiHandler/saveApiParams">
+          action="apiHandler2/saveApiParams">
+        <button class="btn btn-primary" id="subBT" type="submit">保存</button>
         <input name="apiID" type="hidden" value="${param.apiID}"/>
         <input name="projectid" type="hidden" value="${param.projectid}"/>
         <div class="form-group top_01">
@@ -244,6 +215,5 @@
 
     </form>
 </div>
-<script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/apimain/projectapi/addapi.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/projectapi/addapi.js"></script>
 

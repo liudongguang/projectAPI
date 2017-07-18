@@ -68,7 +68,7 @@ function initBackUpBT(backBT_ID) {
    });
 }
 //9.普通ajax请求
-function  ajaxRequest(param) {
+function  newajaxRequest(param) {
     var dataType="html";// from server
     if(param.dataType){
         dataType=param.dataType;
@@ -95,7 +95,6 @@ function  ajaxRequest(param) {
     }
     $.ajax({
         url: basePath + param.paramurl,
-        container: '#' + param.container,
         dataType:dataType,
         data:data,
         beforeSend:function (XMLHttpRequest) {
@@ -109,6 +108,26 @@ function  ajaxRequest(param) {
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
             errhandler(XMLHttpRequest);
+        }
+    });
+}
+//////10.多行，同名默认选中
+function initSetDataForMulti() {
+    var vals = $("[setVal]");
+    vals.each(function () {
+        var jq_this = $(this);
+        var value=jq_this.attr("setVal");
+        if (value) {
+            if (jq_this.is("select")) {
+                jq_this.val(value);
+            } else if (jq_this.attr("type") == 'radio') {
+                var setRadio = $("[name=" + id + "][value=" + value + "]");
+                if (setRadio.length != 0) {
+                    setRadio.prop('checked', true);
+                }
+            } else {
+                layer.alert('未知类型')
+            }
         }
     });
 }
