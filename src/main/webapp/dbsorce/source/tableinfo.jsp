@@ -26,6 +26,5 @@
         </tbody>
     </table>
 </div>
-<script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/dbsorce/source/handlersource.js"></script>
 

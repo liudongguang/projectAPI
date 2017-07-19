@@ -18,7 +18,7 @@
 
     <!-- Switchery css -->
     <link href="assets/uplon/plugins/switchery/switchery.min.css" rel="stylesheet"/>
-
+    <link href="assets/css/ldgmain.css" rel="stylesheet"/>
     <!-- App CSS -->
     <link rel="stylesheet" href="assets/uplon/style.css"/>
     <link rel="stylesheet" href="assets/tether-1.3.3/css/tether.css"/>
@@ -485,7 +485,6 @@
 <script language="javascript" type="text/javascript" src="assets/js/moment.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/main/ajaxForm.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/index.js"></script>
 </body>
