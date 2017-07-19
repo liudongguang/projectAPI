@@ -41,13 +41,13 @@
                 <c:if test="${paramListRquest==null}">
                     <%--一行三列开始--%>
                     <div class="form-group">
-                        <input name="rquestParamUID" type="hidden" value="-1"/>
+                        <input name="requestParamUID" type="hidden" value="-1"/>
                         <div class="form-inline">
                             <label class="mr-sm-2">参数名</label>
                             <input name="rquestParam" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
                                    placeholder="请求参数名" required
                                    value="${obj.paramname}"
-                                   errInfo="请求参数名不能为空！">
+                                   errInfo="请求参数名不能为空！"/>
 
                             <label class="mr-sm-2">参数类型</label>
                             <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="rquestParamType">
@@ -67,13 +67,13 @@
                                    placeholder="请求参数备注"
                                    value="${obj.parambeizhu}"
                                    required
-                                   errInfo="请求参数备注不能为空！">
+                                   errInfo="请求参数备注不能为空！"/>
                                 <%--添加按钮--%>
-                            <div class="form-group">
-                                <button id="addRequestBTID_"
+
+                                <button id="addrequestBTID_"
                                         class="btn btn-success-outline btn-rounded waves-effect waves-light">添加
                                 </button>
-                            </div>
+
                                 <%--添加按钮结束--%>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                 <c:forEach items="${paramListRquest}" var="obj" varStatus="stat">
                     <%--一行三列开始--%>
                     <div class="form-group">
-                        <input name="rquestParamUID" type="hidden" value="${obj.uid}"/>
+                        <input name="requestParamUID" type="hidden" value="${obj.uid}"/>
                         <div class="form-inline">
                             <label class="mr-sm-2">参数名</label>
                             <input name="rquestParam" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
@@ -112,14 +112,14 @@
                                    errInfo="请求参数备注不能为空！">
 
                                 <%--添加按钮--%>
-                            <div class="form-group">
-                                <button id="addRequestBTID_${obj.uid}"
+
+                                <button id="addrequestBTID_${obj.uid}"
                                         class="btn btn-success-outline btn-rounded waves-effect waves-light mr-sm-2">添加
                                 </button>
-                                <button id="delRequestBTID_${obj.uid}"
+                                <button id="delrequestBTID_${obj.uid}"
                                         class="btn btn-danger-outline btn-rounded waves-effect waves-light">删除
                                 </button>
-                            </div>
+
                                 <%--添加按钮结束--%>
                         </div>
                     </div>
@@ -166,11 +166,11 @@
                                    errInfo="返回参数备注不能为空！">
 
                                 <%--添加按钮--%>
-                            <div class="form-group">
-                                <button id="addResponseBTID_"
+
+                                <button id="addresponseBTID_"
                                         class="btn btn-success-outline btn-rounded waves-effect waves-light">添加
                                 </button>
-                            </div>
+
                                 <%--添加按钮结束--%>
                         </div>
                     </div>
@@ -208,14 +208,14 @@
                                    errInfo="返回参数备注不能为空！">
 
                                 <%--添加按钮--%>
-                            <div class="form-group">
-                                <button id="addResponseBTID_${obj.uid}"
+
+                                <button id="addresponseBTID_${obj.uid}"
                                         class="btn btn-success-outline btn-rounded waves-effect waves-light mr-sm-2">添加
                                 </button>
-                                <button id="delResponseBTID_${obj.uid}"
+                                <button id="delresponseBTID_${obj.uid}"
                                         class="btn btn-danger-outline btn-rounded waves-effect waves-light">删除
                                 </button>
-                            </div>
+
                                 <%--添加按钮结束--%>
                         </div>
                     </div>
