@@ -12,4 +12,6 @@ public interface TProjectapisMapper extends Mapper<TProjectapis> {
     String getTitleNameForsaveTreeHandler(Integer uid);
 
     Integer updateTitleNameByPrimaryKey(TProjectapis pp);
+
+    int deleteApiByProjectID(TProjectapis ele);
 }

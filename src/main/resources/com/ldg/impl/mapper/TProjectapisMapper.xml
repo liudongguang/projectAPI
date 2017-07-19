@@ -24,4 +24,7 @@
   <update id="updateTitleNameByPrimaryKey" parameterType="com.ldg.api.po.TProjectapis">
        update t_projectapis set apititle=#{apititle} where uid=#{uid}
   </update>
+  <delete id="deleteApiByProjectID" parameterType="com.ldg.api.po.TProjectapis">
+       DELETE from t_projectapis where projectid=#{uid,jdbcType=INTEGER}
+  </delete>
 </mapper>

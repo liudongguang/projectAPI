@@ -26,7 +26,7 @@
                 <td>${obj.serverurl}</td>
                 <td><a class="btn btn-warning-outline btn-sm" data-pjax
                        href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}">API接口文档</a>
-                    <a class="btn btn-danger-outline btn-sm" data-pjax delmark href="jsTree/delApiTitles?uid=${obj.uid}">删除</a></td>
+                    <a class="btn btn-danger-outline btn-sm" data-pjax delmark href="apiHandler/delApiProject?uid=${obj.uid}">删除</a></td>
             </tr>
         </c:forEach>
         </tbody>

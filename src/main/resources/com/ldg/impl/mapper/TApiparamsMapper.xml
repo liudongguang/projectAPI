@@ -17,4 +17,7 @@
   <select id="getApiInfo" parameterType="com.ldg.api.vo.controllerparam.GetApiInfo" resultMap="BaseResultMap">
        select uid,ptype,paramname,paramtype,parambeizhu,paramrequired from t_apiparams where apiid=#{apiID} and projectid=#{projectid,jdbcType=VARCHAR}
   </select>
+  <delete id="deleteApiByProjectID" parameterType="com.ldg.api.po.TProjectapis">
+        DELETE from t_apiparams where projectid=#{uid,jdbcType=INTEGER}
+  </delete>
 </mapper>

@@ -70,7 +70,17 @@ public class APIController {
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
         return "/pajaxapimain/project/disProjectList.jsp";
     }
-
+    /**
+     * 删除项目
+     * @param request
+     * @param ele
+     * @return
+     */
+    @RequestMapping(value = "/delApiProject")
+    public String delApiProject(HttpServletRequest request,TProjectapis ele) {
+        int i=apiService.delApiProjectByID(ele);
+        return "/apiHandler/getProjects";
+    }
 
     /**
      * 保存项目项

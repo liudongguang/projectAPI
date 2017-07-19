@@ -63,4 +63,11 @@ public interface ApiService {
      * @return
      */
     Integer selectProjectIDByName(TProjects project);
+
+    /**
+     * 通过id删除项目
+     * @param ele
+     * @return
+     */
+    int delApiProjectByID(TProjectapis ele);
 }

@@ -140,4 +140,16 @@ public class ApiServiceImpl implements ApiService {
     public Integer selectProjectIDByName(TProjects project) {
         return projectsDao.selectProjectIDByName(project);
     }
+
+    @Override
+    public int delApiProjectByID(TProjectapis ele) {
+        int delNum=projectsDao.deleteByPrimaryKey(ele.getUid());
+        if(1==delNum){
+            //删除接口
+            projectapisDao.deleteApiByProjectID(ele);
+            //删除接口参数
+            tApiparamsDao.deleteApiByProjectID(ele);
+        }
+        return delNum;
+    }
 }
