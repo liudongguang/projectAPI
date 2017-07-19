@@ -2,9 +2,10 @@ var basePath = $("#basePath").val();
 //1.普通弹出内容框
 function openWindow(title, content) {
     layer.open({
-        type: 1,
+        type: 2,
         content: content, //这里content是一个普通的String
-        title: title
+        title: title,
+        area: ['500px', '300px']
     });
 }
 
@@ -153,4 +154,12 @@ function initSetDataForMulti() {
             }
         }
     });
+}
+///11.pajax访问
+function pajaxReq(url,containerSelector) {
+    $.pjax({url: url, container: containerSelector,type: "post",
+        timeout:3000,
+        completeCallbackFun: checkLogin,
+        errorCallbackFun: errhandler,
+        successCallbackFun:successHandler})
 }

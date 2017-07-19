@@ -24,9 +24,9 @@
                 <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                 <td>${obj.description}</td>
                 <td>${obj.serverurl}</td>
-                <td><a class="label label-warning" data-pjax
-                       href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
-">API接口文档</a></td>
+                <td><a class="btn btn-warning-outline btn-sm" data-pjax
+                       href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}">API接口文档</a>
+                    <a class="btn btn-danger-outline btn-sm" data-pjax delmark href="jsTree/delApiTitles?uid=${obj.uid}">删除</a></td>
             </tr>
         </c:forEach>
         </tbody>
