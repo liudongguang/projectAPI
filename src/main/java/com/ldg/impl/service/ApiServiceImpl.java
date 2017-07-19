@@ -48,6 +48,7 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public int saveProject(TProjects project) {
         project.setCreatetime(new Date());
+        System.out.println(project);
         return projectsDao.insertSelective(project);
     }
 
@@ -133,5 +134,10 @@ public class ApiServiceImpl implements ApiService {
     @Override
     public TProjectapis getApiInfo(GetApiInfo param) {
         return projectapisDao.selectByPrimaryKey(param.getApiID());
+    }
+
+    @Override
+    public Integer selectProjectIDByName(TProjects project) {
+        return projectsDao.selectProjectIDByName(project);
     }
 }

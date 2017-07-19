@@ -7,4 +7,7 @@ import java.util.List;
 
 public interface TProjectsMapper extends Mapper<TProjects> {
     List<TProjects> getProjectsPageInfo();
+
+
+    Integer selectProjectIDByName(TProjects project);
 }

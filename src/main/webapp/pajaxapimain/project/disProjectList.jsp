@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="clearfix"></div>
 <div class="form-group">
-    <button class="btn btn-primary btn-large" ajaxthispage href="/apimain/project/addproject.jsp">新增</button>
+    <button class="btn btn-primary-outline" data-pjax href="pajaxapimain/project/addproject.jsp">新增</button>
 </div>
 <div class="table-responsive">
     <table id="dataTable" class="table table-striped table-hover table-bordered">
@@ -25,7 +25,7 @@
                 <td>${obj.description}</td>
                 <td>${obj.serverurl}</td>
                 <td><a class="label label-warning" data-pjax
-                       href="jsTree2/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
+                       href="jsTree/getApiTitles?uid=${obj.uid}&projectname=${obj.projectname}
 ">API接口文档</a></td>
             </tr>
         </c:forEach>

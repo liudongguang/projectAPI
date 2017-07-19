@@ -8,6 +8,7 @@ import com.ldg.api.po.TProjectapis;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.service.ApiService;
 import com.ldg.api.vo.PageParam;
+import com.ldg.api.vo.ResultMsg;
 import com.ldg.api.vo.controllerparam.GetApiInfo;
 import com.ldg.api.vo.controllerparam.SaveApiParams;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -80,10 +82,20 @@ public class APIController {
     @RequestMapping(value = "/saveProject")
     public String saveProject(HttpServletRequest request, TProjects project) {
         int saveState = apiService.saveProject(project);
-        System.out.println("插入条数"+saveState);
-        return "/apiHandler2/getProjects";
+        return "/apiHandler/getProjects";
     }
 
+    @RequestMapping(value = "/checkProjectName")
+    @ResponseBody
+    public ResultMsg checkProjectName(HttpServletRequest request, TProjects project) {
+        ResultMsg rs=new ResultMsg();
+        Integer id=apiService.selectProjectIDByName(project);
+        if(id!=null){
+            rs.setErrcode(1);
+            rs.setErrmsg("项目名称已存在");
+        }
+        return rs;
+    }
     /**
      * 获取api的详细信息
      *
@@ -117,7 +129,7 @@ public class APIController {
     @RequestMapping(value = "/saveApiParams")
     public String saveApiParams(HttpServletRequest request, SaveApiParams param) {
         int saveNum = apiService.saveApiParams(param);
-        return "/apiHandler2/getApiInfo";
+        return "/apiHandler/getApiInfo";
     }
 
 }

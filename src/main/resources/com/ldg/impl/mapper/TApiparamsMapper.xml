@@ -15,6 +15,6 @@
     <result column="paramrequired" jdbcType="VARCHAR" property="paramrequired" />
   </resultMap>
   <select id="getApiInfo" parameterType="com.ldg.api.vo.controllerparam.GetApiInfo" resultMap="BaseResultMap">
-       select uid,ptype,paramname,paramtype,parambeizhu,paramrequired from t_apiparams where apiid=#{apiID} and projectid=#{projectid}
+       select uid,ptype,paramname,paramtype,parambeizhu,paramrequired from t_apiparams where apiid=#{apiID} and projectid=#{projectid,jdbcType=VARCHAR}
   </select>
 </mapper>

@@ -56,4 +56,11 @@ public interface ApiService {
      * @return
      */
     TManagers login(TManagers manager);
+
+    /**
+     * 根据项目名查询id
+     * @param project
+     * @return
+     */
+    Integer selectProjectIDByName(TProjects project);
 }

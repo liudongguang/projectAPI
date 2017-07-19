@@ -56,9 +56,31 @@ function initAjaxRequest(container_ID) {
     });
 }
 //7.初始化ajax form表单
-function initAjaxForm(form_ID,container_ID) {
+function initAjaxForm(form_ID,container_ID,checkParam) {
     $("#"+form_ID).submit(function (event) {
-        $.pjax.submit(event, '#'+container_ID)
+        if(!checkParam){
+            $.pjax.submit(event, '#'+container_ID)
+        }else{
+            checkParam.successHandler=function (data) {
+               if(data.errcode==1){
+                    layer.alert(data.errmsg);
+               }else{
+                   $.pjax.submit(event, '#'+container_ID)
+               }
+            }
+            var data={};
+            //要检查的属性
+            $(this).find("[checkparam]").each(function () {
+                var $checkParam=$(this);
+                var pname=$checkParam.attr("name");
+                var pvalue=$checkParam.val();
+                data[pname]=pvalue;
+            })
+            checkParam.data=data;
+            checkParam.dataType='json';
+            newajaxRequest(checkParam);
+            return false;
+        }
     })
 }
 //8.返回按钮
@@ -97,6 +119,7 @@ function  newajaxRequest(param) {
         url: basePath + param.paramurl,
         dataType:dataType,
         data:data,
+        method:'post',
         beforeSend:function (XMLHttpRequest) {
             openZZC();
         },

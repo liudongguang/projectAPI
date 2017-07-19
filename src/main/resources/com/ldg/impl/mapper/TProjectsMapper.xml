@@ -14,4 +14,7 @@
   <select id="getProjectsPageInfo" resultMap="BaseResultMap">
       select * from t_projects order by uid desc
   </select>
+  <select id="selectProjectIDByName" parameterType="com.ldg.api.po.TProjects" resultType="int">
+      select uid from t_projects where projectname=#{projectname,jdbcType=VARCHAR}
+  </select>
 </mapper>

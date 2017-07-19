@@ -6,7 +6,7 @@
 
 <div class="clearfix"></div>
 <div class="col-md-12">
-    <button class="btn btn-primary float-right" id="subBT" type="submit" form="subform" style="margin-bottom: 10px">保存</button>
+    <button class="btn btn-primary-outline waves-effect waves-light float-right" id="subBT" type="submit" form="subform" style="margin-bottom: 10px">保存</button>
     <form id="subform" id="subForm" method="post" action="apiHandler/saveApiParams">
         <input name="apiID" type="hidden" value="${param.apiID}"/>
         <input name="projectid" type="hidden" value="${param.projectid}"/>
