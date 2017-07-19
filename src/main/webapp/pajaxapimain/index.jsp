@@ -265,8 +265,8 @@
                         <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-format-underlined"></i>
                             <span>功能列表</span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a data-pjax href="apiHandler2/getProjects">项目列表</a></li>
-                            <li><a data-pjax href="dbsourceHandler2/getDbsourceList">数据源</a></li>
+                            <li><a data-pjax href="apiHandler/getProjects">项目列表</a></li>
+                            <li><a data-pjax href="dbsourceHandler/getDbsourceList">数据源</a></li>
                         </ul>
                     </li>
                 </ul>

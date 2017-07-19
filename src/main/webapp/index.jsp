@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="apiHandler2/login" method="post"
+                        <form role="form" action="apiHandler/login" method="post"
                               class="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label> <input

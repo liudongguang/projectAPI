@@ -4,13 +4,13 @@ jQuery(document).ready(function () {
         layer.alert("没有选择项目！");
         return false;
     }
-
-    init(projectid);
+    var projectname=$("#projectnameID").val();
+    init(projectid,projectname);
 });
-function init(projectid) {
+function init(projectid,projectname) {
     var ajaxOpt_getApiTitlesData = {
-        paramurl: 'jsTree2/getApiTitlesData',
-        data: {projectid: projectid},
+        paramurl: 'jsTree/getApiTitlesData',
+        data: {projectid: projectid,projectname:projectname},
         dataType: 'json',
         successHandler: function (data) {
             initdata(data.data);
@@ -121,7 +121,7 @@ function initdata(data) {
         if(level==2){
             ///打开接口详情
             var ajaxOpt_getApiTitlesData = {
-                paramurl: "apiHandler2/getApiInfo",
+                paramurl: "apiHandler/getApiInfo",
                 data: {apiID: id,projectid:projectid},
                 successHandler: function (data) {
                    $("#treemainContent").empty().append(data);
@@ -175,15 +175,15 @@ function initFirstBT() {
             layer.alert("没有选择项目！");
             return false;
         }
-        var ajaxOpt = {
-            paramurl: basePath + 'jsTree/initApiTitleData',
-            paramdata: {projectid: projectid, projectname: projectname},
+        var ajaxOpt_getApiTitlesData = {
+            paramurl: 'jsTree/initApiTitleData',
+            data: {projectid: projectid, projectname: projectname},
             dataType: 'json',
-            callbackFun: function (data) {
-                location.href = basePath + "/apimain/projectapi/disApiList.jsp?uid=" + projectid + "&projectname=" + projectname;
+            successHandler: function (data) {
+                location.href = basePath + "/pajaxapimain/projectapi/disApiList.jsp?uid=" + projectid + "&projectname=" + projectname;
             }
         };
-        ajaxRun(ajaxOpt);
+        newajaxRequest(ajaxOpt_getApiTitlesData);
     });
     jq_div.append(createbutton);
 }

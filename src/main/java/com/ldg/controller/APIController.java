@@ -44,7 +44,7 @@ public class APIController {
         TManagers selectManager = apiService.login(manager);
         if (selectManager != null) {
             request.getSession().setAttribute("user", selectManager);
-            return "redirect:/apimain/index.jsp";
+            return "redirect:/pajaxapimain/index.jsp";
         } else {
             request.setAttribute("message", "用户名或密码错误！");
             return "redirect:/index.jsp";
@@ -66,15 +66,9 @@ public class APIController {
     public String getProjects(HttpServletRequest request, PageParam pageParam) {
         PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
-        return "/apimain/project/disProjectList.jsp";
+        return "/pajaxapimain/project/disProjectList.jsp";
     }
-    @RequestMapping(value = "/getProjects2")
-    public String getProjects2(HttpServletRequest request, PageParam pageParam) throws InterruptedException {
-        PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
-        request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
-        //if(request!=null){throw new RuntimeException("2334");}
-        return "/apimain/project/disProjectList2.jsp";
-    }
+
 
     /**
      * 保存项目项
@@ -87,13 +81,7 @@ public class APIController {
     public String saveProject(HttpServletRequest request, TProjects project) {
         int saveState = apiService.saveProject(project);
         System.out.println("插入条数"+saveState);
-        return "/apiHandler/getProjects";
-    }
-    @RequestMapping(value = "/saveProject2")
-    public String saveProject2(HttpServletRequest request, TProjects project) {
-        int saveState = apiService.saveProject(project);
-        System.out.println("插入条数"+saveState);
-        return "/apiHandler/getProjects2";
+        return "/apiHandler2/getProjects";
     }
 
     /**
@@ -114,9 +102,9 @@ public class APIController {
         request.setAttribute("apiobj", objapi);
         TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
         if(sessionManager.getAuthority()==2){
-            return "/apimain/projectapilock/apidetails.jsp";
+            return "/pajaxapimain/projectapilock/apidetails.jsp";
         }
-        return "/apimain/projectapi/addapi.jsp";
+        return "/pajaxapimain/projectapi/addapi.jsp";
     }
 
     /**
@@ -129,7 +117,7 @@ public class APIController {
     @RequestMapping(value = "/saveApiParams")
     public String saveApiParams(HttpServletRequest request, SaveApiParams param) {
         int saveNum = apiService.saveApiParams(param);
-        return "/apiHandler/getApiInfo";
+        return "/apiHandler2/getApiInfo";
     }
 
 }

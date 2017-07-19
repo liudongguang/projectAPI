@@ -39,9 +39,9 @@ public class JsTreeController {
     public String getApiTitles(HttpServletRequest request) {
         TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
         if(2==sessionManager.getAuthority()){
-            return "/apimain/projectapilock/disApiList.jsp";
+            return "/pajaxapimain/projectapilock/disApiList.jsp";
         }
-        return "/apimain/projectapi/disApiList.jsp";
+        return "/pajaxapimain/projectapi/disApiList.jsp";
     }
 
     /**
@@ -51,13 +51,12 @@ public class JsTreeController {
      */
     @RequestMapping(value = "/getApiTitlesData")
     @ResponseBody
-    public ResultMsg getApiTitlesData(HttpServletRequest request,Integer projectid) {
+    public ResultMsg getApiTitlesData(HttpServletRequest request,InitApiTitleData param) {
         ResultMsg msg=new ResultMsg();
-        List<TProjectapis> list=jsTreeService.getApiTitlesData(projectid);
+        List<TProjectapis> list=jsTreeService.getApiTitlesData(param.getProjectid());
         if(list.size()==0){
-            msg.setErrcode(1);
-            msg.setErrmsg("需要初始化列表");
-            return msg;
+            int i=jsTreeService.saveRootMenu(param);
+            list=jsTreeService.getApiTitlesData(param.getProjectid());
         }
         List<JsTree> treeList = new ArrayList<>();
         list.forEach((item)->{
