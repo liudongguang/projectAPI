@@ -12,12 +12,12 @@ public class SaveApiParams {
     private String interfaceURL;
     private String description;//接口描述
 
-    private List<Integer> rquestParamUID;//参数id   新增的参数id为-1
-    private List<String> rquestParam;//请求参数名
-    private List<String> rquestParamType;//请求参数类型
-    private List<String> rquestParamrequired;//1.必填  2.不必填
-    private List<String> rquestParamBeizhu;//请求参数备注
-    private List<Integer> rquestDelParamUID;//删除的参数id
+    private List<Integer> requestParamUID;//参数id   新增的参数id为-1
+    private List<String> requestParam;//请求参数名
+    private List<String> requestParamType;//请求参数类型
+    private List<String> requestParamrequired;//1.必填  2.不必填
+    private List<String> requestParamBeizhu;//请求参数备注
+    private List<Integer> requestDelParamUID;//删除的参数id
 
     private List<Integer> responseParamUID;//参数id   新增的参数id为-1
     private List<String> responseParam;//返回参数名
@@ -26,62 +26,6 @@ public class SaveApiParams {
     private List<String> responseParamBeizhu;//返回参数备注
     private List<Integer> responseDelParamUID;//删除的参数id
 
-
-    public List<String> getRquestParamrequired() {
-        return rquestParamrequired;
-    }
-
-    public void setRquestParamrequired(List<String> rquestParamrequired) {
-        this.rquestParamrequired = rquestParamrequired;
-    }
-
-    public List<String> getResponseParamrequired() {
-        return responseParamrequired;
-    }
-
-    public void setResponseParamrequired(List<String> responseParamrequired) {
-        this.responseParamrequired = responseParamrequired;
-    }
-
-    public List<Integer> getRquestDelParamUID() {
-        return rquestDelParamUID;
-    }
-
-    public void setRquestDelParamUID(List<Integer> rquestDelParamUID) {
-        this.rquestDelParamUID = rquestDelParamUID;
-    }
-
-    public List<Integer> getResponseDelParamUID() {
-        return responseDelParamUID;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setResponseDelParamUID(List<Integer> responseDelParamUID) {
-        this.responseDelParamUID = responseDelParamUID;
-    }
-
-    public List<Integer> getRquestParamUID() {
-        return rquestParamUID;
-    }
-
-    public void setRquestParamUID(List<Integer> rquestParamUID) {
-        this.rquestParamUID = rquestParamUID;
-    }
-
-    public List<Integer> getResponseParamUID() {
-        return responseParamUID;
-    }
-
-    public void setResponseParamUID(List<Integer> responseParamUID) {
-        this.responseParamUID = responseParamUID;
-    }
 
     public Integer getApiID() {
         return apiID;
@@ -115,28 +59,68 @@ public class SaveApiParams {
         this.interfaceURL = interfaceURL;
     }
 
-    public List<String> getRquestParam() {
-        return rquestParam;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRquestParam(List<String> rquestParam) {
-        this.rquestParam = rquestParam;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public List<String> getRquestParamType() {
-        return rquestParamType;
+    public List<Integer> getRequestParamUID() {
+        return requestParamUID;
     }
 
-    public void setRquestParamType(List<String> rquestParamType) {
-        this.rquestParamType = rquestParamType;
+    public void setRequestParamUID(List<Integer> requestParamUID) {
+        this.requestParamUID = requestParamUID;
     }
 
-    public List<String> getRquestParamBeizhu() {
-        return rquestParamBeizhu;
+    public List<String> getRequestParam() {
+        return requestParam;
     }
 
-    public void setRquestParamBeizhu(List<String> rquestParamBeizhu) {
-        this.rquestParamBeizhu = rquestParamBeizhu;
+    public void setRequestParam(List<String> requestParam) {
+        this.requestParam = requestParam;
+    }
+
+    public List<String> getRequestParamType() {
+        return requestParamType;
+    }
+
+    public void setRequestParamType(List<String> requestParamType) {
+        this.requestParamType = requestParamType;
+    }
+
+    public List<String> getRequestParamrequired() {
+        return requestParamrequired;
+    }
+
+    public void setRequestParamrequired(List<String> requestParamrequired) {
+        this.requestParamrequired = requestParamrequired;
+    }
+
+    public List<String> getRequestParamBeizhu() {
+        return requestParamBeizhu;
+    }
+
+    public void setRequestParamBeizhu(List<String> requestParamBeizhu) {
+        this.requestParamBeizhu = requestParamBeizhu;
+    }
+
+    public List<Integer> getRequestDelParamUID() {
+        return requestDelParamUID;
+    }
+
+    public void setRequestDelParamUID(List<Integer> requestDelParamUID) {
+        this.requestDelParamUID = requestDelParamUID;
+    }
+
+    public List<Integer> getResponseParamUID() {
+        return responseParamUID;
+    }
+
+    public void setResponseParamUID(List<Integer> responseParamUID) {
+        this.responseParamUID = responseParamUID;
     }
 
     public List<String> getResponseParam() {
@@ -155,12 +139,28 @@ public class SaveApiParams {
         this.responseParamType = responseParamType;
     }
 
+    public List<String> getResponseParamrequired() {
+        return responseParamrequired;
+    }
+
+    public void setResponseParamrequired(List<String> responseParamrequired) {
+        this.responseParamrequired = responseParamrequired;
+    }
+
     public List<String> getResponseParamBeizhu() {
         return responseParamBeizhu;
     }
 
     public void setResponseParamBeizhu(List<String> responseParamBeizhu) {
         this.responseParamBeizhu = responseParamBeizhu;
+    }
+
+    public List<Integer> getResponseDelParamUID() {
+        return responseDelParamUID;
+    }
+
+    public void setResponseDelParamUID(List<Integer> responseDelParamUID) {
+        this.responseDelParamUID = responseDelParamUID;
     }
 
     @Override
@@ -170,14 +170,17 @@ public class SaveApiParams {
                 ", projectid=" + projectid +
                 ", formMethod='" + formMethod + '\'' +
                 ", interfaceURL='" + interfaceURL + '\'' +
-                ", rquestParamUID=" + rquestParamUID +
-                ", rquestParam=" + rquestParam +
-                ", rquestParamType=" + rquestParamType +
-                ", rquestParamBeizhu=" + rquestParamBeizhu +
-                ", rquestDelParamUID=" + rquestDelParamUID +
+                ", description='" + description + '\'' +
+                ", requestParamUID=" + requestParamUID +
+                ", requestParam=" + requestParam +
+                ", requestParamType=" + requestParamType +
+                ", requestParamrequired=" + requestParamrequired +
+                ", requestParamBeizhu=" + requestParamBeizhu +
+                ", requestDelParamUID=" + requestDelParamUID +
                 ", responseParamUID=" + responseParamUID +
                 ", responseParam=" + responseParam +
                 ", responseParamType=" + responseParamType +
+                ", responseParamrequired=" + responseParamrequired +
                 ", responseParamBeizhu=" + responseParamBeizhu +
                 ", responseDelParamUID=" + responseDelParamUID +
                 '}';

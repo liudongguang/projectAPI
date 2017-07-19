@@ -62,12 +62,12 @@ public class ApiServiceImpl implements ApiService {
          Integer projectid=param.getProjectid();
          String formMethod=param.getFormMethod();
          String interfaceURL=param.getInterfaceURL();
-         List<String> rquestParam=param.getRquestParam();
-         List<String> rquestParamType=param.getRquestParamType();
-         List<String> rquestParamrequired=param.getRquestParamrequired();
-         List<String> rquestParamBeizhu=param.getRquestParamBeizhu();
-         List<Integer> rquestParamUID=param.getRquestParamUID();
-         List<Integer> rquestDelParamUID=param.getRquestDelParamUID();
+         List<String> rquestParam=param.getRequestParam();
+         List<String> rquestParamType=param.getRequestParamType();
+         List<String> rquestParamrequired=param.getRequestParamrequired();
+         List<String> rquestParamBeizhu=param.getRequestParamBeizhu();
+         List<Integer> rquestParamUID=param.getRequestParamUID();
+         List<Integer> rquestDelParamUID=param.getRequestDelParamUID();
 
          for(int i=0;i<rquestParam.size();i++){
              TApiparams tp=new TApiparams();

@@ -16,7 +16,6 @@ jQuery(document).ready(function () {
         $("#requestDIVID").append(newGroup);
         return false;
     });
-
 });
 function createNewRow(createTypeName) {
     var time = new Date().getTime();

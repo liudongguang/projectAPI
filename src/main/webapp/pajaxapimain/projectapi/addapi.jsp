@@ -44,26 +44,26 @@
                         <input name="requestParamUID" type="hidden" value="-1"/>
                         <div class="form-inline">
                             <label class="mr-sm-2">参数名</label>
-                            <input name="rquestParam" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
+                            <input name="requestParam" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
                                    placeholder="请求参数名" required
                                    value="${obj.paramname}"
                                    errInfo="请求参数名不能为空！"/>
 
                             <label class="mr-sm-2">参数类型</label>
-                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="rquestParamType">
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="requestParamType">
                                 <option selected>string</option>
                                 <option>number</option>
                             </select>
 
                             <label class="mr-sm-2">是否必填</label>
-                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="rquestParamrequired"
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="requestParamrequired"
                                     setVal="${obj.paramrequired}">
                                 <option value="是" selected>是</option>
                                 <option value="否">否</option>
                             </select>
 
                             <label class="mr-sm-2">备注</label>
-                            <input name="rquestParamBeizhu" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
+                            <input name="requestParamBeizhu" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
                                    placeholder="请求参数备注"
                                    value="${obj.parambeizhu}"
                                    required
@@ -85,27 +85,27 @@
                         <input name="requestParamUID" type="hidden" value="${obj.uid}"/>
                         <div class="form-inline">
                             <label class="mr-sm-2">参数名</label>
-                            <input name="rquestParam" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
+                            <input name="requestParam" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
                                    placeholder="请求参数名" required
                                    value="${obj.paramname}"
                                    errInfo="请求参数名不能为空！">
 
                             <label class="mr-sm-2">参数类型</label>
-                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="rquestParamType"
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="requestParamType"
                                     setVal="${obj.paramtype}">
                                 <option selected>string</option>
                                 <option>number</option>
                             </select>
 
                             <label class="mr-sm-2">是否必填</label>
-                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="rquestParamrequired"
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="requestParamrequired"
                                     setVal="${obj.paramrequired}">
                                 <option value="是" selected>是</option>
                                 <option value="否">否</option>
                             </select>
 
                             <label class="mr-sm-2">备注</label>
-                            <input name="rquestParamBeizhu" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
+                            <input name="requestParamBeizhu" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0"
                                    placeholder="请求参数备注"
                                    value="${obj.parambeizhu}"
                                    required
