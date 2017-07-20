@@ -40,7 +40,7 @@
 <input id="pageSize" type="hidden" value="${page.pageSize}"/>
 <input id="pages" type="hidden" value="${page.pages}"/>
 <input id="total" type="hidden" value="${page.total}"/>
-<input id="loadDataURL" type="hidden" value="/apiHandler/getProjects"/>
+<input id="loadDataURL" type="hidden" value="apiHandler/getProjects"/>
 <input id="searFormID" type="hidden" value="subForm"/>
 <input id="containerID" type="hidden" value="mainContainer"/>
 

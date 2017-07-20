@@ -49,11 +49,13 @@ public class Cache_Pajax {
         if(v!=null){
             return false;
         }
+       // System.out.println(uri+"  ++++ "+v);
         int index=uri.indexOf("/",1);
         if(index==-1){
             return false;
         }
         v=controllerPrefix.get(uri.substring(0,index));
+        //System.out.println(uri+"  ---- "+v);
         //是要被pajax请求的
         if(v!=null){
             return true;
