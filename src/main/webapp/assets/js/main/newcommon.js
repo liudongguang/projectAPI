@@ -163,3 +163,16 @@ function pajaxReq(url,containerSelector) {
         errorCallbackFun: errhandler,
         successCallbackFun:successHandler})
 }
+////12.弹出tips
+function layertips(id) {
+    var tipsIndex="";
+    $("div[id^="+id+"]").mouseover(function () {
+        var jq_this=$(this);
+        tipsIndex=layer.tips(jq_this.text(), "#"+jq_this.attr('id'), {
+            tips: [3, '#1E9FFF'],
+            time: 0
+        });
+    }).mouseout(function () {
+        layer.close(tipsIndex);
+    })
+}

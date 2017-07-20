@@ -443,8 +443,8 @@
     </div>
     <!-- /Right-bar -->
 
-    <footer class="footer text-right">
-        2016 © Uplon.
+    <footer class="footer text-center">
+                2017 © LiuDongguang.<!-- <img src="assets/images/0.gif"/>
     </footer>
 
 

@@ -54,6 +54,12 @@
           $(this).next("ul").slideUp(350);
           $(".pull-right i",$(this).parent()).removeClass("md-remove").addClass("md-add");
         }
+        ////
+           if ($(this).attr("data-pjax")=="") {
+               $(this).siblings().removeClass("subdrop");
+               $(this).addClass("subdrop");
+           }
+           ////
       }
     },
 

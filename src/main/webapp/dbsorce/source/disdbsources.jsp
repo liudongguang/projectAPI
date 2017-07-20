@@ -24,7 +24,7 @@
             <tr id="${obj.uid}">
                 <td>${obj.dbsourcename}</td>
                 <td>
-                    <div class="textoverShengluehao">${obj.dbsourcelinkurl}</div>
+                    <div id="layertips_${obj.uid}" class="textoverShengluehao">${obj.dbsourcelinkurl}</div>
                 </td>
                 <td>${obj.dbsourceusername}</td>
                 <td>${obj.dbsourcepassword}</td>
