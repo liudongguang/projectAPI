@@ -7,7 +7,10 @@ public interface CommConstant {
     String PAGE_REQUEST_ATTR="page";
     String OBJ_REQUEST_ATTR="obj";
     String LIST_REQUEST_ATTR="list";
-    String pajaxControllerPrefixr="pajaxControllerPrefixr";
+
     String pajaxdirName="pajaxdirName";
+    String pajaxControllerPrefixr="pajaxControllerPrefixr";
+    String excludePajaxControllerPath="excludePajaxControllerPath";
+    String symbol_comma=",";
 
 }

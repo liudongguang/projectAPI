@@ -1,10 +1,6 @@
 package com.ldg.filter;
 
-import com.ldg.api.constant.CommConstant;
-import com.ldg.api.util.CoverResponse;
-import com.ldg.api.util.LdgRequestUtil;
-import com.ldg.api.util.PropertiesUtil;
-import com.ldg.api.util.RequestFileUtil;
+import com.ldg.api.util.*;
 import com.ldg.loading.Cache_Pajax;
 
 import javax.servlet.FilterChain;
@@ -17,26 +13,31 @@ import java.io.IOException;
 public class ContentForPajaxFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String reqURL = request.getRequestURL().toString();
-        String reqURI=request.getRequestURI().toString();
-        //单独访问的时候替换内容,直接访问该pajax访问的页面，不是首页的时候
-        if (reqURL.lastIndexOf(".jsp") != -1) {
-            String key = LdgRequestUtil.getFilePathByWebContext(request, reqURI);
-            String val = Cache_Pajax.getPajaxFileByKey(key);
-            if (val == null) {
-                chain.doFilter(request, response);
-            } else {
-                handlerPajax(request,response,chain);
-            }
+        String reqURI = request.getRequestURI().toString();
+        if (MatcherUtil.isstaticResource(reqURI)) {
+            chain.doFilter(request, response);
         } else {
-            if(reqURI.indexOf(PropertiesUtil.getValByKey(CommConstant.pajaxControllerPrefixr))!=-1){
-                handlerPajax(request,response,chain);
-            }else {
-                chain.doFilter(request, response);
+            //单独访问的时候替换内容,直接访问该pajax访问的页面，不是首页的时候
+            if (MatcherUtil.isJSP(reqURI)) {
+                String key = LdgRequestUtil.getRequestPath(reqURI);
+                String val = Cache_Pajax.getPajaxFileByKey(key);
+                if (val == null) {
+                    chain.doFilter(request, response);
+                } else {
+                    handlerPajax(request, response, chain);
+                }
+            } else {
+                String key = LdgRequestUtil.getRequestPath(reqURI);
+                if (Cache_Pajax.isPajaxControllerPrex(key)) {
+                    handlerPajax(request, response, chain);
+                } else {
+                    chain.doFilter(request, response);
+                }
             }
         }
     }
-    private static void handlerPajax(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException{
+
+    private static void handlerPajax(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String pajaxState = request.getHeader("X-PJAX");
         if (pajaxState != null) {
             chain.doFilter(request, response);
@@ -46,7 +47,7 @@ public class ContentForPajaxFilter extends HttpFilter {
             chain.doFilter(request, cr);
             //处理替换
             String content = cr.getContent();
-            String parentContent = RequestFileUtil.getContentByFileNameByHttpClient(request, "pajax/index.jsp");
+            String parentContent = RequestFileUtil.getContentByFileNameByHttpClient(request, "pajaxapimain/index.jsp");
             String rtSS = parentContent.replace("<div id=\"pajaxDIV\"></div>", content);
             response.getWriter().print(rtSS);
         }
