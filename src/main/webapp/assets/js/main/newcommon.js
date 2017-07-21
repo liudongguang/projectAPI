@@ -46,14 +46,6 @@ function successHandler(data) {
 
     return true;
 }
-///执行子页面函数
-function successExcuteSubFun() {
-    ////
-    if((typeof initJPage)=="function"){
-        initJPage();
-    }
-    ///
-}
 //6.初始化ajax请求的元素
 function initAjaxRequest(container_ID) {
     $("#"+container_ID).find("[data-pjax]").click(function () {
@@ -165,13 +157,22 @@ function initSetDataForMulti() {
     });
 }
 ///11.pajax访问
-function pajaxReq(url,containerSelector) {
+function pajaxReq(url,containerSelector,pdata,pushstate) {
+    var data=null;
+    if(pdata){
+        data=pdata;
+    }
+    var pushs=true;
+    if(!pushstate){
+        pushs=pushstate;
+    }
     $.pjax({url: url, container: containerSelector,type: "post",
         timeout:3000,
+        data:data,
+        push:pushs,
         completeCallbackFun: checkLogin,
         errorCallbackFun: errhandler,
-        successCallbackFun:successHandler,
-        successExcuteSubFun:successExcuteSubFun})
+        successCallbackFun:successHandler})
 }
 ////12.弹出tips
 function layertips(id) {
@@ -185,4 +186,65 @@ function layertips(id) {
     }).mouseout(function () {
         layer.close(tipsIndex);
     })
+}
+///13.初始化分页
+function  jPageInit() {
+    var pageNum = $("#pageNum").val();  //当前页数
+    var pageSize = $("#pageSize").val();//一页上的条数
+    var total = $("#total").val();//总条数
+    var pages = $("#pages").val();//总页数
+    var loadDataURL = $("#loadDataURL").val();//获取数据连接
+    var searFormID = $("#searFormID").val();//有提交的表单
+    var noAjaxPageVal = $("#noAjaxPage").val();
+    var containerIDVal = $("#containerID").val();
+    $("#pagesDIV").page({count: total, pageNo: pageNum, pageSize: pageSize, skipPart: true});
+    //分页按钮点击事件
+    $("#pagesDIV > ul > li ").click(function () {
+        var num = $(this).attr("num");
+        if ($(this).attr("class").indexOf("disabled") != -1) {
+            return false;
+        }
+        if (num == 0 || num == (total + 1)) {
+
+        } else {
+            var subURL = loadDataURL + "?pageNum=" + num;
+            if (searFormID && $("#" + searFormID).length != 0) {
+                var formSerialize = $("#" + searFormID).serialize();
+                subURL = subURL + "&" + formSerialize;
+            }
+            if (noAjaxPageVal == 1) {
+                location.href = basePath + subURL;
+            } else {
+                $.pjax({
+                    url: basePath + subURL, container: '#' + containerIDVal
+                });
+            }
+        }
+    });
+    $("#toPageNumID").keyup(function () {
+        var val = $(this).val();
+        $(this).val(val.replace(/[^\d]/g, ''));
+        val = $(this).val();
+        if (parseInt(val) > pages) {
+            $(this).val(pages);
+        }
+    });
+    /////跳转页面
+    $("#pageRealBTID").click(function () {
+        var num = $("#toPageNumID").val();
+        if (!num) {
+            layer.alert("请填写页码！");
+            return false;
+        }
+        var subURL = loadDataURL + "?pageNum=" + num;
+        if (searFormID) {
+            var formSerialize = $("#" + searFormID).serialize();
+            subURL = subURL + "&" + formSerialize;
+        }
+        if (noAjaxPageVal == 1) {
+            location.href = basePath + subURL;
+        } else {
+            $.pjax({url: basePath + subURL, container: '#' + containerIDVal});
+        }
+    });
 }

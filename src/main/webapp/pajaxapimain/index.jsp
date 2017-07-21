@@ -454,6 +454,7 @@
 
 <!-- jQuery  -->
 <script language="javascript" type="text/javascript" src="assets/js/jquery-3.2.0.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/jstree3.3.3.js"></script>
 <script type="text/javascript" language="javascript" src="assets/tether-1.3.3/js/tether.js"></script>
 <script language="javascript" type="text/javascript" src="assets/bootstrap4alpha6/js/bootstrap.js"></script>
 <script src="assets/uplon/js/detect.js"></script>

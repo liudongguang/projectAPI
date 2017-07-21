@@ -356,7 +356,7 @@
                 autofocusEl.focus()
             }
 
-             executeScriptTags(container.scripts)
+            // executeScriptTags(container.scripts)
 
             var scrollTo = options.scrollTo
 
@@ -368,9 +368,6 @@
             }
 
             if (typeof scrollTo == 'number') $(window).scrollTop(scrollTo)
-            if (options.successExcuteSubFun) { //执行子页面程序
-                 successExcuteSubFun();
-            }
             fire('pjax:success', [data, status, xhr, options])
         }
 
@@ -753,8 +750,8 @@
             obj.contents.find('title').remove()
 
             // Gather all script[src] elements
-            obj.scripts = findAll(obj.contents, 'script[src]').remove()
-            obj.contents = obj.contents.not(obj.scripts)
+            //obj.scripts = findAll(obj.contents, 'script[src]').remove()
+            //obj.contents = obj.contents.not(obj.scripts)
         }
 
         // Trim any whitespace off the title

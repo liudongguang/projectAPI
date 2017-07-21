@@ -48,8 +48,35 @@ public class ContentForPajaxFilter extends HttpFilter {
             //处理替换
             String content = cr.getContent();
             String parentContent = RequestFileUtil.getContentByFileNameByHttpClient(request, "pajaxapimain/index.jsp");
-            String rtSS = parentContent.replace("<div id=\"pajaxDIV\"></div>", content);
-            response.getWriter().print(rtSS);
+            if(content.indexOf("<script")!=-1){
+                int scripteStartIndex=content.indexOf("<script");
+                int scripteStartEnd=content.lastIndexOf("</script>")+9;
+                //1.获取script部分
+                StringBuilder contentsbd=new StringBuilder(content);
+                String subScript=content.substring(scripteStartIndex,scripteStartEnd);
+                //2.删除掉script部分
+                content=contentsbd.delete(scripteStartIndex,scripteStartEnd).toString();
+                //////////////////////////////////////////////
+                StringBuffer parentContentstr=new StringBuffer(parentContent);
+                //3.插入到主页面
+                String insertStr="<div id=\"subjsID\">";
+                parentContentstr.insert(parentContentstr.lastIndexOf(insertStr)+insertStr.length(),subScript);
+                /////////////////////////////////////////////
+                //4.替换进主页面
+                String rtSS = parentContentstr.toString().replace("<div id=\"pajaxDIV\"></div>", content);
+                response.getWriter().print(rtSS);
+            }else{
+                String rtSS = parentContent.toString().replace("<div id=\"pajaxDIV\"></div>", content);
+                response.getWriter().print(rtSS);
+            }
         }
+    }
+
+    public static void main(String[] args) {
+        StringBuilder content=new StringBuilder("aaaaa<script language=\"javascript\" type=\"text/javascript\">\n" +             "    jPageInit();\n" +          "</script>bbbbb");
+        //System.out.println(content.substring(content.indexOf("<script"),content.lastIndexOf("</script>")+9));
+       // System.out.println(content.delete(content.indexOf("<script"),content.lastIndexOf("</script>")+9));
+        content.insert(content.lastIndexOf("</script>")+9,"ccc");
+        System.out.println(content);
     }
 }

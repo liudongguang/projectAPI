@@ -58,6 +58,7 @@
            if ($(this).attr("data-pjax")=="") {
                $(this).siblings().removeClass("subdrop");
                $(this).addClass("subdrop");
+               $("#subjsID").empty(); //清除单独访问需要pajax的连接，从子页面插过来的js脚本
            }
            ////
       }

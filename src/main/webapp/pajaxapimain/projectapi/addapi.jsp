@@ -226,9 +226,5 @@
         <%--一行三列结束--%>
     </form>
 </div>
-<script language="javascript" type="text/javascript">
-    jQuery(document).ready(function () {
-        $.getScript("assets/js/pajaxapimain/projectapi/addapi.js");
-    });
-</script>
+<script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/projectapi/addapi.js"></script>
 

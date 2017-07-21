@@ -12,11 +12,5 @@
 
     </div>
 </div>
-</div>
-<script language="javascript" type="text/javascript">
-    jQuery(document).ready(function () {
-        $.getScript("assets/js/jstree3.3.3.js");
-        $.getScript("assets/js/pajaxapimain/projectapi/disApiList.js");
-    });
-</script>
+<script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/projectapi/disApiList.js"></script>
 

@@ -47,6 +47,8 @@
 <!--
 分页结束
 -->
-<script language="javascript" type="text/javascript" src="assets/js/jPageExt2.js"></script>
+<script language="javascript" type="text/javascript">
+    jPageInit();
+</script>
 
 

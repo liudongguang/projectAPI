@@ -1,7 +1,4 @@
 jQuery(document).ready(function () {
-    initJPage();
-});
-function initJPage() {
     var pageNum = $("#pageNum").val();  //当前页数
     var pageSize = $("#pageSize").val();//一页上的条数
     var total = $("#total").val();//总条数
@@ -60,4 +57,4 @@ function initJPage() {
             $.pjax({url: basePath + subURL, container: '#' + containerIDVal,successExcuteSubFun:successExcuteSubFun});
         }
     });
-}
+});

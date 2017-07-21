@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>Hello, world!</h1>
-<a href="bootstrap4_1.jsp">bootstrap4_1</a>
+<a href="bootstrap4.jsp">bootstrap4</a>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script language="javascript" type="text/javascript" src="assets/js/jquery-3.2.0.js"></script>

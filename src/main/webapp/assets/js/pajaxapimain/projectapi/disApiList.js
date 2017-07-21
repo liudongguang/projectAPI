@@ -120,14 +120,15 @@ function initdata(data) {
         //console.log("id:" + id + "     name:" + name + "   level:" + level + "    " + "      projectid:" + projectid);
         if(level==2){
             ///打开接口详情
-            var ajaxOpt_getApiTitlesData = {
-                paramurl: "apiHandler/getApiInfo",
-                data: {apiID: id,projectid:projectid},
-                successHandler: function (data) {
-                   $("#treemainContent").empty().append(data);
-                }
-            };
-            newajaxRequest(ajaxOpt_getApiTitlesData);
+            // var ajaxOpt_getApiTitlesData = {
+            //     paramurl: "apiHandler/getApiInfo",
+            //     data: {apiID: id,projectid:projectid},
+            //     successHandler: function (data) {
+            //        $("#treemainContent").empty().append(data);
+            //     }
+            // };
+            // newajaxRequest(ajaxOpt_getApiTitlesData);
+            pajaxReq("apiHandler/getApiInfo","#treemainContent",{apiID: id,projectid:projectid},false);
         }
     })
     ////////修改了名称后触发
@@ -164,26 +165,4 @@ function initdata(data) {
         }
        // console.log("delete_node")
     })
-}
-function initFirstBT() {
-    var jq_div = $("#jstreeID");
-    var createbutton = $("<button class='btn btn-primary'>初始化</button>");
-    createbutton.click(function () {
-        var projectid = $("#projectID").val();
-        var projectname = $("#projectnameID").val();
-        if (!projectid) {
-            layer.alert("没有选择项目！");
-            return false;
-        }
-        var ajaxOpt_getApiTitlesData = {
-            paramurl: 'jsTree/initApiTitleData',
-            data: {projectid: projectid, projectname: projectname},
-            dataType: 'json',
-            successHandler: function (data) {
-                location.href = basePath + "/pajaxapimain/projectapi/disApiList.jsp?uid=" + projectid + "&projectname=" + projectname;
-            }
-        };
-        newajaxRequest(ajaxOpt_getApiTitlesData);
-    });
-    jq_div.append(createbutton);
 }
