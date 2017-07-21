@@ -96,7 +96,8 @@
 
 <!-- Javascript -->
 <script language="javascript" type="text/javascript" src="assets/js/jquery-3.2.0.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/bootstrap3.3.7.js"></script>
+<script type="text/javascript" language="javascript" src="assets/tether-1.3.3/js/tether.js"></script>
+<script language="javascript" type="text/javascript" src="assets/bootstrap4alpha6/js/bootstrap.js"></script>
 <script src="assets/login/js/jquery.backstretch.min.js"></script>
 <script type="text/javascript" src="assets/login/js/scripts.js"></script>
 <!--[if lt IE 10]>

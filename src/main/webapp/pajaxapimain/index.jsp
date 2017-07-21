@@ -258,11 +258,20 @@
                     </li>
 
                     <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-format-underlined"></i>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="ion-social-buffer-outline"></i>
                             <span>功能列表</span> <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a data-pjax href="apiHandler/getProjects">项目列表</a></li>
                             <li><a data-pjax href="dbsourceHandler/getDbsourceList">数据源</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="pe-7s-key"></i>
+                            <span>权限管理</span> <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a data-pjax href="apiHandler/getProjects"><i class="ti-lock"></i>权限管理</a></li>
+                            <li><a data-pjax href="dbsourceHandler/getDbsourceList"><i class="icon-user"></i>角色管理</a></li>
+                            <li><a data-pjax href="dbsourceHandler/getDbsourceList"><i class="icon-people"></i>用户管理</a></li>
                         </ul>
                     </li>
                 </ul>

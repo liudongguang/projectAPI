@@ -65,7 +65,7 @@
 </div>
 </div>
 <script language="javascript" type="text/javascript" src="assets/js/jquery-3.2.0.js"></script>
-<script language="javascript" type="text/javascript" src="assets/js/bootstrap3.3.7.js"></script>
+<script language="javascript" type="text/javascript" src="assets/bootstrap4alpha6/js/bootstrap.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/templatemo_script.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/moment.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
