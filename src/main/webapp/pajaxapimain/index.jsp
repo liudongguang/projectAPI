@@ -483,5 +483,7 @@
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/index.js"></script>
+<!--单独加载的页面js放到这里，在filter中处理-->
+<div id="subjsID"></div>
 </body>
 </html>

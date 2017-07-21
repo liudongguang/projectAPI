@@ -43,7 +43,16 @@ function successHandler(data) {
         openWindow("出现异常，JSON对象信息", data);
         return false;
     }
+
     return true;
+}
+///执行子页面函数
+function successExcuteSubFun() {
+    ////
+    if((typeof initJPage)=="function"){
+        initJPage();
+    }
+    ///
 }
 //6.初始化ajax请求的元素
 function initAjaxRequest(container_ID) {
@@ -161,7 +170,8 @@ function pajaxReq(url,containerSelector) {
         timeout:3000,
         completeCallbackFun: checkLogin,
         errorCallbackFun: errhandler,
-        successCallbackFun:successHandler})
+        successCallbackFun:successHandler,
+        successExcuteSubFun:successExcuteSubFun})
 }
 ////12.弹出tips
 function layertips(id) {

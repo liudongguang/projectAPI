@@ -47,11 +47,6 @@
 <!--
 分页结束
 -->
-<script language="javascript" type="text/javascript">
-    jQuery(document).ready(function () {
-        $.getScript("assets/js/jPageExt2.js");
-        $.getScript("assets/js/pajaxapimain/project/disProjectList.js");
-    });
-</script>
+<script language="javascript" type="text/javascript" src="assets/js/jPageExt2.js"></script>
 
 

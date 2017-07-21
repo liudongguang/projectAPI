@@ -1,4 +1,7 @@
 jQuery(document).ready(function () {
+    initJPage();
+});
+function initJPage() {
     var pageNum = $("#pageNum").val();  //当前页数
     var pageSize = $("#pageSize").val();//一页上的条数
     var total = $("#total").val();//总条数
@@ -26,8 +29,7 @@ jQuery(document).ready(function () {
                 location.href = basePath + subURL;
             } else {
                 $.pjax({
-                    url: basePath + subURL, container: '#' + containerIDVal, successCallbackFun: function () {
-                    }
+                    url: basePath + subURL, container: '#' + containerIDVal,successExcuteSubFun:successExcuteSubFun
                 });
             }
         }
@@ -55,7 +57,7 @@ jQuery(document).ready(function () {
         if (noAjaxPageVal == 1) {
             location.href = basePath + subURL;
         } else {
-            $.pjax({url: basePath + subURL, container: '#' + containerIDVal});
+            $.pjax({url: basePath + subURL, container: '#' + containerIDVal,successExcuteSubFun:successExcuteSubFun});
         }
     });
-});
+}
