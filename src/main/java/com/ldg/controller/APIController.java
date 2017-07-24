@@ -11,6 +11,10 @@ import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.ResultMsg;
 import com.ldg.api.vo.controllerparam.GetApiInfo;
 import com.ldg.api.vo.controllerparam.SaveApiParams;
+import com.shiro.api.service.ShiroService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +36,8 @@ public class APIController {
     public final static Logger logger = LoggerFactory.getLogger(APIController.class);
     @Autowired
     private ApiService apiService;
-
+    @Autowired
+    private ShiroService shiroService;
 
     /**
      * 登陆操作
@@ -43,19 +48,35 @@ public class APIController {
 
     @RequestMapping(value = "/login")
     public String login(HttpServletRequest request, TManagers manager) {
-        TManagers selectManager = apiService.login(manager);
-        if (selectManager != null) {
-            request.getSession().setAttribute("user", selectManager);
-            return "redirect:/pajaxapimain/index.jsp";
-        } else {
-            request.setAttribute("message", "用户名或密码错误！");
+        UsernamePasswordToken token = new UsernamePasswordToken(manager.getUsername(), manager.getPassword());
+        Subject subject = SecurityUtils.getSubject();
+        try {
+            //token.setRememberMe(true);
+            subject.login(token);
+        } catch (IncorrectCredentialsException ice) {
+            // 捕获密码错误异常
+            request.setAttribute("message", "密码错误！");
+            return "redirect:/index.jsp";
+        } catch (UnknownAccountException uae) {
+            // 捕获未知用户名异常
+            request.setAttribute("message", "未知的用户名！");
+            return "redirect:/index.jsp";
+        } catch (ExcessiveAttemptsException eae) {
+            // 捕获错误登录过多的异常
+            request.setAttribute("message", "登录次数过多！");
+            return "redirect:/index.jsp";
+        }catch (LockedAccountException eae) {
+            // 捕获错误登录过多的异常
+            request.setAttribute("message", "帐户锁定！");
             return "redirect:/index.jsp";
         }
+        subject.getSession().setAttribute("user", shiroService.findUserByUsername(manager.getUsername()));
+        return "redirect:/pajaxapimain/index.jsp";
     }
 
     @RequestMapping(value = "/loginOut")
-    public String loginOut(HttpServletRequest request, TManagers manager) {
-        request.getSession().invalidate();
+    public String loginOut() {
+        SecurityUtils.getSubject().logout();
         return "redirect:/index.jsp";
     }
 

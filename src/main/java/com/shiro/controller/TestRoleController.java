@@ -4,7 +4,9 @@ import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
 import com.shiro.util.PasswordHelper;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,6 @@ public class TestRoleController {
 
     @RequestMapping("/regist")
     public String regist(TShiroUsersExt user) {
-        PasswordHelper phr=new PasswordHelper();
-        phr.encryptPassword(user); //密码处理
         int i=shiroService.addUser(user);
         return "/bootstrap4.jsp";
     }
@@ -34,12 +34,20 @@ public class TestRoleController {
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         Subject subject = SecurityUtils.getSubject();
         try {
-            token.setRememberMe(true);
+            //token.setRememberMe(true);
             subject.login(token);
         } catch (IncorrectCredentialsException ice) {
-               return "/bootstrap4_1.jsp";
+            // 捕获密码错误异常
+            return "/error.jsp";
+        } catch (UnknownAccountException uae) {
+            // 捕获未知用户名异常
+            return "/error.jsp";
+        } catch (ExcessiveAttemptsException eae) {
+            // 捕获错误登录过多的异常
+            return "/error.jsp";
         }
-
+        System.out.println(subject.isPermittedAll("add"));
+        System.out.println(subject.hasRole("admin"));
         subject.getSession().setAttribute("user", "kkk");
         return "/bootstrap4.jsp";
     }

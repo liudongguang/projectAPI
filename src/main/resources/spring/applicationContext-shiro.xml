@@ -24,8 +24,8 @@
 		<property name="filterChainDefinitions">
 			<value>
 				# some example chain definitions:
-				/dbsourceHandler/** = authc, roles[admin]
-				/docs/** = authc, perms[document:read]
+				/apiHandler/login = anon
+				/apiHandler/** = authc, roles[admin]
 				/** = anon
 				# more URL-to-FilterChain definitions here
 			</value>

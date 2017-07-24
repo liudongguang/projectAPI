@@ -71,7 +71,7 @@
 			<value>5242880</value>
 		</property>
 	</bean>
-
+   <!--
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/apiHandler/**" />
@@ -79,6 +79,6 @@
 			<mvc:exclude-mapping path="/apiHandler/login"/>
 			<bean class="com.ldg.interceptor.ManagerLoginInterceptor"></bean>
 		</mvc:interceptor>
-
 	</mvc:interceptors>
+	-->
 </beans>
