@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="assets/bootstrap4alpha6/css/bootstrap.css"/>
 </head>
 <body>
-<h1>Hello, world!</h1>
+<h1>bootstrap4.jsp</h1>
 <a href="bootstrap4_1.jsp">bootstrap4_1</a>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
