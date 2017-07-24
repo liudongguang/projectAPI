@@ -23,7 +23,6 @@ public class SysInitialize implements ServletContextAware {
         Arrays.asList(dirName.split(CommConstant.symbol_comma)).forEach(item->{
             String realPath=servletContext.getRealPath(item);
             Map<String,String> pajaxFile=LdgRequestUtil.getFileNameByDirName(realPath,item);
-            System.out.println(pajaxFile);
             Cache_Pajax.addPajaxFiles(pajaxFile);
         });
         /////////////

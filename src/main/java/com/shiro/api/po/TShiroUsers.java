@@ -113,4 +113,15 @@ public class TShiroUsers {
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
+
+    @Override
+    public String toString() {
+        return "TShiroUsers{" +
+                "uid=" + uid +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salt='" + salt + '\'' +
+                ", createtime=" + createtime +
+                '}';
+    }
 }

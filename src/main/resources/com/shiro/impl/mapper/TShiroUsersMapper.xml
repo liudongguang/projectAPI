@@ -11,4 +11,12 @@
     <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
+  <insert id="insertUser" parameterType="com.shiro.bo.TShiroUsersExt">
+    insert into t_shiro_users (username, password, salt, createtime) VALUES
+      (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR},
+       #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <select id="findUserByUsername" resultType="com.shiro.bo.TShiroUsersExt">
+         SELECT username,password,salt from t_shiro_users where username=#{username,jdbcType=VARCHAR}
+  </select>
 </mapper>

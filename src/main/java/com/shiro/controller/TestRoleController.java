@@ -1,11 +1,13 @@
 package com.shiro.controller;
 
+import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
 import com.shiro.util.PasswordHelper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,24 +18,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/shirotest")
 public class TestRoleController {
 
+   @Autowired
+   private ShiroService shiroService;
 
     @RequestMapping("/regist")
     public String regist(TShiroUsersExt user) {
         PasswordHelper phr=new PasswordHelper();
-        phr.encryptPassword(user);
-
+        phr.encryptPassword(user); //密码处理
+        int i=shiroService.addUser(user);
         return "/bootstrap4.jsp";
     }
 
     @RequestMapping("/login")
-    public String login( String username,  String password) {
-        System.out.println("--------------------------"+username+"    "+password);
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+    public String login( TShiroUsersExt user) {
+        UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         Subject subject = SecurityUtils.getSubject();
         try {
+            token.setRememberMe(true);
             subject.login(token);
         } catch (IncorrectCredentialsException ice) {
-            ice.printStackTrace();
                return "/bootstrap4_1.jsp";
         }
 

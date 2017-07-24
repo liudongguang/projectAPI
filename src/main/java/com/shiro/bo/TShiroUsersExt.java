@@ -9,4 +9,9 @@ public class TShiroUsersExt extends TShiroUsers {
     public String getCredentialsSalt(){
         return this.getUsername()+this.getSalt();
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
