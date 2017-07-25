@@ -216,7 +216,7 @@ function  jPageInit() {
                 location.href = basePath + subURL;
             } else {
                 $.pjax({
-                    url: basePath + subURL, container: '#' + containerIDVal
+                    url: basePath + subURL, container: '#' + containerIDVal,timeout:3000
                 });
             }
         }

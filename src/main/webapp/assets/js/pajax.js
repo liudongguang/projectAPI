@@ -264,11 +264,15 @@
 
         options.error = function (xhr, textStatus, errorThrown) {
             var container = extractContainer("", xhr, options)
+            if(textStatus=="timeout"){
+                layer.alert("请求超时！");
+                return false;
+            }
             var allowed = fire('pjax:error', [xhr, textStatus, errorThrown, options])
             if (options.type == 'GET' && textStatus !== 'abort' && allowed) {
                 locationReplace(container.url)
             }
-            //console.log("error..............");
+            console.log("error..............");
             if (options.errorCallbackFun) {
                 options.errorCallbackFun(xhr);
             }
