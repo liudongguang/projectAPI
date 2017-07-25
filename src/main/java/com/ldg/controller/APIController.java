@@ -71,6 +71,9 @@ public class APIController {
             return "redirect:/index.jsp";
         }
         subject.getSession().setAttribute("user", shiroService.findUserByUsername(manager.getUsername()));
+        System.out.println("--------");
+        System.out.println(subject.hasRole("admin"));
+        System.out.println("++++++++");
         return "redirect:/pajaxapimain/index.jsp";
     }
 

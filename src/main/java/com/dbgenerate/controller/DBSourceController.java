@@ -12,6 +12,7 @@ import com.ldg.api.util.LdgRequestUtil;
 import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.ResultMsg;
 import com.ldg.api.vo.jstree.JsTree;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,10 @@ public class DBSourceController {
     public String getDbsourceList(HttpServletRequest request, PageParam pageParam) {
         PageInfo<TDbSource> projects = dbSourceService.getDbsourceList(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
+        System.out.println("----getDbsourceList----");
+        System.out.println(SecurityUtils.getSubject().hasRole("admin"));
+        System.out.println("+++getDbsourceList+++++");
+
         return "/dbsorce/source/disdbsources.jsp";
     }
 
