@@ -7,6 +7,7 @@ import com.ldg.api.vo.ResultMsg;
 import com.ldg.api.vo.controllerparam.InitApiTitleData;
 import com.ldg.api.vo.jstree.JsTree;
 import com.ldg.api.vo.jstree.JsTreeData;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,12 @@ public class JsTreeController {
      */
     @RequestMapping(value = "/getApiTitles")
     public String getApiTitles(HttpServletRequest request) {
-        TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
-        if(2==sessionManager.getAuthority()){
-            return "/pajaxapimain/projectapilock/disApiList.jsp";
-        }
+//        TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
+//        if(2==sessionManager.getAuthority()){
+//            return "/pajaxapimain/projectapilock/disApiList.jsp";
+//        }
+        System.out.println(SecurityUtils.getSubject().isPermittedAll("add"));
+        System.out.println(SecurityUtils.getSubject().hasRole("admin"));
         return "/pajaxapimain/projectapi/disApiList.jsp";
     }
 

@@ -17,14 +17,12 @@
           <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
         </element>
         <element id="directory" name="lib">
-          <element id="file-copy" path="$PROJECT_DIR$/libs/ojdbc8.jar" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.9.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-orm:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-cache:1.4.0" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-instrument-tomcat:4.3.9.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-instrument:4.3.9.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-expression:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: javax.persistence:persistence-api:1.0.2" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-context-support:4.3.9.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-context:4.3.9.RELEASE" />
           <element id="library" level="project" name="Gradle: org.springframework:spring-beans:4.3.9.RELEASE" />
@@ -48,7 +46,7 @@
           <element id="library" level="project" name="Gradle: org.mybatis:mybatis:3.4.2" />
           <element id="library" level="project" name="Gradle: org.mybatis:mybatis-spring:1.3.1" />
           <element id="library" level="project" name="Gradle: tk.mybatis:mapper:3.4.0" />
-          <element id="library" level="project" name="Gradle: javax.persistence:persistence-api:1.0.2" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-core:4.3.9.RELEASE" />
           <element id="library" level="project" name="Gradle: com.github.pagehelper:pagehelper:5.0.0" />
           <element id="library" level="project" name="Gradle: org.hibernate:hibernate-validator:5.1.3.Final" />
           <element id="library" level="project" name="Gradle: mysql:mysql-connector-java:5.1.39" />
@@ -57,6 +55,13 @@
           <element id="library" level="project" name="Gradle: commons-fileupload:commons-fileupload:1.3.1" />
           <element id="library" level="project" name="Gradle: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.9.0.pr1" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-core:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-web:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-aspectj:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-spring:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-ehcache:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.ehcache:ehcache:3.3.1" />
+          <element id="library" level="project" name="Gradle: javax.cache:cache-api:1.0.0" />
           <element id="library" level="project" name="Gradle: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Gradle: com.belerweb:pinyin4j:2.5.1" />
           <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpclient:4.5.3" />
@@ -72,23 +77,23 @@
           <element id="library" level="project" name="Gradle: org.apache.commons:commons-pool2:2.4.2" />
           <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.9.0.pr1" />
           <element id="library" level="project" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.0.pr1" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-lang:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-jdbc:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-crypto-hash:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-crypto-cipher:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-config-core:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-config-ogdl:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-event:1.4.0" />
+          <element id="library" level="project" name="Gradle: net.sf.ehcache:ehcache-core:2.6.11" />
           <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.6" />
           <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
           <element id="library" level="project" name="Gradle: org.apache.ant:ant-launcher:1.9.4" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-core/1.4.0/6d05bd17e057fc12d278bb367c27f9cb0f3dc197/shiro-core-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-web/1.4.0/3a600b31eb2f7b2ac35342e0a78cf311d430c6d4/shiro-web-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-aspectj/1.4.0/2da1dcc3ab4ad0672ab04d65ca2bcad02b3d98cf/shiro-aspectj-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-spring/1.4.0/c7cf105eea615a872ccc78afb32d596aa1c51cb3/shiro-spring-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-lang/1.4.0/6895b5d14e7be7a77297336b037d7a7e79e858d6/shiro-lang-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-cache/1.4.0/ae1496cbdc4cce35c87d9014723863e049f9e2b4/shiro-cache-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-crypto-hash/1.4.0/b767d3db10f01dfba79c04cbc9e17eae0247b9c/shiro-crypto-hash-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-crypto-cipher/1.4.0/78020924ddce7632daa3b9acb698167c240df623/shiro-crypto-cipher-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-config-core/1.4.0/7d7ede51d15d346d962da9a3743064ddc9163b1d/shiro-config-core-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-config-ogdl/1.4.0/28c5f1338030eed8f911f0a816a5ef2716f786a6/shiro-config-ogdl-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-event/1.4.0/df4e83b5200940439e0c7ba4fc145902900e2cd/shiro-event-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-crypto-core/1.4.0/7049325bba697985eee924eda03cb7971af1b808/shiro-crypto-core-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.9.3/c845703de334ddc6b4b3cd26835458cb1cba1f3d/commons-beanutils-1.9.3.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-crypto-core:1.4.0" />
+          <element id="library" level="project" name="Gradle: commons-beanutils:commons-beanutils:1.9.3" />
+          <element id="file-copy" path="$PROJECT_DIR$/libs/ojdbc8.jar" />
+          <element id="library" level="project" name="Gradle: org.springframework:spring-aop:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Gradle: commons-collections:commons-collections:3.2.2" />
+          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.ehcache.integrations.shiro/shiro-ehcache3/1.0.0/7b43aecc8b0398667d2dfdfba12f92735c0b37d2/shiro-ehcache3-1.0.0.jar" />
         </element>
       </element>
     </root>

@@ -35,16 +35,16 @@
         <!-- 配置记录器级别 -->
         <Root level="ERROR">
             <AppenderRef ref="STDOUT"/>
-            <AppenderRef ref="errorFile"/>
         </Root>
-        <!--level表示最小输出级别，低于这个级别不输出,这里输出com包下的所有日志-->
+        <!--level表示最小输出级别，低于这个级别不输出,这里输出com包下的所有日志
         <Logger name="com.kangkang.controller" level="DEBUG" additivity="false">
             <AppenderRef ref="INFORollingFile"/>
         </Logger>
-
-        <!-- 将业务dao接口填写进去,并用控制台输出即可-->
+            -->
+        <!-- 将业务dao接口填写进去,并用控制台输出即可
         <logger name="com.ldg.impl.mapper" level="DEBUG" additivity="false">
             <appender-ref ref="STDOUT"/>
         </logger>
+        -->
     </Loggers>
 </Configuration> 
