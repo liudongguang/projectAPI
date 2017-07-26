@@ -52,4 +52,9 @@ public class ShiroServiceImpl implements ShiroService {
     public Integer selectPermissionNameByName(TShiroPermission param) {
         return permissionDao.selectPermissionNameByName(param);
     }
+
+    @Override
+    public int deletePermission(TShiroPermission param) {
+        return permissionDao.deleteByPrimaryKey(param.getUid());
+    }
 }

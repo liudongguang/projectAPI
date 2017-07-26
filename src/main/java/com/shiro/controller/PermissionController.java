@@ -75,4 +75,15 @@ public class PermissionController {
     }
 
 
+    /**
+     * 删除权限
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/deletePermission")
+    public String deletePermission(HttpServletRequest request, TShiroPermission param) {
+        int i=shiroService.deletePermission(param);
+        return "/permission_shiro/getPermissionPageInfo";
+    }
 }

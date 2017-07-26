@@ -20,7 +20,7 @@
             <tr id="${obj.uid}">
                 <td>${obj.permissionname}</td>
                 <td>${obj.description}</td>
-                <td><a class="btn btn-danger-outline btn-sm" data-pjax delmark href="permission_shiro/delPermissionByID?uid=${obj.uid}">删除</a></td>
+                <td><a class="btn btn-danger-outline btn-sm" data-pjax delmark href="permission_shiro/deletePermission?uid=${obj.uid}">删除</a></td>
             </tr>
         </c:forEach>
         </tbody>

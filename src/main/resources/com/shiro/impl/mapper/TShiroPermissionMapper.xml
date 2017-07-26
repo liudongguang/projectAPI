@@ -12,7 +12,7 @@
   <select id="getPermissionPageInfo" resultMap="BaseResultMap">
         SELECT uid,permissionname,description from t_shiro_permission order by uid
   </select>
-  <select id="selectPermissionNameByName" parameterType="com.shiro.api.po.TShiroPermission">
+  <select id="selectPermissionNameByName" parameterType="com.shiro.api.po.TShiroPermission" resultType="int">
     SELECT uid from t_shiro_permission where permissionname=#{permissionname,jdbcType=VARCHAR}
   </select>
 </mapper>

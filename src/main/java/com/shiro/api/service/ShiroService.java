@@ -43,4 +43,11 @@ public interface ShiroService {
      * @return
      */
     Integer selectPermissionNameByName(TShiroPermission param);
+
+    /**
+     * 删除权限
+     * @param param
+     * @return
+     */
+    int deletePermission(TShiroPermission param);
 }
