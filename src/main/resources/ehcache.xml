@@ -32,19 +32,6 @@ limitations under the License.
         </resources>
     </cache>
 
-    <cache alias="org.apache.shiro.realm.text.PropertiesRealm-0-accounts">
-        <key-type serializer="org.ehcache.impl.serialization.CompactJavaSerializer">
-            java.lang.Object
-        </key-type>
-        <value-type serializer="org.ehcache.impl.serialization.CompactJavaSerializer">
-            java.lang.Object
-        </value-type>
-
-        <resources>
-            <heap unit="entries">1000</heap>
-            <disk unit="GB">1</disk>
-        </resources>
-    </cache>
 
     <cache-template name="defaultCacheConfiguration">
         <expiry>
@@ -52,5 +39,18 @@ limitations under the License.
         </expiry>
         <heap unit="entries">10000</heap>
     </cache-template>
-
+    <!--授权-->
+    <cache alias="AuthorizationCahce" uses-template="defaultCacheConfiguration">
+        <expiry>
+            <!--timeToLiveExpiration-->
+            <ttl unit="seconds">60</ttl>
+        </expiry>
+    </cache>
+    <!--认证-->
+    <cache alias="AuthenticationCahce" uses-template="defaultCacheConfiguration">
+        <expiry>
+            <!--timeToLiveExpiration-->
+            <ttl unit="seconds">60</ttl>
+        </expiry>
+    </cache>
 </config>

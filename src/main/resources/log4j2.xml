@@ -33,7 +33,7 @@
     </Appenders>
     <Loggers>
         <!-- 配置记录器级别 -->
-        <Root level="ERROR">
+        <Root level="INFO">
             <AppenderRef ref="STDOUT"/>
         </Root>
         <!--level表示最小输出级别，低于这个级别不输出,这里输出com包下的所有日志

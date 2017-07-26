@@ -74,6 +74,7 @@
     <orderEntry type="library" name="Gradle: org.apache.shiro:shiro-aspectj:1.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.shiro:shiro-spring:1.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.shiro:shiro-ehcache:1.4.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.shiro:shiro-quartz:1.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.ehcache:ehcache:3.3.1" level="project" />
     <orderEntry type="library" name="Gradle: javax.cache:cache-api:1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: javax.servlet:jstl:1.2" level="project" />
@@ -99,6 +100,7 @@
     <orderEntry type="library" name="Gradle: org.apache.shiro:shiro-config-ogdl:1.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.shiro:shiro-event:1.4.0" level="project" />
     <orderEntry type="library" name="Gradle: net.sf.ehcache:ehcache-core:2.6.11" level="project" />
+    <orderEntry type="library" name="Gradle: org.opensymphony.quartz:quartz:1.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.4.6" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.9" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.ant:ant-launcher:1.9.4" level="project" />

@@ -1,6 +1,8 @@
 package com.ldg.controller;
 
 import com.dbgenerate.controller.DBSourceController;
+import org.apache.shiro.cache.Cache;
+import org.ehcache.integrations.shiro.EhcacheShiroManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ import javax.annotation.Resource;
 public class ControllerTest1 extends TestBase{
     @Autowired
     private DBSourceController dBSourceController;
+    @Autowired
+    private EhcacheShiroManager ecacheManager;
     @Resource
     WebApplicationContext wac;
     private MockMvc mockMvc;
@@ -62,5 +66,11 @@ public class ControllerTest1 extends TestBase{
         String result = mvcResult.getResponse().getContentAsString();
         System.out.println("=====客户端获得反馈数据:" + result);
     }
-
+    @Test
+    public void testEHCache() throws Exception {
+        Cache<Object, Object> authorizationCahce = ecacheManager.getCache("AuthorizationCahce");
+        System.out.println("authorizationCahce......................");
+        //authorizationCahce.put("1","2");
+        //System.out.println(authorizationCahce.get("1"));
+    }
 }

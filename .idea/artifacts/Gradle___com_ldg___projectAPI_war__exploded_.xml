@@ -93,6 +93,8 @@
           <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-crypto-core:1.4.0" />
           <element id="library" level="project" name="Gradle: commons-beanutils:commons-beanutils:1.9.3" />
           <element id="library" level="project" name="Gradle: commons-collections:commons-collections:3.2.2" />
+          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-quartz/1.4.0/5f31ae8a145d901ba122b4f87eebddc4bf2c1e56/shiro-quartz-1.4.0.jar" />
+          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.opensymphony.quartz/quartz/1.6.1/41c8f042d49c65a5889e3fd8b9598e7cfca02c5e/quartz-1.6.1.jar" />
         </element>
       </element>
     </root>
