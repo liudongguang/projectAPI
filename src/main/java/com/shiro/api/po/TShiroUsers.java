@@ -1,10 +1,11 @@
 package com.shiro.api.po;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_shiro_users")
-public class TShiroUsers {
+public class TShiroUsers implements Serializable {
     @Id
     private Integer uid;
 

@@ -56,24 +56,21 @@ public class APIController {
         } catch (IncorrectCredentialsException ice) {
             // 捕获密码错误异常
             request.setAttribute("message", "密码错误！");
-            return "redirect:/index.jsp";
+            return "/index.jsp";
         } catch (UnknownAccountException uae) {
             // 捕获未知用户名异常
             request.setAttribute("message", "未知的用户名！");
-            return "redirect:/index.jsp";
+            return "/index.jsp";
         } catch (ExcessiveAttemptsException eae) {
             // 捕获错误登录过多的异常
             request.setAttribute("message", "登录次数过多！");
-            return "redirect:/index.jsp";
+            return "/index.jsp";
         }catch (LockedAccountException eae) {
             // 捕获错误登录过多的异常
             request.setAttribute("message", "帐户锁定！");
-            return "redirect:/index.jsp";
+            return "/index.jsp";
         }
         subject.getSession().setAttribute("user", shiroService.findUserByUsername(manager.getUsername()));
-        System.out.println("--------");
-        System.out.println(subject.hasRole("admin"));
-        System.out.println("++++++++");
         return "redirect:/pajaxapimain/index.jsp";
     }
 
@@ -92,6 +89,7 @@ public class APIController {
     public String getProjects(HttpServletRequest request, PageParam pageParam) {
         PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
+        request.setAttribute("aaaaaa","ccccccccccccccc");
         return "/pajaxapimain/project/disProjectList.jsp";
     }
     /**
