@@ -27,18 +27,16 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.out.println("授权.............");
         String username = (String) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         // 根据用户名查询当前用户拥有的角色
-        Set<String> roleNames = new HashSet<String>();
+        Set<String> roleNames = new HashSet<>();
         roleNames.add("admin");
         // 将角色名称提供给info
         authorizationInfo.setRoles(roleNames);
         // 根据用户名查询当前用户权限
-        Set<String> permissionNames = new HashSet<String>();
+        Set<String> permissionNames = new HashSet<>();
         permissionNames.add("add");
-
         // 将权限名称提供给info
         authorizationInfo.setStringPermissions(permissionNames);
         return authorizationInfo;
@@ -52,7 +50,6 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        System.out.println("认证.............");
         String username = (String) token.getPrincipal();
         TShiroUsersExt user = shiroService.findUserByUsername(username);
         if (user == null) {

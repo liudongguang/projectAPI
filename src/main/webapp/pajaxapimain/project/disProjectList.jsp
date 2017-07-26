@@ -6,7 +6,6 @@
 <div class="form-group">
     <button class="btn btn-primary-outline" data-pjax href="pajaxapimain/project/addproject.jsp">新增</button>
 </div>
-${requestScope}
 <div class="table-responsive">
     <table id="dataTable" class="table table-striped table-hover table-bordered">
         <thead>
