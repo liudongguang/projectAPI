@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_shiro_users")
-public class TShiroUsers implements Serializable {
+public class TShiroUsers {
     @Id
     private Integer uid;
 

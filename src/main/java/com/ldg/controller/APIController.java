@@ -89,7 +89,6 @@ public class APIController {
     public String getProjects(HttpServletRequest request, PageParam pageParam) {
         PageInfo<TProjects> projects = apiService.getProjectsPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
-        request.setAttribute("aaaaaa","ccccccccccccccc");
         return "/pajaxapimain/project/disProjectList.jsp";
     }
     /**

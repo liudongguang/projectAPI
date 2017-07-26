@@ -62,6 +62,7 @@
           <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-aspectj:1.4.0" />
           <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-spring:1.4.0" />
           <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-ehcache:1.4.0" />
+          <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-quartz:1.4.0" />
           <element id="library" level="project" name="Gradle: org.ehcache:ehcache:3.3.1" />
           <element id="library" level="project" name="Gradle: javax.cache:cache-api:1.0.0" />
           <element id="library" level="project" name="Gradle: javax.servlet:jstl:1.2" />
@@ -87,14 +88,13 @@
           <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-config-ogdl:1.4.0" />
           <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-event:1.4.0" />
           <element id="library" level="project" name="Gradle: net.sf.ehcache:ehcache-core:2.6.11" />
+          <element id="library" level="project" name="Gradle: org.opensymphony.quartz:quartz:1.6.1" />
           <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.6" />
           <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
           <element id="library" level="project" name="Gradle: org.apache.ant:ant-launcher:1.9.4" />
           <element id="library" level="project" name="Gradle: org.apache.shiro:shiro-crypto-core:1.4.0" />
           <element id="library" level="project" name="Gradle: commons-beanutils:commons-beanutils:1.9.3" />
           <element id="library" level="project" name="Gradle: commons-collections:commons-collections:3.2.2" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.apache.shiro/shiro-quartz/1.4.0/5f31ae8a145d901ba122b4f87eebddc4bf2c1e56/shiro-quartz-1.4.0.jar" />
-          <element id="file-copy" path="F:/ideaTools/gradleServiceDirectory/caches/modules-2/files-2.1/org.opensymphony.quartz/quartz/1.6.1/41c8f042d49c65a5889e3fd8b9598e7cfca02c5e/quartz-1.6.1.jar" />
         </element>
       </element>
     </root>
