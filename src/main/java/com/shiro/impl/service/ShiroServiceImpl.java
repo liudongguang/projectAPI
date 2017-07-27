@@ -5,15 +5,20 @@ import com.github.pagehelper.PageInfo;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.vo.PageParam;
 import com.shiro.api.po.TShiroPermission;
+import com.shiro.api.po.TShiroRoles;
 import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
 import com.shiro.impl.mapper.TShiroPermissionMapper;
+import com.shiro.impl.mapper.TShiroRolesMapper;
+import com.shiro.impl.mapper.TShiroRolesPermissionMapper;
 import com.shiro.impl.mapper.TShiroUsersMapper;
 import com.shiro.util.PasswordHelper;
+import com.shiro.vo.RoleAndPermission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by LiuDongguang on 2017/7/24.
@@ -24,9 +29,13 @@ public class ShiroServiceImpl implements ShiroService {
     private TShiroUsersMapper shiroUserDao;
     @Autowired
     private TShiroPermissionMapper permissionDao;
+    @Autowired
+    private TShiroRolesMapper roleDao;
+    @Autowired
+    private TShiroRolesPermissionMapper roleAndPermissionDao;
     @Override
     public int addUser(TShiroUsersExt user) {
-        PasswordHelper phr=new PasswordHelper();
+        PasswordHelper phr = new PasswordHelper();
         phr.encryptPassword(user); //密码处理
         user.setCreatetime(new Date());
         return shiroUserDao.insertUser(user);
@@ -38,7 +47,7 @@ public class ShiroServiceImpl implements ShiroService {
     }
 
     @Override
-    public PageInfo<TShiroPermission> getPermissionList(PageParam pageParam) {
+    public PageInfo<TShiroPermission> getPermissionPageInfo(PageParam pageParam) {
         PageInfo<TShiroPermission> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> permissionDao.getPermissionPageInfo());
         return pageInfo;
     }
@@ -56,5 +65,36 @@ public class ShiroServiceImpl implements ShiroService {
     @Override
     public int deletePermission(TShiroPermission param) {
         return permissionDao.deleteByPrimaryKey(param.getUid());
+    }
+
+    @Override
+    public PageInfo<TShiroRoles> getRolePageInfo(PageParam pageParam) {
+        PageInfo<TShiroRoles> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> roleDao.getRolePageInfo());
+        return pageInfo;
+    }
+
+    @Override
+    public int saveRole(TShiroRoles param) {
+        return roleDao.insertSelective(param);
+    }
+
+    @Override
+    public Integer selectRoleNameByName(TShiroRoles param) {
+        return roleDao.selectRoleNameByName(param);
+    }
+
+    @Override
+    public int deleteRole(TShiroRoles param) {
+        return roleDao.deleteByPrimaryKey(param.getUid());
+    }
+
+    @Override
+    public List<TShiroPermission> getPermissionList() {
+        return permissionDao.getPermissionPageInfo();
+    }
+
+    @Override
+    public void saveRoleAndPermission(RoleAndPermission param) {
+        int delNum=roleAndPermissionDao.deleteByRoleID(param);
     }
 }

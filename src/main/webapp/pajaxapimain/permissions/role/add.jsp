@@ -5,13 +5,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div class="clearfix"></div>
 <div class="col-md-5">
-    <form class="form-horizontal" id="subform" method="post" action="permission_shiro/savePermission">
+    <form class="form-horizontal" id="subform" method="post" action="permission_shiro/saveRole">
         <div class="form-group">
-            <label class="control-label">权限名</label>
-            <input name="permissionname" type="text" required checkparam  class="form-control" placeholder="权限名" maxlength="5"/>
+            <label class="control-label">角色名</label>
+            <input name="rolename" type="text" required checkparam  class="form-control" placeholder="角色名" maxlength="8"/>
         </div>
         <div class="form-group">
-            <label class="control-label">权限描述</label>
+            <label class="control-label">角色描述</label>
                 <textarea class="form-control" name="description" required  cols="80" rows="8" maxlength="100"></textarea>
         </div>
         <div class="form-group text-center">
@@ -20,5 +20,5 @@
         </div>
     </form>
 </div>
-<script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/permissions/permission/add.js"></script>
+<script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/permissions/role/add.js"></script>
 

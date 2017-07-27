@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiro.impl.mapper.TShiroRolesMapper">
+  <resultMap id="BaseResultMap" type="com.shiro.api.po.TShiroRoles">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="rolename" jdbcType="VARCHAR" property="rolename" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <select id="getRolePageInfo" resultMap="BaseResultMap">
+      SELECT uid,rolename,description from t_shiro_roles order by uid
+  </select>
+  <select id="selectRoleNameByName" parameterType="com.shiro.api.po.TShiroRoles" resultType="int">
+    SELECT uid from t_shiro_roles where rolename=#{rolename,jdbcType=VARCHAR}
+  </select>
+</mapper>

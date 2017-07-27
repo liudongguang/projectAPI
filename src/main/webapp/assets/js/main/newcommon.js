@@ -48,8 +48,8 @@ function successHandler(data) {
 }
 //6.初始化ajax请求的元素
 function initAjaxRequest(container_ID) {
-    $("#"+container_ID).find("[data-pjax]").click(function () {
-        var subURL=$(this).attr("href");
+    $("#" + container_ID).find("[data-pjax]").click(function () {
+        var subURL = $(this).attr("href");
         $.pjax({
             url: basePath + subURL,
             container: '#' + container_ID,
@@ -58,28 +58,28 @@ function initAjaxRequest(container_ID) {
     });
 }
 //7.初始化ajax form表单
-function initAjaxForm(form_ID,container_ID,checkParam) {
-    $("#"+form_ID).submit(function (event) {
-        if(!checkParam){
-            $.pjax.submit(event, '#'+container_ID)
-        }else{
-            checkParam.successHandler=function (data) {
-               if(data.errcode==1){
+function initAjaxForm(form_ID, container_ID, checkParam) {
+    $("#" + form_ID).submit(function (event) {
+        if (!checkParam) {
+            $.pjax.submit(event, '#' + container_ID)
+        } else {
+            checkParam.successHandler = function (data) {
+                if (data.errcode == 1) {
                     layer.alert(data.errmsg);
-               }else{
-                   $.pjax.submit(event, '#'+container_ID)
-               }
+                } else {
+                    $.pjax.submit(event, '#' + container_ID)
+                }
             }
-            var data={};
+            var data = {};
             //要检查的属性
             $(this).find("[checkparam]").each(function () {
-                var $checkParam=$(this);
-                var pname=$checkParam.attr("name");
-                var pvalue=$checkParam.val();
-                data[pname]=pvalue;
+                var $checkParam = $(this);
+                var pname = $checkParam.attr("name");
+                var pvalue = $checkParam.val();
+                data[pname] = pvalue;
             })
-            checkParam.data=data;
-            checkParam.dataType='json';
+            checkParam.data = data;
+            checkParam.dataType = 'json';
             newajaxRequest(checkParam);
             return false;
         }
@@ -87,22 +87,23 @@ function initAjaxForm(form_ID,container_ID,checkParam) {
 }
 //8.返回按钮
 function initBackUpBT(backBT_ID) {
-   $("#"+backBT_ID).click(function () {
-       history.back(-1);
-   });
+    $("#" + backBT_ID).click(function () {
+        history.back(-1);
+    });
 }
 //9.普通ajax请求
-function  newajaxRequest(param) {
-    var dataType="html";// from server
-    if(param.dataType){
-        dataType=param.dataType;
+function newajaxRequest(param) {
+    var dataType = "html";// from server
+    if (param.dataType) {
+        dataType = param.dataType;
     }
-    var data=null;
-    if(param.data){
-        data=param.data;
+    var data = null;
+    if (param.data) {
+        data = param.data;
     }
     ///打开遮罩层
     var zzcid = "";
+
     function openZZC() {
         if (typeof layer != "undefined") {
             zzcid = layer.load(0, {
@@ -111,27 +112,29 @@ function  newajaxRequest(param) {
             });
         }
     }
+
     //关闭遮罩层
     function closeZZC() {
         if (typeof layer != "undefined") {
             layer.close(zzcid);
         }
     }
+
     $.ajax({
         url: basePath + param.paramurl,
-        dataType:dataType,
-        data:data,
-        method:'post',
-        beforeSend:function (XMLHttpRequest) {
+        dataType: dataType,
+        data: data,
+        method: 'post',
+        beforeSend: function (XMLHttpRequest) {
             openZZC();
         },
-        complete:function (XMLHttpRequest, textStatus) {
+        complete: function (XMLHttpRequest, textStatus) {
             closeZZC();
         },
-        success:function(data, textStatus){
+        success: function (data, textStatus) {
             param.successHandler(data)
         },
-        error: function(XMLHttpRequest, textStatus, errorThrown){
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             errhandler(XMLHttpRequest);
         }
     });
@@ -141,7 +144,7 @@ function initSetDataForMulti() {
     var vals = $("[setVal]");
     vals.each(function () {
         var jq_this = $(this);
-        var value=jq_this.attr("setVal");
+        var value = jq_this.attr("setVal");
         if (value) {
             if (jq_this.is("select")) {
                 jq_this.val(value);
@@ -157,29 +160,31 @@ function initSetDataForMulti() {
     });
 }
 ///11.pajax访问
-function pajaxReq(url,containerSelector,pdata,pushstate) {
-    var data=null;
-    if(pdata){
-        data=pdata;
+function pajaxReq(url, containerSelector, pdata, pushstate) {
+    var data = null;
+    if (pdata) {
+        data = pdata;
     }
-    var pushs=true;
-    if(!pushstate){
-        pushs=pushstate;
+    var pushs = true;
+    if (!pushstate) {
+        pushs = pushstate;
     }
-    $.pjax({url: url, container: containerSelector,type: "post",
-        timeout:3000,
-        data:data,
-        push:pushs,
+    $.pjax({
+        url: url, container: containerSelector, type: "post",
+        timeout: 3000,
+        data: data,
+        push: pushs,
         completeCallbackFun: checkLogin,
         errorCallbackFun: errhandler,
-        successCallbackFun:successHandler})
+        successCallbackFun: successHandler
+    })
 }
 ////12.弹出tips
 function layertips(id) {
-    var tipsIndex="";
-    $("div[id^="+id+"]").mouseover(function () {
-        var jq_this=$(this);
-        tipsIndex=layer.tips(jq_this.text(), "#"+jq_this.attr('id'), {
+    var tipsIndex = "";
+    $("div[id^=" + id + "]").mouseover(function () {
+        var jq_this = $(this);
+        tipsIndex = layer.tips(jq_this.text(), "#" + jq_this.attr('id'), {
             tips: [3, '#1E9FFF'],
             time: 0
         });
@@ -188,7 +193,7 @@ function layertips(id) {
     })
 }
 ///13.初始化分页
-function  jPageInit() {
+function jPageInit() {
     var pageNum = $("#pageNum").val();  //当前页数
     var pageSize = $("#pageSize").val();//一页上的条数
     var total = $("#total").val();//总条数
@@ -216,7 +221,7 @@ function  jPageInit() {
                 location.href = basePath + subURL;
             } else {
                 $.pjax({
-                    url: basePath + subURL, container: '#' + containerIDVal,timeout:3000
+                    url: basePath + subURL, container: '#' + containerIDVal, timeout: 3000
                 });
             }
         }
@@ -248,3 +253,10 @@ function  jPageInit() {
         }
     });
 }
+//14.占位符
+String.prototype.format = function () {
+    if (arguments.length == 0) return this;
+    for (var s = this, i = 0; i < arguments.length; i++)
+        s = s.replace(new RegExp("\\{" + i + "\\}", "g"), arguments[i]);
+    return s;
+};

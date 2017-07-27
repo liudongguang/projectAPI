@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiro.impl.mapper.TShiroRolesPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.shiro.api.po.TShiroRolesPermission">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="roleid" jdbcType="INTEGER" property="roleid" />
+    <result column="permissionid" jdbcType="INTEGER" property="permissionid" />
+  </resultMap>
+  <delete id="deleteByRoleID" parameterType="com.shiro.vo.RoleAndPermission">
+         DELETE  from t_shiro_roles_permission where roleid=#{roleID,jdbcType=INTEGER}
+  </delete>
+</mapper>
