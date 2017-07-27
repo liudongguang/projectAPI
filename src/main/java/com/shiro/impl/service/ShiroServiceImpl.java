@@ -4,18 +4,15 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ldg.api.po.TProjects;
 import com.ldg.api.vo.PageParam;
-import com.shiro.api.po.TShiroPermission;
-import com.shiro.api.po.TShiroRoles;
-import com.shiro.api.po.TShiroRolesPermission;
+import com.shiro.api.po.*;
 import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
-import com.shiro.impl.mapper.TShiroPermissionMapper;
-import com.shiro.impl.mapper.TShiroRolesMapper;
-import com.shiro.impl.mapper.TShiroRolesPermissionMapper;
-import com.shiro.impl.mapper.TShiroUsersMapper;
+import com.shiro.impl.mapper.*;
 import com.shiro.util.PasswordHelper;
 import com.shiro.vo.RoleAndPermission;
 import com.shiro.vo.RoleAndPermissionList;
+import com.shiro.vo.UserAndRole;
+import com.shiro.vo.UserAndRoleList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +34,8 @@ public class ShiroServiceImpl implements ShiroService {
     private TShiroRolesMapper roleDao;
     @Autowired
     private TShiroRolesPermissionMapper roleAndPermissionDao;
+    @Autowired
+    private TShiroUsersRolesMapper usersRoleDao;
     @Override
     public int addUser(TShiroUsersExt user) {
         PasswordHelper phr = new PasswordHelper();
@@ -117,5 +116,47 @@ public class ShiroServiceImpl implements ShiroService {
     public PageInfo<RoleAndPermissionList> getRoleAndPermissionPageInfo(PageParam pageParam) {
         PageInfo<RoleAndPermissionList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> roleDao.getRoleAndPermissionPageInfo());
         return pageInfo;
+    }
+//////////////////////////////////////
+    @Override
+    public PageInfo<UserAndRoleList> getUserAndRolePageInfo(PageParam pageParam) {
+        PageInfo<UserAndRoleList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> shiroUserDao.getUserAndRolePageInfo());
+        return pageInfo;
+    }
+
+    @Override
+    public int saveUser(TShiroUsers param) {
+        return shiroUserDao.insertSelective(param);
+    }
+
+    @Override
+    public Integer selectUserNameByName(TShiroUsers param) {
+        return shiroUserDao.selectUserNameByName(param);
+    }
+
+    @Override
+    public int deleteUser(TShiroUsers param) {
+        return shiroUserDao.deleteByPrimaryKey(param.getUid());
+    }
+
+    @Override
+    public List<TShiroRoles> getRoleList() {
+        return roleDao.getRolePageInfo();
+    }
+
+    @Override
+    public int saveUserAndRole(UserAndRole param) {
+        String roleids=param.getRoleIDS();
+        if(roleids!=null&&roleids.length()!=0){
+            int delNum=usersRoleDao.deleteByUserID(param.getUserID());
+            List<TShiroUsersRoles>  rmList= Arrays.asList(param.getRoleIDS().split(",")).stream().map(item -> {
+                TShiroUsersRoles rm = new TShiroUsersRoles();
+                rm.setRoleid(Integer.valueOf(item));
+                rm.setUserid(param.getUserID());
+                return rm;
+            }).collect(Collectors.toList());
+            usersRoleDao.batchInsertUserRoles(rmList);
+        }
+        return 0;
     }
 }

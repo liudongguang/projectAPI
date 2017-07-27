@@ -4,9 +4,12 @@ import com.github.pagehelper.PageInfo;
 import com.ldg.api.vo.PageParam;
 import com.shiro.api.po.TShiroPermission;
 import com.shiro.api.po.TShiroRoles;
+import com.shiro.api.po.TShiroUsers;
 import com.shiro.bo.TShiroUsersExt;
 import com.shiro.vo.RoleAndPermission;
 import com.shiro.vo.RoleAndPermissionList;
+import com.shiro.vo.UserAndRole;
+import com.shiro.vo.UserAndRoleList;
 
 import java.util.List;
 
@@ -102,4 +105,45 @@ public interface ShiroService {
      * @return
      */
     PageInfo<RoleAndPermissionList> getRoleAndPermissionPageInfo(PageParam pageParam);
+
+    /**
+     * 获取用户与所拥有角色
+     * @param pageParam
+     * @return
+     */
+    PageInfo<UserAndRoleList> getUserAndRolePageInfo(PageParam pageParam);
+
+    /**
+     * 保存用户
+     * @param param
+     * @return
+     */
+    int saveUser(TShiroUsers param);
+
+    /**
+     * 用户名是否存在
+     * @param param
+     * @return
+     */
+    Integer selectUserNameByName(TShiroUsers param);
+
+    /**
+     * 删除用户
+     * @param param
+     * @return
+     */
+    int deleteUser(TShiroUsers param);
+
+    /**
+     * 获取角色列表
+     * @return
+     */
+    List<TShiroRoles> getRoleList();
+
+    /**
+     * 保存用户及其角色
+     * @param param
+     * @return
+     */
+    int saveUserAndRole(UserAndRole param);
 }

@@ -6,9 +6,12 @@ import com.ldg.api.vo.PageParam;
 import com.ldg.api.vo.ResultMsg;
 import com.shiro.api.po.TShiroPermission;
 import com.shiro.api.po.TShiroRoles;
+import com.shiro.api.po.TShiroUsers;
 import com.shiro.api.service.ShiroService;
 import com.shiro.vo.RoleAndPermission;
 import com.shiro.vo.RoleAndPermissionList;
+import com.shiro.vo.UserAndRole;
+import com.shiro.vo.UserAndRoleList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -172,5 +175,94 @@ public class PermissionController {
         shiroService.saveRoleAndPermission(param);
         return "/permission_shiro/getRolePageInfo";
     }
+    /*******************用户*************************/
+    /**
+     * 获取用户列表
+     *
+     * @return
+     */
+    @RequestMapping(value = "/getUserPageInfo")
+    public String getUserPageInfo(HttpServletRequest request, PageParam pageParam) {
+        PageInfo<UserAndRoleList> permissions = shiroService.getUserAndRolePageInfo(pageParam);
+        request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, permissions);
+        return "/pajaxapimain/permissions/role/index.jsp";
+    }
 
+    /**
+     * 保存用户
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/saveUser")
+    public String saveRole(HttpServletRequest request, TShiroUsers param) {
+        int i=shiroService.saveUser(param);
+        return "/permission_shiro/getUserPageInfo";
+    }
+
+    /**
+     * 用户名是否存在
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/checkUserName")
+    @ResponseBody
+    public ResultMsg checkUserName(HttpServletRequest request, TShiroUsers param) {
+        ResultMsg rs=new ResultMsg();
+        Integer id=shiroService.selectUserNameByName(param);
+        if(id!=null){
+            rs.setErrcode(1);
+            rs.setErrmsg("用户名已存在");
+        }
+        return rs;
+    }
+
+
+    /**
+     * 删除用户
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/deleteUser")
+    public String deleteUser(HttpServletRequest request, TShiroUsers param) {
+        int i=shiroService.deleteUser(param);
+        return "/permission_shiro/getRolePageInfo";
+    }
+
+    /**
+     * 打开分配角色页面
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/distributionRole")
+    public String distributionRole(HttpServletRequest request, TShiroRoles param) {
+        return "/pajaxapimain/permissions/user/distribution_role.jsp";
+    }
+
+    /**
+     * 获取权限列表
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/getRoleList")
+    @ResponseBody
+    public List<TShiroRoles> getRoleList(HttpServletRequest request, TShiroRoles param) {
+        return shiroService.getRoleList();
+    }
+
+    /**
+     * 保存角色与其权限
+     * @param request
+     * @param param
+     * @return
+     */
+    @RequestMapping(value = "/saveUserAndRole")
+    public String saveUserAndRole(HttpServletRequest request, UserAndRole param) {
+        shiroService.saveUserAndRole(param);
+        return "/permission_shiro/getRolePageInfo";
+    }
 }

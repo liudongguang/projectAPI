@@ -19,4 +19,21 @@
   <select id="findUserByUsername" resultType="com.shiro.bo.TShiroUsersExt">
          SELECT username,password,salt from t_shiro_users where username=#{username,jdbcType=VARCHAR}
   </select>
+  <select id="selectUserNameByName" parameterType="com.shiro.api.po.TShiroUsers" resultType="int">
+       select uid from t_shiro_users where username=#{username,jdbcType=VARCHAR}
+  </select>
+  <resultMap id="userRoleMap" type="com.shiro.vo.UserAndRoleList">
+    <id property="uid" column="roleid" javaType="int" jdbcType="INTEGER" />
+    <result property="username" column="username" javaType="string" jdbcType="VARCHAR"/>
+    <result property="createtime" column="createtime" javaType="date" jdbcType="TIMESTAMP"/>
+    <collection property="roles"  ofType="com.shiro.api.po.TShiroRoles">
+      <id property="uid" column="roleid" javaType="int" jdbcType="INTEGER"/>
+      <result property="rolename" column="rolename" javaType="string" jdbcType="VARCHAR"/>
+    </collection>
+  </resultMap>
+  <select id="getUserAndRolePageInfo" resultMap="userRoleMap">
+    select user.uid,user.username,user.createtime,role.uid roleid,role.rolename from projectapi.t_shiro_users user
+    left join projectapi.t_shiro_users_roles userrole on user.uid=userrole.userid
+    left join  projectapi.t_shiro_roles role on role.uid=userrole.roleid
+  </select>
 </mapper>

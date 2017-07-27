@@ -271,7 +271,7 @@
                         <ul class="list-unstyled">
                             <li><a data-pjax href="permission_shiro/getPermissionPageInfo"><i class="ti-lock"></i>权限管理</a></li>
                             <li><a data-pjax href="permission_shiro/getRolePageInfo"><i class="icon-user"></i>角色管理</a></li>
-                            <li><a data-pjax href="dbsourceHandler/getDbsourceList"><i class="icon-people"></i>用户管理</a></li>
+                            <li><a data-pjax href="permission_shiro/getUserPageInfo"><i class="icon-people"></i>用户管理</a></li>
                         </ul>
                     </li>
                 </ul>
