@@ -183,9 +183,11 @@ public class PermissionController {
      */
     @RequestMapping(value = "/getUserPageInfo")
     public String getUserPageInfo(HttpServletRequest request, PageParam pageParam) {
+        System.out.println("------------------");
         PageInfo<UserAndRoleList> permissions = shiroService.getUserAndRolePageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, permissions);
-        return "/pajaxapimain/permissions/role/index.jsp";
+        System.out.println("------------------");
+        return "/pajaxapimain/permissions/user/index.jsp";
     }
 
     /**

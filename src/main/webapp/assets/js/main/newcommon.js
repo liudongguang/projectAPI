@@ -2,7 +2,7 @@ var basePath = $("#basePath").val();
 //1.普通弹出内容框
 function openWindow(title, content) {
     layer.open({
-        type: 2,
+        type: 1,
         content: content, //这里content是一个普通的String
         title: title,
         area: ['500px', '300px']
