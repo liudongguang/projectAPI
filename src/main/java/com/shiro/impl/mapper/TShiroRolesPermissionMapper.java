@@ -7,7 +7,7 @@ import tk.mybatis.mapper.common.Mapper;
 import java.util.List;
 
 public interface TShiroRolesPermissionMapper extends Mapper<TShiroRolesPermission> {
-    int deleteByRoleID(RoleAndPermission param);
+    int deleteByRoleID(Integer roleID);
 
     void batchInsertRolePermissions(List<TShiroRolesPermission> rmList);
 }

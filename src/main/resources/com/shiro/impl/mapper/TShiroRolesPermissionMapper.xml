@@ -9,7 +9,7 @@
     <result column="roleid" jdbcType="INTEGER" property="roleid" />
     <result column="permissionid" jdbcType="INTEGER" property="permissionid" />
   </resultMap>
-  <delete id="deleteByRoleID" parameterType="com.shiro.vo.RoleAndPermission">
+  <delete id="deleteByRoleID" parameterType="int">
          DELETE  from t_shiro_roles_permission where roleid=#{roleID,jdbcType=INTEGER}
   </delete>
   <insert id="batchInsertRolePermissions" parameterType="list">

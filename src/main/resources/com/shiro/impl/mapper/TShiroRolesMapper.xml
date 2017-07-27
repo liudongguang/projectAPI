@@ -13,7 +13,7 @@
     <id property="uid" column="roleid" javaType="int" jdbcType="INTEGER" />
     <result property="rolename" column="rolename" javaType="string" jdbcType="VARCHAR"/>
     <result property="description" column="roledescription" javaType="string" jdbcType="VARCHAR"/>
-    <collection property="permissions" column="roleid" ofType="com.shiro.api.po.TShiroPermission">
+    <collection property="permissions"  ofType="com.shiro.api.po.TShiroPermission">
       <id property="uid" column="permissionid" javaType="int" jdbcType="INTEGER"/>
       <result property="permissionname" column="permissionname" javaType="string" jdbcType="VARCHAR"/>
     </collection>

@@ -89,6 +89,7 @@ public class ShiroServiceImpl implements ShiroService {
 
     @Override
     public int deleteRole(TShiroRoles param) {
+        roleAndPermissionDao.deleteByRoleID(param.getUid());
         return roleDao.deleteByPrimaryKey(param.getUid());
     }
 
@@ -101,7 +102,7 @@ public class ShiroServiceImpl implements ShiroService {
     public void saveRoleAndPermission(RoleAndPermission param) {
         String permisseions=param.getPermissionIDS();
         if(permisseions!=null&&permisseions.length()!=0){
-          int delNum=roleAndPermissionDao.deleteByRoleID(param);
+          int delNum=roleAndPermissionDao.deleteByRoleID(param.getRoleID());
             List<TShiroRolesPermission>  rmList= Arrays.asList(param.getPermissionIDS().split(",")).stream().map(item -> {
                 TShiroRolesPermission rm = new TShiroRolesPermission();
                 rm.setRoleid(param.getRoleID());
