@@ -8,6 +8,7 @@ import com.shiro.api.po.TShiroPermission;
 import com.shiro.api.po.TShiroRoles;
 import com.shiro.api.service.ShiroService;
 import com.shiro.vo.RoleAndPermission;
+import com.shiro.vo.RoleAndPermissionList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -88,7 +89,7 @@ public class PermissionController {
      */
     @RequestMapping(value = "/getRolePageInfo")
     public String getRolePageInfo(HttpServletRequest request, PageParam pageParam) {
-        PageInfo<TShiroRoles> permissions = shiroService.getRolePageInfo(pageParam);
+        PageInfo<RoleAndPermissionList> permissions = shiroService.getRoleAndPermissionPageInfo(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, permissions);
         return "/pajaxapimain/permissions/role/index.jsp";
     }
@@ -148,6 +149,12 @@ public class PermissionController {
         return "/pajaxapimain/permissions/role/distribution_permission.jsp";
     }
 
+    /**
+     * 获取权限列表
+     * @param request
+     * @param param
+     * @return
+     */
     @RequestMapping(value = "/getPermissionList")
     @ResponseBody
     public List<TShiroPermission> getPermissionList(HttpServletRequest request, TShiroRoles param) {

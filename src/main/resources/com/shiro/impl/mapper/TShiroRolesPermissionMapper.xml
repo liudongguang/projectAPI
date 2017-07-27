@@ -12,4 +12,11 @@
   <delete id="deleteByRoleID" parameterType="com.shiro.vo.RoleAndPermission">
          DELETE  from t_shiro_roles_permission where roleid=#{roleID,jdbcType=INTEGER}
   </delete>
+  <insert id="batchInsertRolePermissions" parameterType="list">
+    insert into t_shiro_roles_permission (roleid, permissionid)
+    values
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.roleid,jdbcType=INTEGER}, #{item.permissionid,jdbcType=INTEGER})
+    </foreach>
+  </insert>
 </mapper>

@@ -6,6 +6,7 @@ import com.shiro.api.po.TShiroPermission;
 import com.shiro.api.po.TShiroRoles;
 import com.shiro.bo.TShiroUsersExt;
 import com.shiro.vo.RoleAndPermission;
+import com.shiro.vo.RoleAndPermissionList;
 
 import java.util.List;
 
@@ -94,4 +95,11 @@ public interface ShiroService {
      * @param param
      */
     void saveRoleAndPermission(RoleAndPermission param);
+
+    /**
+     * 获取角色与权限
+     * @param pageParam
+     * @return
+     */
+    PageInfo<RoleAndPermissionList> getRoleAndPermissionPageInfo(PageParam pageParam);
 }

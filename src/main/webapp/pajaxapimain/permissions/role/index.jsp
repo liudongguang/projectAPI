@@ -12,6 +12,7 @@
         <tr>
             <th>角色名</th>
             <th>角色描述</th>
+            <th>包含权限</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -20,6 +21,11 @@
             <tr id="${obj.uid}">
                 <td>${obj.rolename}</td>
                 <td>${obj.description}</td>
+                <td>
+                    <c:forEach items="${obj.permissions}" var="permission">
+                        ${permission.permissionname}
+                    </c:forEach>
+                </td>
                 <td><a class="btn btn-success-outline btn-sm" data-pjax  href="permission_shiro/distributionPermission?uid=${obj.uid}&rolename=${obj.rolename}">权限分配</a>
                     <a class="btn btn-danger-outline btn-sm" data-pjax delmark href="permission_shiro/deleteRole?uid=${obj.uid}">删除</a></td>
             </tr>

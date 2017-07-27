@@ -9,10 +9,28 @@
     <result column="rolename" jdbcType="VARCHAR" property="rolename" />
     <result column="description" jdbcType="VARCHAR" property="description" />
   </resultMap>
+  <resultMap id="rolePermissionMap" type="com.shiro.vo.RoleAndPermissionList">
+    <id property="uid" column="roleid" javaType="int" jdbcType="INTEGER" />
+    <result property="rolename" column="rolename" javaType="string" jdbcType="VARCHAR"/>
+    <result property="description" column="roledescription" javaType="string" jdbcType="VARCHAR"/>
+    <collection property="permissions" column="roleid" ofType="com.shiro.api.po.TShiroPermission">
+      <id property="uid" column="permissionid" javaType="int" jdbcType="INTEGER"/>
+      <result property="permissionname" column="permissionname" javaType="string" jdbcType="VARCHAR"/>
+    </collection>
+  </resultMap>
   <select id="getRolePageInfo" resultMap="BaseResultMap">
-      SELECT uid,rolename,description from t_shiro_roles order by uid
+      SELECT uid,rolename,description from t_shiro_roles order by uid desc
+  </select>
+  <select id="getRoleAndPermissionPageInfo" resultMap="rolePermissionMap">
+    SELECT role.uid as roleid,role.rolename,role.description as roledescription,
+           permission.uid as permissionid,permission.permissionname as permissionname
+    from projectapi.t_shiro_roles role
+      left join projectapi.t_shiro_roles_permission rolepermission on role.uid=rolepermission.roleid
+      left join projectapi.t_shiro_permission permission on permission.uid=rolepermission.permissionid
+     order by role.uid desc
   </select>
   <select id="selectRoleNameByName" parameterType="com.shiro.api.po.TShiroRoles" resultType="int">
     SELECT uid from t_shiro_roles where rolename=#{rolename,jdbcType=VARCHAR}
   </select>
+
 </mapper>
