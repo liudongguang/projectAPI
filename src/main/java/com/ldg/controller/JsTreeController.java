@@ -38,12 +38,9 @@ public class JsTreeController {
      */
     @RequestMapping(value = "/getApiTitles")
     public String getApiTitles(HttpServletRequest request) {
-//        TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
-//        if(2==sessionManager.getAuthority()){
-//            return "/pajaxapimain/projectapilock/disApiList.jsp";
-//        }
-        System.out.println(SecurityUtils.getSubject().isPermittedAll("add"));
-        System.out.println(SecurityUtils.getSubject().hasRole("admin"));
+        if(SecurityUtils.getSubject().isPermitted("apivisitor")){
+            return "/pajaxapimain/projectapilock/disApiList.jsp";
+        }
         return "/pajaxapimain/projectapi/disApiList.jsp";
     }
 

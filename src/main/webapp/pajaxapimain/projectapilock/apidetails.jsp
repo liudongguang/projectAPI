@@ -3,102 +3,66 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div class="col-md-12">
-    <div class="form-group">
-        <h3>参数名</h3>
-        <div class="form-inline">
-            <div class="one-line">
-                <label>请求类型:</label><span class="btn btn-success" >${apiobj.formmethod}</span>
-            </div>
-            <div class="one-line">
-                <label>接口地址:</label><span class="from-control">${apiobj.interfaceurl}</span>
-            </div>
-
-        </div>
-        <div class="form-inline">
-            <label>接口描述:</label><span class="dis_py"
-                                      style="width: 630px !important; display: block">${apiobj.description}</span>
-        </div>
+<div class="row">
+    <div class="col-md-12"><label>接口地址:</label><span class="from-control">${apiobj.interfaceurl}</span>
     </div>
-    <div id="requestDIVID">
-        <h4>请求参数</h4>
-        <c:forEach items="${paramListRquest}" var="obj" varStatus="stat">
-        <div class="form-inline one-group">
-            <input name="rquestParamUID" type="hidden" value="${obj.uid}"/>
-            <ul>
-                <li>
-                    <div class="one-line">
-                        <label>参数名:</label><span>${obj.paramname}</span>
-                    </div>
-                    <div class="one-line">
-                        <label>参数类型:</label><span>${obj.paramtype}</span>
-                    </div>
-                    <div class="one-line">
-                        <label>是否必填:</label><span <c:if test="${obj.paramrequired=='是'}">style="color: red" </c:if> >${obj.paramrequired}</span>
-                    </div>
-                    <div class="one-line">
-                        <label>备注:</label><span>${obj.parambeizhu}</span>
-                    </div>
-                </li>
-
-            </ul>
-                <%--<div class="form-group">
-                      <label>参数名:${obj.paramname}</label>
-                  </div>
-                  <div class="form-group">
-                      <label>参数类型:${obj.paramtype}</label>
-                  </div>
-                  <div class="form-group">
-                      <label>是否必填:${obj.paramrequired}</label>
-                  </div>
-                  <div class="form-group">
-                      <label>备注:${obj.parambeizhu}</label>
-                  </div>
-              </div>--%>
-            </c:forEach>
-        </div>
-
-
-        <div id="responseDIVID">
-            <%--一行三列结束--%>
-            <h4>返回参数</h4>
-            <c:forEach items="${paramListResponse}" var="obj" varStatus="stat">
-                <ul>
-                    <li>
-                        <div class="one-line">
-                            <label>参数名:</label><span>${obj.paramname}</span>
-                        </div>
-                        <div class="one-line">
-                            <label>参数类型:</label><span>${obj.paramtype}</span>
-                        </div>
-                        <div class="one-line">
-
-                            <label>是否必填:</label><span  <c:if test="${obj.paramrequired=='是'}">style="color: red" </c:if> >${obj.paramrequired}</span>
-                        </div>
-                        <div class="one-line">
-                            <label>备注:</label><span>${obj.parambeizhu}</span>
-                        </div>
-                    </li>
-                </ul>
-                <%--<div class="form-inline one-group">
-                    <input name="rquestParamUID" type="hidden" value="${obj.uid}"/>
-                    <div class="form-group">
-                        <label>参数名:${obj.paramname}</label>
-                    </div>
-                    <div class="form-group">
-                        <label>参数类型:${obj.paramtype}</label>
-                    </div>
-                    <div class="form-group">
-                        <label>是否必填:${obj.paramrequired}</label>
-                    </div>
-                    <div class="form-group">
-                        <label>备注:${obj.parambeizhu}</label>
-                    </div>
-                </div>--%>
-            </c:forEach>
-        </div>
-        <%--一行三列结束--%>
-        </form>
-    </div>
-    <script language="javascript" type="text/javascript" src="assets/js/apimain/projectapilock/apidetails.js"></script>
 </div>
+<div class="row">
+    <div class="col-md-12"><label>请求类型:</label>
+        <button class="btn btn-purple-outline waves-effect waves-light btn-sm" type="button">${apiobj.formmethod}</button></div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <label>接口描述:</label>
+        <textarea class="form-control" style="margin-left: 70px;margin-bottom: 10px;" disabled="disabled">${apiobj.description}</textarea>
+    </div>
+</div>
+<div class="row"><h3>请求参数</h3></div>
+<table id="dataTable" class="table table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>参数名</th>
+        <th>参数类型</th>
+        <th>是否必填</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${paramListRquest}" var="obj" varStatus="stat">
+        <tr>
+            <td>${obj.paramname}</td>
+            <td>${obj.paramtype}</td>
+            <td><span
+                    <c:if test="${obj.paramrequired=='是'}">style="color: red" </c:if> >${obj.paramrequired}
+            </span>
+            </td>
+            <td>${obj.parambeizhu}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+<%--一行三列结束--%>
+<div class="row"><h3>返回参数</h3></div>
+<table id="dataTable" class="table table-striped table-hover table-bordered">
+    <thead>
+    <tr>
+        <th>参数名</th>
+        <th>参数类型</th>
+        <th>是否必填</th>
+        <th>备注</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${paramListResponse}" var="obj" varStatus="stat">
+        <tr>
+            <td>${obj.paramname}</td>
+            <td>${obj.paramtype}</td>
+            <td><span
+                    <c:if test="${obj.paramrequired=='是'}">style="color: red" </c:if> >${obj.paramrequired}
+            </span>
+            </td>
+            <td>${obj.parambeizhu}</td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>

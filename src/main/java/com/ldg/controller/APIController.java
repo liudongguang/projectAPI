@@ -70,7 +70,6 @@ public class APIController {
             request.setAttribute("message", "帐户锁定！");
             return "/index.jsp";
         }
-       // subject.getSession().setAttribute("user", shiroService.findUserByUsername(manager.getUsername()));
         return "redirect:/pajaxapimain/index.jsp";
     }
 
@@ -143,8 +142,8 @@ public class APIController {
         /////////
         TProjectapis objapi = apiService.getApiInfo(param);
         request.setAttribute("apiobj", objapi);
-        TManagers sessionManager= (TManagers) request.getSession().getAttribute("user");
-        if(sessionManager.getAuthority()==2){
+
+        if(SecurityUtils.getSubject().isPermitted("apivisitor")){
             return "/pajaxapimain/projectapilock/apidetails.jsp";
         }
         return "/pajaxapimain/projectapi/addapi.jsp";

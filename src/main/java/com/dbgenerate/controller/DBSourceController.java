@@ -53,10 +53,6 @@ public class DBSourceController {
     public String getDbsourceList(HttpServletRequest request, PageParam pageParam) {
         PageInfo<TDbSource> projects = dbSourceService.getDbsourceList(pageParam);
         request.setAttribute(CommConstant.PAGE_REQUEST_ATTR, projects);
-        System.out.println("----getDbsourceList----");
-        System.out.println(SecurityUtils.getSubject().hasRole("admin"));
-        System.out.println("+++getDbsourceList+++++");
-
         return "/dbsorce/source/disdbsources.jsp";
     }
 
