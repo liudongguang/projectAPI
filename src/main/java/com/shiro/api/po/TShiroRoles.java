@@ -66,4 +66,13 @@ public class TShiroRoles {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "TShiroRoles{" +
+                "uid=" + uid +
+                ", rolename='" + rolename + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

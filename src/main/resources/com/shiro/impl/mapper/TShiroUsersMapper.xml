@@ -23,7 +23,7 @@
        select uid from t_shiro_users where username=#{username,jdbcType=VARCHAR}
   </select>
   <resultMap id="userRoleMap" type="com.shiro.vo.UserAndRoleList">
-    <id property="uid" column="roleid" javaType="int" jdbcType="INTEGER" />
+    <id property="uid" column="uid" javaType="int" jdbcType="INTEGER" />
     <result property="username" column="username" javaType="string" jdbcType="VARCHAR"/>
     <result property="createtime" column="createtime" javaType="date" jdbcType="TIMESTAMP"/>
     <collection property="roles"  ofType="com.shiro.api.po.TShiroRoles">
@@ -35,5 +35,6 @@
     select user.uid,user.username,user.createtime,role.uid roleid,role.rolename from projectapi.t_shiro_users user
     left join projectapi.t_shiro_users_roles userrole on user.uid=userrole.userid
     left join  projectapi.t_shiro_roles role on role.uid=userrole.roleid
+    order by user.uid desc
   </select>
 </mapper>

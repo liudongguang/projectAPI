@@ -58,8 +58,13 @@ public interface ShiroService {
      * @return
      */
     int deletePermission(TShiroPermission param);
-
     /**
+     * 获取拥有的权限根据角色id
+     * @param roleid
+     * @return
+     */
+    List<TShiroPermission> getOwnPermissionByRoleID(Integer roleid);
+    /*********************************************
      * 获取角色列表
      * @param pageParam
      * @return
@@ -113,12 +118,6 @@ public interface ShiroService {
      */
     PageInfo<UserAndRoleList> getUserAndRolePageInfo(PageParam pageParam);
 
-    /**
-     * 保存用户
-     * @param param
-     * @return
-     */
-    int saveUser(TShiroUsers param);
 
     /**
      * 用户名是否存在
@@ -146,4 +145,11 @@ public interface ShiroService {
      * @return
      */
     int saveUserAndRole(UserAndRole param);
+
+    /**
+     *
+     * @param userid
+     * @return
+     */
+    List<TShiroRoles> getOwnRoleByUserID(Integer userid);
 }

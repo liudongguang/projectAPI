@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="clearfix"></div>
 <div class="form-group">
-    <button class="btn btn-primary-outline" data-pjax href="pajaxapimain/permissions/role/add.jsp">新增</button>
+    <button class="btn btn-primary-outline" data-pjax href="pajaxapimain/permissions/user/add.jsp">新增</button>
 </div>
 <div class="table-responsive">
     <table id="dataTable" class="table table-striped table-hover table-bordered">
@@ -20,7 +20,7 @@
         <c:forEach items="${page.list}" var="obj">
             <tr id="${obj.uid}">
                 <td>${obj.username}</td>
-                <td>${obj.createtime}</td>
+                <td><fmt:formatDate value="${obj.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                 <td>
                     <c:forEach items="${obj.roles}" var="permission">
                         ${permission.rolename}

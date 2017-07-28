@@ -36,18 +36,8 @@ public class ShiroServiceImpl implements ShiroService {
     private TShiroRolesPermissionMapper roleAndPermissionDao;
     @Autowired
     private TShiroUsersRolesMapper usersRoleDao;
-    @Override
-    public int addUser(TShiroUsersExt user) {
-        PasswordHelper phr = new PasswordHelper();
-        phr.encryptPassword(user); //密码处理
-        user.setCreatetime(new Date());
-        return shiroUserDao.insertUser(user);
-    }
 
-    @Override
-    public TShiroUsersExt findUserByUsername(String username) {
-        return shiroUserDao.findUserByUsername(username);
-    }
+
 
     @Override
     public PageInfo<TShiroPermission> getPermissionPageInfo(PageParam pageParam) {
@@ -70,10 +60,16 @@ public class ShiroServiceImpl implements ShiroService {
         return permissionDao.deleteByPrimaryKey(param.getUid());
     }
 
+    /////////////////////////角色
     @Override
     public PageInfo<TShiroRoles> getRolePageInfo(PageParam pageParam) {
         PageInfo<TShiroRoles> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> roleDao.getRolePageInfo());
         return pageInfo;
+    }
+
+    @Override
+    public List<TShiroRoles> getRoleList() {
+        return roleDao.getRolePageInfo();
     }
 
     @Override
@@ -97,12 +93,13 @@ public class ShiroServiceImpl implements ShiroService {
         return permissionDao.getPermissionPageInfo();
     }
 
+    ////////////////////////////角色与权限
     @Override
     public void saveRoleAndPermission(RoleAndPermission param) {
-        String permisseions=param.getPermissionIDS();
-        if(permisseions!=null&&permisseions.length()!=0){
-          int delNum=roleAndPermissionDao.deleteByRoleID(param.getRoleID());
-            List<TShiroRolesPermission>  rmList= Arrays.asList(param.getPermissionIDS().split(",")).stream().map(item -> {
+        String permisseions = param.getPermissionIDS();
+        if (permisseions != null && permisseions.length() != 0) {
+            int delNum = roleAndPermissionDao.deleteByRoleID(param.getRoleID());
+            List<TShiroRolesPermission> rmList = Arrays.asList(param.getPermissionIDS().split(",")).stream().map(item -> {
                 TShiroRolesPermission rm = new TShiroRolesPermission();
                 rm.setRoleid(param.getRoleID());
                 rm.setPermissionid(Integer.valueOf(item));
@@ -117,18 +114,25 @@ public class ShiroServiceImpl implements ShiroService {
         PageInfo<RoleAndPermissionList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> roleDao.getRoleAndPermissionPageInfo());
         return pageInfo;
     }
-//////////////////////////////////////
+
     @Override
-    public PageInfo<UserAndRoleList> getUserAndRolePageInfo(PageParam pageParam) {
-        PageInfo<UserAndRoleList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> shiroUserDao.getUserAndRolePageInfo());
-        return pageInfo;
+    public List<TShiroPermission> getOwnPermissionByRoleID(Integer roleid) {
+        return roleAndPermissionDao.getOwnPermissionByRoleID(roleid);
+    }
+
+    ///////////////////用户
+    @Override
+    public int addUser(TShiroUsersExt user) {
+        PasswordHelper phr = new PasswordHelper();
+        phr.encryptPassword(user); //密码处理
+        user.setCreatetime(new Date());
+        return shiroUserDao.insertUser(user);
     }
 
     @Override
-    public int saveUser(TShiroUsers param) {
-        return shiroUserDao.insertSelective(param);
+    public TShiroUsersExt findUserByUsername(String username) {
+        return shiroUserDao.findUserByUsername(username);
     }
-
     @Override
     public Integer selectUserNameByName(TShiroUsers param) {
         return shiroUserDao.selectUserNameByName(param);
@@ -136,20 +140,24 @@ public class ShiroServiceImpl implements ShiroService {
 
     @Override
     public int deleteUser(TShiroUsers param) {
+        usersRoleDao.deleteByUserID(param.getUid());
         return shiroUserDao.deleteByPrimaryKey(param.getUid());
     }
 
+    //////////////////////////////////////用户与角色
     @Override
-    public List<TShiroRoles> getRoleList() {
-        return roleDao.getRolePageInfo();
+    public PageInfo<UserAndRoleList> getUserAndRolePageInfo(PageParam pageParam) {
+        PageInfo<UserAndRoleList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> shiroUserDao.getUserAndRolePageInfo());
+        return pageInfo;
     }
+
 
     @Override
     public int saveUserAndRole(UserAndRole param) {
-        String roleids=param.getRoleIDS();
-        if(roleids!=null&&roleids.length()!=0){
-            int delNum=usersRoleDao.deleteByUserID(param.getUserID());
-            List<TShiroUsersRoles>  rmList= Arrays.asList(param.getRoleIDS().split(",")).stream().map(item -> {
+        String roleids = param.getRoleIDS();
+        if (roleids != null && roleids.length() != 0) {
+            int delNum = usersRoleDao.deleteByUserID(param.getUserID());
+            List<TShiroUsersRoles> rmList = Arrays.asList(param.getRoleIDS().split(",")).stream().map(item -> {
                 TShiroUsersRoles rm = new TShiroUsersRoles();
                 rm.setRoleid(Integer.valueOf(item));
                 rm.setUserid(param.getUserID());
@@ -158,5 +166,10 @@ public class ShiroServiceImpl implements ShiroService {
             usersRoleDao.batchInsertUserRoles(rmList);
         }
         return 0;
+    }
+
+    @Override
+    public List<TShiroRoles> getOwnRoleByUserID(Integer userid) {
+        return usersRoleDao.getOwnRoleByUserID(userid);
     }
 }

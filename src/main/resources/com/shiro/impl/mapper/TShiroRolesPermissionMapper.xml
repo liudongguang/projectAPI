@@ -19,4 +19,10 @@
       (#{item.roleid,jdbcType=INTEGER}, #{item.permissionid,jdbcType=INTEGER})
     </foreach>
   </insert>
+
+  <select id="getOwnPermissionByRoleID" resultType="com.shiro.api.po.TShiroPermission" parameterType="int">
+    SELECT pms.uid,pms.permissionname FROM t_shiro_roles_permission rolepermission
+      left join t_shiro_permission pms on rolepermission.permissionid=pms.uid
+    where rolepermission.roleid=#{roleid,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -15,4 +15,5 @@
   <select id="selectPermissionNameByName" parameterType="com.shiro.api.po.TShiroPermission" resultType="int">
     SELECT uid from t_shiro_permission where permissionname=#{permissionname,jdbcType=VARCHAR}
   </select>
+
 </mapper>

@@ -1,5 +1,6 @@
 package com.shiro.impl.mapper;
 
+import com.shiro.api.po.TShiroPermission;
 import com.shiro.api.po.TShiroRolesPermission;
 import com.shiro.vo.RoleAndPermission;
 import tk.mybatis.mapper.common.Mapper;
@@ -10,4 +11,11 @@ public interface TShiroRolesPermissionMapper extends Mapper<TShiroRolesPermissio
     int deleteByRoleID(Integer roleID);
 
     void batchInsertRolePermissions(List<TShiroRolesPermission> rmList);
+
+    /**
+     * 获取已存在的权限根据角色id
+     * @param roleid
+     * @return
+     */
+    List<TShiroPermission> getOwnPermissionByRoleID(Integer roleid);
 }
