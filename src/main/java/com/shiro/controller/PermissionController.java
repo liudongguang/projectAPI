@@ -9,6 +9,7 @@ import com.shiro.api.po.TShiroRoles;
 import com.shiro.api.po.TShiroUsers;
 import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
+import com.shiro.util.ShiroAuthorizationHelper;
 import com.shiro.vo.RoleAndPermission;
 import com.shiro.vo.RoleAndPermissionList;
 import com.shiro.vo.UserAndRole;
@@ -32,7 +33,6 @@ public class PermissionController {
 
    @Autowired
    private ShiroService shiroService;
-
     /***********************************
      * 获取权限列表
      *

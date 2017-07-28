@@ -9,6 +9,7 @@ import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
 import com.shiro.impl.mapper.*;
 import com.shiro.util.PasswordHelper;
+import com.shiro.util.ShiroAuthorizationHelper;
 import com.shiro.vo.RoleAndPermission;
 import com.shiro.vo.RoleAndPermissionList;
 import com.shiro.vo.UserAndRole;
@@ -106,6 +107,7 @@ public class ShiroServiceImpl implements ShiroService {
                 return rm;
             }).collect(Collectors.toList());
             roleAndPermissionDao.batchInsertRolePermissions(rmList);
+            ShiroAuthorizationHelper.clearAuthorizationInfo();//清除缓存
         }
     }
 
@@ -164,6 +166,7 @@ public class ShiroServiceImpl implements ShiroService {
                 return rm;
             }).collect(Collectors.toList());
             usersRoleDao.batchInsertUserRoles(rmList);
+            ShiroAuthorizationHelper.clearAuthorizationInfo();//清除缓存
         }
         return 0;
     }
