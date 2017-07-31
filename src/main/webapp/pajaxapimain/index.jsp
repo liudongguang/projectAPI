@@ -210,7 +210,7 @@
                             <!-- item-->
                             <div class="dropdown-item noti-title">
                                 <h5 class="text-overflow">
-                                    <small>Welcome ! John</small>
+                                    <small>欢迎！${user.username}</small>
                                 </h5>
                             </div>
 
@@ -230,7 +230,7 @@
                             </a>
 
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <a href="apiHandler/loginOut" class="dropdown-item notify-item">
                                 <i class="zmdi zmdi-power"></i> <span>Logout</span>
                             </a>
 

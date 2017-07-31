@@ -11,9 +11,9 @@ jQuery(document).ready(function () {
         $("#requestDIVID").append(newGroup);
         return false;
     });
-    $("#responseDIVID").click(function () {
+    $("#resposeBaseID").click(function () {
         var newGroup=createNewRow("response");
-        $("#requestDIVID").append(newGroup);
+        $("#responseDIVID").append(newGroup);
         return false;
     });
 });

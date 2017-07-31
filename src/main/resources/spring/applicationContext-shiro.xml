@@ -23,7 +23,7 @@
 			<value>
 				# some example chain definitions:
 				/apiHandler/login = anon
-				/apiHandler/** = authc, roles[admin]
+				/apiHandler/** = authc
 				/** = anon
 				# more URL-to-FilterChain definitions here
 			</value>

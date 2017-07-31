@@ -2,6 +2,9 @@ package com.shiro;
 
 import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
+import com.shiro.bo.UserRolePermissonInfo;
+import com.shiro.bo.UserRolePermissonInfo_permission;
+import com.shiro.bo.UserRolePermissonInfo_role;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -18,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by LiuDongguang on 2017/7/24.
@@ -34,15 +38,23 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String) principals.getPrimaryPrincipal();
+        UserRolePermissonInfo urp=shiroService.selectRoleAndPermisssionByUserName(username);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-//        // 根据用户名查询当前用户拥有的角色
-//        Set<String> roleNames = shiroService.getOwnRoleByUserName(username);
-//        // 将角色名称提供给info
-//        authorizationInfo.setRoles(roleNames);
-//        // 根据用户名查询当前用户权限
-//        Set<String> permissionNames = shiroService.getOwnPermissionByByUserName(username);
-        // 将权限名称提供给info
-        //authorizationInfo.setStringPermissions(permissionNames);
+        // 根据用户名查询当前用户拥有的角色
+        Set<String> roleNames = new HashSet<>();
+        // 根据用户名查询当前用户权限
+        Set<String> permissionNames =new HashSet<>();
+        for (UserRolePermissonInfo_role item : urp.getRoleList()) {
+            String rolename = item.getRolename();
+            roleNames.add(rolename);
+            for(UserRolePermissonInfo_permission permission:item.getPermissionList()){
+                permissionNames.add(permission.getPermissionname());
+            }
+        }
+        // 将角色名称提供给info
+        authorizationInfo.setRoles(roleNames);
+        //将权限提供给info
+        authorizationInfo.setStringPermissions(permissionNames);
         return authorizationInfo;
     }
 

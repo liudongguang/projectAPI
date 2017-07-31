@@ -70,6 +70,7 @@ public class APIController {
             request.setAttribute("message", "帐户锁定！");
             return "/index.jsp";
         }
+        request.getSession().setAttribute("user",shiroService.findUserByUsername(manager.getUsername()));
         return "redirect:/pajaxapimain/index.jsp";
     }
 

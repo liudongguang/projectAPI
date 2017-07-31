@@ -233,7 +233,7 @@ public class PermissionController {
     @RequestMapping(value = "/deleteUser")
     public String deleteUser(HttpServletRequest request, TShiroUsers param) {
         int i=shiroService.deleteUser(param);
-        return "/permission_shiro/getRolePageInfo";
+        return "/permission_shiro/getUserPageInfo";
     }
 
     /**

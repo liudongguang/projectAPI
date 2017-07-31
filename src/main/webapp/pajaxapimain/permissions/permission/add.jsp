@@ -8,7 +8,7 @@
     <form class="form-horizontal" id="subform" method="post" action="permission_shiro/savePermission">
         <div class="form-group">
             <label class="control-label">权限名</label>
-            <input name="permissionname" type="text" required checkparam  class="form-control" placeholder="权限名" maxlength="5"/>
+            <input name="permissionname" type="text" required checkparam  class="form-control" placeholder="权限名" maxlength="20"/>
         </div>
         <div class="form-group">
             <label class="control-label">权限描述</label>
