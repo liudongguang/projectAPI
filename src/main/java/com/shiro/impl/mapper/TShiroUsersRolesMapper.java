@@ -17,4 +17,6 @@ public interface TShiroUsersRolesMapper extends Mapper<TShiroUsersRoles> {
      * @return
      */
     List<TShiroRoles> getOwnRoleByUserID(Integer userid);
+   //根据角色id删除信息
+    int deleteByRoleID(Integer roleid);
 }

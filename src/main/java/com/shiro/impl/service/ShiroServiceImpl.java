@@ -59,6 +59,7 @@ public class ShiroServiceImpl implements ShiroService {
 
     @Override
     public int deletePermission(TShiroPermission param) {
+        roleAndPermissionDao.deleteByPermissionID(param.getUid());
         return permissionDao.deleteByPrimaryKey(param.getUid());
     }
 
@@ -87,6 +88,7 @@ public class ShiroServiceImpl implements ShiroService {
     @Override
     public int deleteRole(TShiroRoles param) {
         roleAndPermissionDao.deleteByRoleID(param.getUid());
+        usersRoleDao.deleteByRoleID(param.getUid());
         return roleDao.deleteByPrimaryKey(param.getUid());
     }
 

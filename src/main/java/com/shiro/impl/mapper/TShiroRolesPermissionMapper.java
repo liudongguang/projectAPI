@@ -18,4 +18,11 @@ public interface TShiroRolesPermissionMapper extends Mapper<TShiroRolesPermissio
      * @return
      */
     List<TShiroPermission> getOwnPermissionByRoleID(Integer roleid);
+
+    /**
+     * 根据权限id删除
+     * @param permissionid
+     * @return
+     */
+    int deleteByPermissionID(Integer permissionid);
 }

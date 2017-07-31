@@ -25,4 +25,7 @@
       left join t_shiro_permission pms on rolepermission.permissionid=pms.uid
     where rolepermission.roleid=#{roleid,jdbcType=INTEGER}
   </select>
+  <delete id="deleteByPermissionID" parameterType="int">
+    DELETE  from t_shiro_roles_permission where permissionid=#{permissionid,jdbcType=INTEGER}
+  </delete>
 </mapper>

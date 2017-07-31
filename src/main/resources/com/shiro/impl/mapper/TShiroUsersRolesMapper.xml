@@ -28,4 +28,9 @@
             LEFT JOIN t_shiro_roles role ON urole.roleid = role.uid
         WHERE urole.userid = #{userid,jdbcType=INTEGER}
     </select>
+
+    <delete id="deleteByRoleID" parameterType="int">
+        DELETE FROM t_shiro_users_roles
+        WHERE roleid = #{roleid,jdbcType=INTEGER}
+    </delete>
 </mapper>
