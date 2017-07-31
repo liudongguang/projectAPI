@@ -6,6 +6,7 @@ import com.shiro.api.po.TShiroPermission;
 import com.shiro.api.po.TShiroRoles;
 import com.shiro.api.po.TShiroUsers;
 import com.shiro.bo.TShiroUsersExt;
+import com.shiro.bo.UserRolePermissonInfo;
 import com.shiro.vo.RoleAndPermission;
 import com.shiro.vo.RoleAndPermissionList;
 import com.shiro.vo.UserAndRole;
@@ -152,4 +153,11 @@ public interface ShiroService {
      * @return
      */
     List<TShiroRoles> getOwnRoleByUserID(Integer userid);
+
+    /**
+     * 根据用户名获取角色及其权限信息
+     * @param username
+     * @return
+     */
+    UserRolePermissonInfo selectRoleAndPermisssionByUserName(String username);
 }

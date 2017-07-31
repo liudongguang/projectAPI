@@ -37,4 +37,21 @@
     left join  projectapi.t_shiro_roles role on role.uid=userrole.roleid
     order by user.uid desc
   </select>
+  <!--用户关联的角色与权限-->
+  <resultMap id="userRolePermissionMap" type="com.shiro.bo.UserRolePermissonInfo">
+    <id property="userid" column="userid" javaType="int" jdbcType="INTEGER" />
+    <result property="username" column="username" javaType="string" jdbcType="VARCHAR"/>
+    <collection property="roleList"  ofType="com.shiro.bo.UserRolePermissonInfo_role">
+      <id property="roleid" column="roleid" javaType="int" jdbcType="INTEGER"/>
+      <result property="rolename" column="rolename" javaType="string" jdbcType="VARCHAR"/>
+      <collection property="permissionList"  ofType="com.shiro.bo.UserRolePermissonInfo_permission">
+        <id property="permissionid" column="permissionid" javaType="int" jdbcType="INTEGER"/>
+        <result property="permissionname" column="permissionname" javaType="string" jdbcType="VARCHAR"/>
+      </collection>
+    </collection>
+  </resultMap>
+  <select id="selectRoleAndPermisssionByUserName" resultMap="userRolePermissionMap">
+      select uid as userid,username,roleid,rolename,permissionid,permissionname from projectapi.fullpermission
+    WHERE username=#{username,jdbcType=VARCHAR}
+  </select>
 </mapper>

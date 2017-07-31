@@ -7,6 +7,7 @@ import com.ldg.api.vo.PageParam;
 import com.shiro.api.po.*;
 import com.shiro.api.service.ShiroService;
 import com.shiro.bo.TShiroUsersExt;
+import com.shiro.bo.UserRolePermissonInfo;
 import com.shiro.impl.mapper.*;
 import com.shiro.util.PasswordHelper;
 import com.shiro.util.ShiroAuthorizationHelper;
@@ -174,5 +175,10 @@ public class ShiroServiceImpl implements ShiroService {
     @Override
     public List<TShiroRoles> getOwnRoleByUserID(Integer userid) {
         return usersRoleDao.getOwnRoleByUserID(userid);
+    }
+
+    @Override
+    public UserRolePermissonInfo selectRoleAndPermisssionByUserName(String username) {
+        return shiroUserDao.selectRoleAndPermisssionByUserName(username);
     }
 }

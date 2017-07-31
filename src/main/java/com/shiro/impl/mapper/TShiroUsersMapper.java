@@ -2,6 +2,7 @@ package com.shiro.impl.mapper;
 
 import com.shiro.api.po.TShiroUsers;
 import com.shiro.bo.TShiroUsersExt;
+import com.shiro.bo.UserRolePermissonInfo;
 import com.shiro.vo.UserAndRoleList;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -15,4 +16,6 @@ public interface TShiroUsersMapper extends Mapper<TShiroUsers> {
     Integer selectUserNameByName(TShiroUsers param);
 
     List<UserAndRoleList> getUserAndRolePageInfo();
+
+    UserRolePermissonInfo selectRoleAndPermisssionByUserName(String username);
 }

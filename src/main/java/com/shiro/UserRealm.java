@@ -35,17 +35,14 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        // 根据用户名查询当前用户拥有的角色
-        Set<String> roleNames = new HashSet<>();
-        roleNames.add("admin");
-        // 将角色名称提供给info
-        authorizationInfo.setRoles(roleNames);
-        // 根据用户名查询当前用户权限
-        Set<String> permissionNames = new HashSet<>();
-        permissionNames.add("add");
-        permissionNames.add("apivisitor");
+//        // 根据用户名查询当前用户拥有的角色
+//        Set<String> roleNames = shiroService.getOwnRoleByUserName(username);
+//        // 将角色名称提供给info
+//        authorizationInfo.setRoles(roleNames);
+//        // 根据用户名查询当前用户权限
+//        Set<String> permissionNames = shiroService.getOwnPermissionByByUserName(username);
         // 将权限名称提供给info
-        authorizationInfo.setStringPermissions(permissionNames);
+        //authorizationInfo.setStringPermissions(permissionNames);
         return authorizationInfo;
     }
 
