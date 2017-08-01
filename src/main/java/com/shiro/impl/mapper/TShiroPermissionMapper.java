@@ -10,4 +10,6 @@ public interface TShiroPermissionMapper extends Mapper<TShiroPermission> {
     List<TShiroPermission> getPermissionPageInfo();
 
     Integer selectPermissionNameByName(TShiroPermission param);
+
+    List<TShiroPermission> getPermissionByRoleID(Integer uid);
 }

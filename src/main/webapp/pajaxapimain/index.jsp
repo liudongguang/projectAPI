@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="assets/tether-1.3.3/css/tether.css"/>
     <link rel="stylesheet" href="assets/bootstrap4alpha6/css/bootstrap.css"/>
     <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="assets/nprogress-0.2.0/nprogress.css">
+    <link rel="stylesheet" href="assets/Waves-0.7.5/waves.css">
     <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -469,7 +471,7 @@
 <script src="assets/uplon/js/detect.js"></script>
 <script src="assets/uplon/js/fastclick.js"></script>
 <script src="assets/uplon/js/jquery.blockUI.js"></script>
-<script src="assets/uplon/js/waves.js"></script>
+<script src="assets/Waves-0.7.5/waves.js"></script>
 <script src="assets/uplon/js/jquery.nicescroll.js"></script>
 <script src="assets/uplon/js/jquery.scrollTo.min.js"></script>
 <script src="assets/uplon/js/jquery.slimscroll.js"></script>
@@ -492,6 +494,7 @@
 <script language="javascript" type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/layer/layer.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/main/newcommon.js"></script>
+<script language="javascript" type="text/javascript" src="assets/nprogress-0.2.0/nprogress.js"></script>
 <script language="javascript" type="text/javascript" src="assets/js/pajaxapimain/index.js"></script>
 <!--单独加载的页面js放到这里，在filter中处理-->
 <div id="subjsID"></div>

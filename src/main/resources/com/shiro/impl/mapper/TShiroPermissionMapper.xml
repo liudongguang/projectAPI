@@ -12,6 +12,9 @@
   <select id="getPermissionPageInfo" resultMap="BaseResultMap">
         SELECT uid,permissionname,description from t_shiro_permission order by uid desc
   </select>
+  <select id="getPermissionByRoleID" resultMap="BaseResultMap">
+    SELECT permissionid as uid,permissionname from fullrolepermission where roleid=#{roleid,jdbcType=INTEGER}  order by permissionid desc
+  </select>
   <select id="selectPermissionNameByName" parameterType="com.shiro.api.po.TShiroPermission" resultType="int">
     SELECT uid from t_shiro_permission where permissionname=#{permissionname,jdbcType=VARCHAR}
   </select>

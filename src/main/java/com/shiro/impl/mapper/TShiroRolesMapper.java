@@ -12,4 +12,8 @@ public interface TShiroRolesMapper extends Mapper<TShiroRoles> {
     Integer selectRoleNameByName(TShiroRoles param);
 
     List<RoleAndPermissionList> getRoleAndPermissionPageInfo();
+
+    List<RoleAndPermissionList> getRoleAndPermissionListPageInfo();
+
+    List<TShiroRoles> selectRoleNameByUserID(Integer uid);
 }

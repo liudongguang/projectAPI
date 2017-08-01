@@ -1,4 +1,5 @@
 jQuery(document).ready(function () {
+    Waves.init(); //激活点击按钮效果// <a class="btn float-buttons waves-effect waves-button waves-float">Button A</a>
     var containerSelector = '#mainContainer';
     if ($.support.pjax) {
         $(document).on('click', '[data-pjax]', function(event) {
@@ -16,4 +17,7 @@ jQuery(document).ready(function () {
     }else{
         layer.alert("不支持pajax！");
     }
+    //加载进度条
+    $(document).on('pjax:start', function() { NProgress.start(); });
+    $(document).on('pjax:end',   function() { NProgress.done();  });
 });

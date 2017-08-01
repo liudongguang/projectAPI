@@ -48,7 +48,8 @@ public class RoleAndPermissionList {
     @Override
     public String toString() {
         return "RoleAndPermissionList{" +
-                "rolename='" + rolename + '\'' +
+                "uid=" + uid +
+                ", rolename='" + rolename + '\'' +
                 ", description='" + description + '\'' +
                 ", permissions=" + permissions +
                 '}';

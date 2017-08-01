@@ -18,4 +18,8 @@ public interface TShiroUsersMapper extends Mapper<TShiroUsers> {
     List<UserAndRoleList> getUserAndRolePageInfo();
 
     UserRolePermissonInfo selectRoleAndPermisssionByUserName(String username);
+
+    List<UserAndRoleList> getUserAndRoleListPageInfo();
+
+
 }

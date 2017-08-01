@@ -37,6 +37,10 @@
     left join  projectapi.t_shiro_roles role on role.uid=userrole.roleid
     order by user.uid desc
   </select>
+
+  <select id="getUserAndRoleListPageInfo" resultType="com.shiro.vo.UserAndRoleList">
+      SELECT uid,username,createtime FROM  t_shiro_users
+  </select>
   <!--用户关联的角色与权限-->
   <resultMap id="userRolePermissionMap" type="com.shiro.bo.UserRolePermissonInfo">
     <id property="userid" column="userid" javaType="int" jdbcType="INTEGER" />

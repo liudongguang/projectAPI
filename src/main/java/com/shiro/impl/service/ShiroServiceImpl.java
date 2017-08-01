@@ -116,8 +116,12 @@ public class ShiroServiceImpl implements ShiroService {
 
     @Override
     public PageInfo<RoleAndPermissionList> getRoleAndPermissionPageInfo(PageParam pageParam) {
-        PageInfo<RoleAndPermissionList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> roleDao.getRoleAndPermissionPageInfo());
-        return pageInfo;
+       // PageInfo<RoleAndPermissionList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> roleDao.getRoleAndPermissionPageInfo());
+        PageInfo<RoleAndPermissionList> roles = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> roleDao.getRoleAndPermissionListPageInfo());
+        roles.getList().stream().forEach(item->{
+            item.setPermissions(permissionDao.getPermissionByRoleID(item.getUid()));
+        });
+        return roles;
     }
 
     @Override
@@ -152,7 +156,10 @@ public class ShiroServiceImpl implements ShiroService {
     //////////////////////////////////////用户与角色
     @Override
     public PageInfo<UserAndRoleList> getUserAndRolePageInfo(PageParam pageParam) {
-        PageInfo<UserAndRoleList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> shiroUserDao.getUserAndRolePageInfo());
+        PageInfo<UserAndRoleList> pageInfo = PageHelper.startPage(pageParam.getPageNum(), pageParam.getPageSize(), true).doSelectPageInfo(() -> shiroUserDao.getUserAndRoleListPageInfo());
+        pageInfo.getList().forEach(item->{
+             item.setRoles(roleDao.selectRoleNameByUserID(item.getUid()));
+        });
         return pageInfo;
     }
 

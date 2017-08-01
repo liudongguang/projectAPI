@@ -32,5 +32,10 @@
   <select id="selectRoleNameByName" parameterType="com.shiro.api.po.TShiroRoles" resultType="int">
     SELECT uid from t_shiro_roles where rolename=#{rolename,jdbcType=VARCHAR}
   </select>
-
+  <select id="getRoleAndPermissionListPageInfo" resultType="com.shiro.vo.RoleAndPermissionList">
+   SELECT uid,rolename from t_shiro_roles order by uid desc
+  </select>
+  <select id="selectRoleNameByUserID" resultType="com.shiro.api.po.TShiroRoles">
+    SELECT roleid as uid,rolename from fulluserrole where userid=#{userid,jdbcType=INTEGER} order by uid desc
+  </select>
 </mapper>
